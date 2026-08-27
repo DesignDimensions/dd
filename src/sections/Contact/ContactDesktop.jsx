@@ -4,6 +4,8 @@ import logoGroup2 from '@/assets/icons/logo-footer-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
+import { cn } from '@/lib/cn'
+
 import styles from './ContactDesktop.module.css'
 
 /** Figma 2715:11785 / 11787 / 11789 */
@@ -32,9 +34,9 @@ const FOOTER_LINKS = [
 ]
 
 /** Figma 2715:11778 */
-export default function ContactDesktop() {
+export default function ContactDesktop({ variant = 'transparent' }) {
   return (
-    <section className={styles.section}>
+    <section className={cn(styles.section, styles[variant])}>
       <div className={styles.body}>
         <div className={styles.textStack}>
           <div className={styles.stack12}>

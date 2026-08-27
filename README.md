@@ -153,6 +153,50 @@ Shared Figma components live in `src/components/ui/` — `Tag`, `Cta` and
 desktop card and `ProductCardMobile` the mobile one. Headers are
 `components/layout/Header` and `components/layout/HeaderMobile`.
 
+### About — Figma 7962:21156
+
+Desktop only; Figma has no mobile frame for this page.
+
+| Section                            | Figma node              |
+| ---------------------------------- | ----------------------- |
+| `AboutHero`                        | 7962:21192              |
+| `AboutIntro`                       | 7962:21196              |
+| `Founder`                          | 7962:21218              |
+| `Mission`                          | 7962:21244              |
+| `ValueBlock` ("Our values")        | 7962:21256              |
+| `ValueBlock` ("Design Philosophy") | 7962:21300              |
+| `Brands`                           | 7962:21344              |
+| `Contact`                          | reused from home, boxed |
+
+"Our values" and "Design Philosophy" are structurally identical in the
+frame — heading beside a lede, a rule, three equal columns — so they are one
+component differing only in fill.
+
+The footer is the home page's `Contact`. It takes a `variant`: `transparent`
+on home, where its fill is a stop on the page gradient, and `boxed` here,
+where the ground is flat. Two small differences in the About frame are not
+reproduced, on the grounds that a footer should be identical across pages:
+its heading gains a full stop, and it drops the "Your Information" label.
+
+The page ground is `#f0f0f0` rather than the frame's white, so the white
+sections read as boxes instead of dissolving into the page. Presentation
+otherwise follows home exactly: flush header and hero, one box width below,
+shared radius and elevation.
+
+**Most of this page's images had to be recovered.** Nine of thirteen exports
+came back as valid PNGs containing zero non-transparent pixels, and the hero
+photograph was absent from the design context altogether — the node returned
+only its text child. The originals were pulled with `download_assets` and
+matched to their slots by exact dimensions or aspect ratio. Two caveats:
+`rawImages` is capped at 20 and this page has more, so one brand tile uses a
+stand-in; and the recovered brand logos' slot order is inferred, not
+verified. Re-export from Figma when the export pipeline is fixed.
+
+Mobile below 1024 has no frame to follow, so the fixed desktop geometry is
+relaxed rather than redesigned: the founder card stacks, the three-column
+blocks become a stack, the logo grid goes two-up, and display sizes step
+down. Hand over a mobile frame to make it literal.
+
 ### Reference: wepresent.wetransfer.com
 
 Presentation is modelled on wepresent. The values below were read out of

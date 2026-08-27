@@ -3,6 +3,8 @@ import logoGroup2 from '@/assets/mobile/logo-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
+import { cn } from '@/lib/cn'
+
 import styles from './ContactMobile.module.css'
 
 /** Figma 2715:11081 — seven tags, where desktop's interest list has eight */
@@ -34,9 +36,9 @@ const FOOTER_LINKS = [
  * Mobile stacks the interests above the form, where desktop puts them in
  * two columns side by side, and the heading gains a full stop.
  */
-export default function ContactMobile() {
+export default function ContactMobile({ variant = 'transparent' }) {
   return (
-    <section className={styles.section}>
+    <section className={cn(styles.section, styles[variant])}>
       <div className={styles.heading}>
         <p className={styles.eyebrow}>Feel free to connect!</p>
         <p className={styles.title}>This could be a start of a new relation.</p>
