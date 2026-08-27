@@ -9,6 +9,7 @@
   background-color: #ffffff;
   border-radius: var(--section-radius);
   flex-shrink: 0;
+  filter: var(--elevation-section);
 }
 
 /* Figma 2715:10685 */

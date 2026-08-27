@@ -10,6 +10,7 @@
   border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
+  filter: var(--elevation-section);
 }
 
 /* --- head row, Figma 2714:8759 --- */

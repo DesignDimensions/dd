@@ -4,12 +4,15 @@
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  width: 100%;
-  padding: 120px var(--page-gutter);
-  background-color: #ffc6c9;
+  padding: 120px var(--bleed-gutter);
   overflow: clip;
   flex-shrink: 0;
-  border-radius: var(--section-radius);
+  /* No background of its own: this section's colour in the frame is a
+     stop on the page gradient, so it runs full width and lets the page
+     show through. Nothing to round, nothing to misalign. */
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
 }
 
 .textStack {

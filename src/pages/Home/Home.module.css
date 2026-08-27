@@ -9,9 +9,9 @@
   align-items: center;
   width: 100%;
 
-  /* The gutter that lets the page gradient show down each side, so the
-     sections read as boxes. Reference: wepresent's --h-padding. */
-  padding-inline: var(--page-inset);
+  /* Framed down both sides and along the bottom, but not the top: the
+     header and hero run flush to the top edge of the viewport. */
+  padding: 0 var(--page-inset) var(--page-inset);
 
   /* Mobile frame 2715:10365 */
   gap: 28px;

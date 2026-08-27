@@ -158,37 +158,57 @@ desktop card and `ProductCardMobile` the mobile one. Headers are
 Presentation is modelled on wepresent. The values below were read out of
 its own stylesheet rather than eyeballed, and live in `tokens.css`:
 
-|                   | wepresent                                 | here                                        |
-| ----------------- | ----------------------------------------- | ------------------------------------------- |
-| Content column    | `--wrapper-max-width: 1120px`             | `--content-width: 1120px` (already matched) |
-| Page gutter       | `--h-padding: 20px → 40px`                | `--page-inset: 0 → 40px`                    |
-| Card radius       | `--rounded-3: 16px`                       | `--card-radius`                             |
-| Rest shadow       | `drop-shadow(0 10px 19px rgb(0 0 0/4%))`  | `--elevation-rest`                          |
-| Hover shadow      | `drop-shadow(0 30px 30px rgb(0 0 0/15%))` | `--elevation-hover`                         |
-| Image zoom        | `scale(1.15)` over `.5s`                  | `--card-zoom`                               |
-| Shadow transition | `filter .3s`                              | same                                        |
-| Curve             | `cubic-bezier(.165,.84,.44,1)`            | `--ease-ref`                                |
+|                   | wepresent                                 | here                                |
+| ----------------- | ----------------------------------------- | ----------------------------------- |
+| Content column    | `--wrapper-max-width: 1120px`             | `--content-width` (already matched) |
+| Page gutter       | `--h-padding: 20px → 40px`                | `--page-inset`                      |
+| Section rhythm    | `--section-content-gap: 20px → 42px`      | `--section-gap`                     |
+| Section radius    | `--rounded-4: 24px`                       | `--section-radius`                  |
+| Card radius       | `--rounded-3: 16px`                       | `--card-radius`                     |
+| Card media radius | `--rounded-2: 8px`                        | `--card-media-radius`               |
+| Rest shadow       | `drop-shadow(0 10px 19px rgb(0 0 0/4%))`  | `--elevation-rest`                  |
+| Hover shadow      | `drop-shadow(0 30px 30px rgb(0 0 0/15%))` | `--elevation-hover`                 |
+| Image zoom        | `scale(1.15)` over `.5s`                  | `--card-zoom`                       |
+| Shadow transition | `filter .3s`                              | same                                |
+| Curve             | `cubic-bezier(.165,.84,.44,1)`            | `--ease-ref`                        |
 
-**Boxy sections.** The page carries a horizontal inset so the gradient shows
-down both sides and the middle sections read as rounded boxes rather than
-bands, with a 24px gap between them. Applied from 1024px up only — mobile
-stays flush so the 360 frame keeps its exact 304px column.
+Nothing in that table was chosen by eye. Section radius is one value at every
+width rather than stepping 24 → 40 across the breakpoint, and cards sit one
+step below sections on the same scale (16 under 24). The stepping and the
+mismatched radii were what made the spacing read as arbitrary.
 
-**The blocks at the page edges do not box.** Hero, Snack Factory (which
-joins the hero) and the Contact footer run to the page edges with no radius
-at the outer edge — a box at the very top or bottom leaves a strip of
-background outside its rounded corner, which reads as a mistake rather than
-a design. Snack Factory keeps only Figma's bottom radius, which closes the
-top block before the boxed sections start.
+Radii outside this scale are Figma component values rather than layout
+spacing: the 20px chips and tags, 28px form fields, 32px testimonial
+portrait, 12px CTA.
 
-Because those blocks sit outside the gutter, they use `--bleed-gutter`,
-which absorbs the page inset. Without it their content would run 40px wider
-than the boxed sections' and the column would step in and out down the page.
-Verified aligned at every width: 304px on mobile, 864px at 1024, 1120px from
-1280 up, in both kinds of section.
+**Two kinds of section.** The page is framed down both sides and along the
+bottom — but not the top, so the header and hero sit flush against the
+viewport edge. Sections fall into one of two treatments, never a mix of
+widths within one:
 
-Figma's 40px `#f0f0f0` spacer (2714:8757) is dropped: once sections are
-inset boxes it would read as a floating grey bar, so the gap does its job.
+| Treatment          | Sections                                                  | Why                                                  |
+| ------------------ | --------------------------------------------------------- | ---------------------------------------------------- |
+| Full bleed, square | Hero, Snack Factory, Featured Story, Exploration, Contact | Top block, or fill that is already the page gradient |
+| Boxed              | Work diary, Design Dialogue, Testimonials                 | Fill is their own — white or `#fafafa`               |
+
+Featured Story, Exploration and Contact are transparent rather than filled.
+That is not a styling choice: the root gradient's stops are `#ffeab2`,
+`#ffc6c9` and `#efddaf` — exactly the fills Figma gives those three. Painting
+them again over a gradient that already carries those colours is what
+produced mismatched rounded corners at the joins.
+
+Everything that bleeds is square. A rounded corner on a full-width block
+sits at a different x than a rounded corner on a boxed one, and the eye
+reads that step as a mistake. Figma's 40px bottom radius on Snack Factory is
+dropped for this reason — restore it by putting `border-bottom-*-radius`
+back on `.section` if you want the curve.
+
+Boxed sections carry `--section-radius` and `--elevation-section`, matching
+`.section-wrapper.has-background` in the reference.
+
+Bleeding sections sit outside the page padding, so they use `--bleed-gutter`
+to absorb it. Verified: both treatments put their content on an identical
+column at every width, so it never steps in or out as you scroll.
 
 **Carousels.** The three-card rows are rails. Cards hold their exact 352px
 frame width and the rail scrolls when they no longer fit, instead of the

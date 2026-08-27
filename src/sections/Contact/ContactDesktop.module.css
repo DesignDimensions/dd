@@ -4,16 +4,15 @@
   flex-direction: column;
   gap: 64px;
   align-items: flex-start;
-  /* Runs to the page edges instead of sitting inside the gutter: a box at
-     the very top or bottom of the page leaves a strip of background
-     outside its rounded corner. --page-inset is 0 on mobile, so this
-     resolves to a plain full-width block there. */
-  width: calc(100% + var(--page-inset) * 2);
-  margin-inline: calc(-1 * var(--page-inset));
   padding: 120px var(--bleed-gutter);
-  background-color: #efddaf;
   overflow: clip;
   flex-shrink: 0;
+  /* No background of its own: this section's colour in the frame is a
+     stop on the page gradient, so it runs full width and lets the page
+     show through. Nothing to round, nothing to misalign. */
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
 }
 
 /* Figma 2715:11779 */
