@@ -4,12 +4,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 1 0;
-  min-width: 0;
+
+  /* Figma's exact card width. The carousel scrolls when three of these
+     no longer fit, rather than letting them shrink below the design. */
+  flex: 0 0 352px;
+  width: 352px;
   background-color: #ffffff;
-  border-radius: 24px;
+  border-radius: var(--card-radius);
   overflow: clip;
   flex-shrink: 0;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
 }
 
 /* Figma nests a 360px-square image in a 352px card, so it overhangs the
@@ -30,6 +35,7 @@
   max-width: none;
   object-fit: cover;
   pointer-events: none;
+  transition: transform 0.5s var(--ease-ref);
 }
 
 .footer {
@@ -132,4 +138,18 @@
   --icon-bg: #000000;
   --icon-ring: transparent;
   --icon-glyph: #ffffff;
+}
+
+/* Reference: wepresent's .card-wrapper —
+     rest   filter: drop-shadow(0 10px 19px rgb(0 0 0/4%))
+     hover  filter: drop-shadow(0 30px 30px rgb(0 0 0/15%))  over .3s
+     image  transform: scale(1.15)                            over .5s
+   both on cubic-bezier(.165,.84,.44,1). */
+
+.card:hover {
+  filter: var(--elevation-hover);
+}
+
+.card:hover .image {
+  transform: scale(var(--card-zoom));
 }

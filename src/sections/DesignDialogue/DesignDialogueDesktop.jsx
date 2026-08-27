@@ -1,6 +1,7 @@
 import story3d from '@/assets/images/story-3d.jpg'
 import storyAi from '@/assets/images/story-ai-designer.jpg'
 import storyGradients from '@/assets/images/story-gradients.gif'
+import Carousel from '@/components/ui/Carousel/Carousel.jsx'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 
@@ -35,7 +36,7 @@ export default function DesignDialogueDesktop() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.row}>
+        <Carousel label="stories">
           <ProjectCard
             background="#dcf6f8"
             body={BODY_COPY}
@@ -57,7 +58,7 @@ export default function DesignDialogueDesktop() {
             image={story3d}
             title={['3D slaying the design', 'industry']}
           />
-        </div>
+        </Carousel>
       </div>
 
       <Cta>View All Stories</Cta>

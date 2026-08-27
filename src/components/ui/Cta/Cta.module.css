@@ -1,6 +1,7 @@
-/* Figma "CTA" — black pill. Hover inverts to an outlined white pill. */
+/* Figma "CTA" — black pill. Hover inverts it to an outlined white pill.
+   Padding is 1px short of Figma's on each side because the border makes
+   up the difference, so the box matches the frame at rest. */
 .cta {
-  position: relative;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -8,10 +9,10 @@
   background-color: #000000;
   border: 1px solid #000000;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: clip;
   flex-shrink: 0;
   cursor: pointer;
-  isolation: isolate;
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .desktop {
@@ -20,22 +21,6 @@
 
 .mobile {
   padding: 7px 19px;
-}
-
-/* White fill wipes up over the black, rather than the whole button
-   changing colour at once. */
-.fill {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: #ffffff;
-  transform: scaleY(0);
-  transform-origin: bottom center;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cta:hover .fill {
-  transform: scaleY(1);
 }
 
 .label {
@@ -54,6 +39,10 @@
   font-variation-settings:
     'CTGR' 0,
     'wdth' 100;
+}
+
+.cta:hover {
+  background-color: #ffffff;
 }
 
 .cta:hover .text {

@@ -1,28 +1,8 @@
-/* Every transition here shares one curve so the fill, the outlines and the
-   text all resolve together rather than arriving separately. */
 .group {
-  position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
   cursor: pointer;
-  isolation: isolate;
-}
-
-/* The capsule that spans pill + gap + arrow. */
-.fill {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: #000000;
-  border-radius: 999px;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.group:hover .fill {
-  transform: scaleX(1);
 }
 
 /* Matches the Figma "Tags" component at rest. */
@@ -34,7 +14,7 @@
   border-radius: 20px;
   overflow: clip;
   flex-shrink: 0;
-  transition: border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .label {
@@ -46,7 +26,7 @@
   color: #000000;
   white-space: nowrap;
   word-break: break-word;
-  transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
   font-variation-settings:
     'CTGR' 0,
     'wdth' 100;
@@ -55,11 +35,14 @@
 .arrow {
   display: grid;
   place-items: center;
+  border-radius: 999px;
   flex-shrink: 0;
+  background-color: var(--icon-bg, transparent);
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .group:hover .pill {
-  border-color: transparent;
+  background-color: #000000;
 }
 
 .group:hover .label {
@@ -67,6 +50,7 @@
 }
 
 .group:hover {
+  --icon-bg: #000000;
   --icon-ring: transparent;
   --icon-glyph: #ffffff;
 }

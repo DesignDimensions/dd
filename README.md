@@ -153,37 +153,68 @@ Shared Figma components live in `src/components/ui/` — `Tag`, `Cta` and
 desktop card and `ProductCardMobile` the mobile one. Headers are
 `components/layout/Header` and `components/layout/HeaderMobile`.
 
+### Reference: wepresent.wetransfer.com
+
+Presentation is modelled on wepresent. The values below were read out of
+its own stylesheet rather than eyeballed, and live in `tokens.css`:
+
+|                   | wepresent                                 | here                                        |
+| ----------------- | ----------------------------------------- | ------------------------------------------- |
+| Content column    | `--wrapper-max-width: 1120px`             | `--content-width: 1120px` (already matched) |
+| Page gutter       | `--h-padding: 20px → 40px`                | `--page-inset: 0 → 40px`                    |
+| Card radius       | `--rounded-3: 16px`                       | `--card-radius`                             |
+| Rest shadow       | `drop-shadow(0 10px 19px rgb(0 0 0/4%))`  | `--elevation-rest`                          |
+| Hover shadow      | `drop-shadow(0 30px 30px rgb(0 0 0/15%))` | `--elevation-hover`                         |
+| Image zoom        | `scale(1.15)` over `.5s`                  | `--card-zoom`                               |
+| Shadow transition | `filter .3s`                              | same                                        |
+| Curve             | `cubic-bezier(.165,.84,.44,1)`            | `--ease-ref`                                |
+
+**Boxy sections.** The page carries a horizontal inset so the gradient shows
+down both sides and the middle sections read as rounded boxes rather than
+bands, with a 24px gap between them. Applied from 1024px up only — mobile
+stays flush so the 360 frame keeps its exact 304px column.
+
+**The blocks at the page edges do not box.** Hero, Snack Factory (which
+joins the hero) and the Contact footer run to the page edges with no radius
+at the outer edge — a box at the very top or bottom leaves a strip of
+background outside its rounded corner, which reads as a mistake rather than
+a design. Snack Factory keeps only Figma's bottom radius, which closes the
+top block before the boxed sections start.
+
+Because those blocks sit outside the gutter, they use `--bleed-gutter`,
+which absorbs the page inset. Without it their content would run 40px wider
+than the boxed sections' and the column would step in and out down the page.
+Verified aligned at every width: 304px on mobile, 864px at 1024, 1120px from
+1280 up, in both kinds of section.
+
+Figma's 40px `#f0f0f0` spacer (2714:8757) is dropped: once sections are
+inset boxes it would read as a floating grey bar, so the gap does its job.
+
+**Carousels.** The three-card rows are rails. Cards hold their exact 352px
+frame width and the rail scrolls when they no longer fit, instead of the
+cards shrinking below the design — so the row is pixel-exact at 1280 and up,
+and scrollable below. Controls only render when there is somewhere to
+scroll; native scroll and trackpad swipe work regardless.
+
+**Card hover** is the reference behaviour exactly: the shadow lifts from
+elevation-1 to elevation-3 over 0.3s while the image scales to 1.15 over
+0.5s, both on their curve. (This restores the image zoom removed earlier —
+now matched to a specific reference rather than invented.)
+
 ### Motion
 
-**There is none.** No scroll reveals, no parallax, no floating, nothing that
-follows the cursor. GSAP was removed along with it, so the page ships no
-animation runtime at all.
+Beyond the hover behaviour above there is none — no scroll reveals, no
+parallax, no floating, nothing following the cursor, and no animation
+runtime in the bundle.
 
-What remains is hover response, and it is pure CSS — one shared curve,
-`cubic-bezier(0.22, 1, 0.36, 1)`, on every transition:
-
-| Control                  | Hover                                                                |
-| ------------------------ | -------------------------------------------------------------------- |
-| `Cta`                    | white fill wipes up over the black, label crosses to black           |
-| `MergeButton`            | one black capsule wipes across pill + gap + arrow; outlines dissolve |
-| `Tag`                    | each variant inverts into the other                                  |
-| `IconButton`             | circle fills, ring and glyph invert                                  |
-| Project cards            | hovering anywhere on the card inverts its arrow                      |
-| Genre / Newest chips     | invert, chevron flips with a filter                                  |
-| Search bars, mobile menu | invert                                                               |
-| Nav items, footer links  | a rule grows from the left                                           |
-| Form fields              | background lifts                                                     |
+Every other control inverts on hover, pure CSS: CTAs, tags, icon buttons,
+the Genre and Newest chips, both search bars, the mobile menu, nav items and
+footer links (a rule grows from the left), and form fields.
 
 Icon colours run through inheritable custom properties — `--icon-ring`,
-`--icon-glyph`, `--icon-bg` — set on `ArrowCircle`. That is what lets a card
-invert the arrow inside it without reaching across CSS-module boundaries.
-
-Icons stay inline SVG using Figma's exact exported paths (both the arrow and
-the bookmark glyph the mobile slider uses), because an `<img>` cannot
-recolour.
-
-Everything animated is colour. Nothing moves, nothing scales, so no hover
-state can shift the layout the frames define.
+`--icon-glyph`, `--icon-bg` — so a card can invert the arrow inside it
+without reaching across CSS-module boundaries. Icons are inline SVG using
+Figma's exact exported paths, because an `<img>` cannot recolour.
 
 ### Where the two frames disagree
 

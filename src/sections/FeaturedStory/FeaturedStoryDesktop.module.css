@@ -10,6 +10,7 @@
   background-color: #ffeab2;
   overflow: clip;
   flex-shrink: 0;
+  border-radius: var(--section-radius);
 }
 
 /* Figma 2714:8801 / 2714:8802.
@@ -161,4 +162,13 @@
   mix-blend-mode: color-burn;
   word-break: break-word;
   flex-shrink: 0;
+}
+
+/* Boxy sections — reference: wepresent. Radius matches the frame's own
+   40px desktop / 24px mobile language rather than introducing a new one. */
+
+@media (min-width: 1024px) {
+  .section {
+    border-radius: var(--section-radius);
+  }
 }

@@ -7,7 +7,7 @@
   width: 100%;
   padding: 160px var(--page-gutter);
   background-color: #ffffff;
-  border-radius: 40px;
+  border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
 }
@@ -175,10 +175,34 @@
   align-items: flex-start;
   width: 100%;
   background-color: #edd0af;
-  border-radius: 24px;
-  box-shadow: 0 4px 24px 12px rgba(0, 0, 0, 0.04);
+  border-radius: var(--card-radius);
   overflow: clip;
   flex-shrink: 0;
+
+  /* Figma's own shadow, swapped for the reference elevation so every
+     card on the page lifts identically. */
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.featured:hover {
+  filter: var(--elevation-hover);
+}
+
+.featuredImage,
+.wideImage {
+  transition: transform 0.5s var(--ease-ref);
+  position: absolute;
+  top: -12.85%;
+  left: -5.09%;
+  width: 110.87%;
+  height: 162.57%;
+  max-width: none;
+}
+
+.featured:hover .featuredImage,
+.wideCard:hover .wideImage {
+  transform: scale(var(--card-zoom));
 }
 
 .featuredMedia {
@@ -273,25 +297,23 @@
   flex-shrink: 0;
 }
 
-/* --- card rows, Figma 2714:8772 and 2714:8788 --- */
-.row {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  width: 100%;
-  flex-shrink: 0;
-}
-
 /* Written out rather than `composes: row`, because composed class names
    arrive in JS as a space-separated pair and cannot be used to build a
    selector for GSAP. */
+/* Written out rather than `composes: row`, because composed class names
+   arrive in JS as a space-separated pair. */
 .rowClipped {
   display: flex;
   gap: 32px;
   align-items: flex-start;
   width: 100%;
-  overflow: clip;
   flex-shrink: 0;
+
+  /* Figma clips this row. Kept, but with vertical room so the cards'
+     drop-shadows are not sliced off. */
+  overflow-x: clip;
+  padding-block: 12px;
+  margin-block: -12px;
 }
 
 /* --- wide card, Figma 2714:8789 --- */
@@ -307,8 +329,14 @@
   height: 564px;
   min-width: 1px;
   background-color: #ffffff;
-  border-radius: 24px;
+  border-radius: var(--card-radius);
   overflow: clip;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.wideCard:hover {
+  filter: var(--elevation-hover);
 }
 
 .wideMedia {
@@ -330,14 +358,6 @@
 }
 
 /* Figma crops this image by offsetting and scaling it inside the frame. */
-.wideImage {
-  position: absolute;
-  top: -12.85%;
-  left: -5.09%;
-  width: 110.87%;
-  height: 162.57%;
-  max-width: none;
-}
 
 .wideBody {
   position: relative;

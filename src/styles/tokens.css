@@ -34,4 +34,58 @@
      480px, which is interpolated — Figma has no tablet frame. */
   --m-content-width: 480px;
   --m-page-gutter: max(28px, calc((100% - 480px) / 2));
+
+  /* ---------------------------------------------------------------
+     Reference: wepresent.wetransfer.com — values read from its own
+     stylesheet, not eyeballed. Its content column is 1120px, the same
+     as this frame's, so the two systems line up.
+     --------------------------------------------------------------- */
+
+  /* Their --h-padding: the gutter that lets the page colour show down
+     each side, so sections read as boxes rather than bands. */
+  /* Their --h-padding and --section-content-gap. One scale, applied at
+     both sizes — no value here was chosen by eye. */
+  --page-inset: 20px;
+  --section-gap: 20px;
+
+  /* Their --rounded-4, the largest radius in their scale. Used for every
+     section box, with no step between breakpoints: the stepping is what
+     made the spacing read as arbitrary. */
+  --section-radius: 24px;
+
+  /* Full-bleed sections sit outside the page gutter, so their own inner
+     gutter has to absorb it — otherwise their content would run wider
+     than the boxed sections' and the column would step in and out down
+     the page. */
+  --bleed-gutter: max(
+    calc(40px + var(--page-inset)),
+    calc((100% - 1120px) / 2)
+  );
+  --m-bleed-gutter: max(
+    calc(28px + var(--page-inset)),
+    calc((100% - 480px) / 2)
+  );
+
+  /* Their --rounded-3 and --rounded-2 */
+  --card-radius: 16px;
+  --card-media-radius: 8px;
+
+  /* Their --drop-elevation-1 and -3 */
+  --elevation-rest: drop-shadow(0 10px 19px rgb(0 0 0 / 4%));
+  --elevation-hover: drop-shadow(0 30px 30px rgb(0 0 0 / 15%));
+
+  /* Their house curve, used on every transition */
+  --ease-ref: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  /* Their .card-wrapper hover */
+  --card-zoom: 1.15;
+}
+
+/* Sections become inset boxes from the desktop breakpoint up. Mobile is
+   left flush so the 360 frame keeps its exact 304px column. */
+@media (min-width: 1024px) {
+  :root {
+    --page-inset: 40px;
+    --section-gap: 42px;
+  }
 }

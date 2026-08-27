@@ -8,7 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  /* Runs to the page edges instead of sitting inside the gutter: a box at
+     the very top or bottom of the page leaves a strip of background
+     outside its rounded corner. --page-inset is 0 on mobile, so this
+     resolves to a plain full-width block there. */
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
   height: 880px;
   padding: 320px 96px 400px;
   overflow: clip;

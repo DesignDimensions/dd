@@ -5,6 +5,7 @@ import workBangla from '@/assets/images/work-bangla-123.jpg'
 import workFeatured from '@/assets/images/work-featured-15ad.png'
 import workNupur from '@/assets/images/work-nupur-kanoi.jpg'
 import workWhiteRhino from '@/assets/images/work-white-rhino.jpg'
+import Carousel from '@/components/ui/Carousel/Carousel.jsx'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
@@ -70,8 +71,8 @@ export default function WorkDiaryDesktop() {
           </div>
         </div>
 
-        {/* Figma 2714:8772 */}
-        <div className={styles.row}>
+        {/* Figma 2714:8772 — a rail, so the cards keep their frame width */}
+        <Carousel label="projects">
           <ProjectCard
             background="#859396"
             body={BODY_COPY}
@@ -93,7 +94,7 @@ export default function WorkDiaryDesktop() {
             image={workBangla}
             title={['Bangla 123']}
           />
-        </div>
+        </Carousel>
 
         {/* Figma 2714:8788 */}
         <div className={styles.rowClipped}>

@@ -7,7 +7,7 @@
   width: 100%;
   padding: 120px var(--page-gutter);
   background-color: #fafafa;
-  border-radius: 40px;
+  border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
 }

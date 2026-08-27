@@ -1,4 +1,3 @@
-import { useIsMobile } from '@/hooks/useIsMobile'
 import Contact from '@/sections/Contact/Contact.jsx'
 import DesignDialogue from '@/sections/DesignDialogue/DesignDialogue.jsx'
 import Exploration from '@/sections/Exploration/Exploration.jsx'
@@ -13,19 +12,18 @@ import styles from './Home.module.css'
 /**
  * Figma 2714:8733 (desktop) / 2715:10365 (mobile).
  *
- * Both frames run the same sections in the same order. They differ in how
- * the sections are separated: desktop puts a 40px #f0f0f0 spacer after
- * Snack Factory and butts everything else together, while mobile spaces
- * every section by 28px and has no spacer.
+ * Both frames run the same sections in the same order.
+ *
+ * Figma separates them with a 40px #f0f0f0 spacer on desktop and a 28px
+ * gap on mobile. Now that sections are inset boxes with the page gradient
+ * showing around them, that spacer would read as a floating grey bar, so
+ * the gap between boxes does the job instead.
  */
 export default function Home() {
-  const isMobile = useIsMobile()
-
   return (
     <div className={styles.page}>
       <Hero />
       <SnackFactory />
-      {!isMobile && <div className={styles.spacer} />}
       <WorkDiary />
       <FeaturedStory />
       <DesignDialogue />
