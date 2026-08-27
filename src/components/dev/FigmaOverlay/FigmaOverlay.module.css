@@ -1,0 +1,16 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  max-width: none;
+  pointer-events: none;
+}
+
+/* Perfect alignment renders pure black; anything off-by-a-pixel glows. */
+.difference {
+  mix-blend-mode: difference;
+  opacity: 1 !important;
+  filter: invert(1);
+}

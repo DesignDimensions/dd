@@ -1,0 +1,226 @@
+/* Figma 2714:8859 */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  background-color: #fafafa;
+  border-radius: 40px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.headStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.stack24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.stack16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  text-align: center;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.headHeadingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.heading {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  text-align: center;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2714:8861 / 2714:8867 */
+.testimonial {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.portrait {
+  position: relative;
+  flex: 0 1 360px;
+  aspect-ratio: 1;
+  background-color: #ffffff;
+  border-radius: 32px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+/* Figma places the portrait 11px above the frame top. */
+.portraitInner {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  width: 360px;
+  height: 381.425px;
+}
+
+.portraitImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.quoteWrap {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: center;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 690px;
+}
+
+.stack12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.stack8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.384px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.quote {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma wraps the two attribution lines in a leading-0 box. */
+.attribution {
+  position: relative;
+  line-height: 0;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.192px;
+  color: #252525;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.attributionLine {
+  line-height: 20px;
+}
+
+/* Figma 2714:8866 — zero-height rule drawn as a vector */
+.divider {
+  position: relative;
+  width: 100%;
+  height: 0;
+  flex-shrink: 0;
+}
+
+.dividerInner {
+  position: absolute;
+  inset: -0.5px 0;
+}
+
+.dividerImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}

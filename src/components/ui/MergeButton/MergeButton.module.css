@@ -1,0 +1,82 @@
+/* Every transition here shares one curve so the fill, the outlines and the
+   text all resolve together rather than arriving separately. */
+.group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+/* The capsule that spans pill + gap + arrow. */
+.fill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: #000000;
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .fill {
+  transform: scaleX(1);
+}
+
+/* Matches the Figma "Tags" component at rest. */
+.pill {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 24px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  overflow: clip;
+  flex-shrink: 0;
+  transition: border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.group:hover .pill {
+  border-color: transparent;
+}
+
+.group:hover .label {
+  color: #ffffff;
+}
+
+.group:hover {
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+/* Mobile tag metrics — Figma 2715:10535 */
+.mobile .pill {
+  padding: 8px 20px;
+}
+
+.mobile .label {
+  font-size: 8px;
+  letter-spacing: -0.096px;
+}

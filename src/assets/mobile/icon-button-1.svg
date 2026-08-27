@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon button" clip-path="url(#clip0_0_42)">
+<circle id="Ellipse 1" cx="16" cy="16" r="15.5" stroke="black"/>
+<g id="Icon">
+<path id="Icon_2" fill-rule="evenodd" clip-rule="evenodd" d="M19.1893 15.5L16.0429 12.3536L16.75 11.6464L21.1036 16L16.75 20.3536L16.0429 19.6464L19.1893 16.5H10.8964V15.5H19.1893Z" fill="black"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_42">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,91 @@
+.tag {
+  display: flex;
+  cursor: pointer;
+  gap: 4px;
+  align-items: flex-start;
+  border-radius: 20px;
+  overflow: clip;
+  flex-shrink: 0;
+  transition:
+    background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktop {
+  padding: 12px 24px;
+}
+
+.mobile {
+  padding: 8px 20px;
+}
+
+.outline {
+  border: 1px solid #000000;
+}
+
+/* Figma: bg black, border-0 solid white */
+.filled {
+  background-color: #000000;
+  border: 0 solid #ffffff;
+}
+
+.label {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  transition: color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktop .text {
+  font-size: 12px;
+  letter-spacing: -0.144px;
+}
+
+.mobile .text {
+  font-size: 8px;
+  letter-spacing: -0.096px;
+}
+
+.outline .text {
+  color: #000000;
+}
+
+.filled .text {
+  color: #ffffff;
+}
+
+/* Hover inverts each variant into the other. */
+
+.outline:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.outline:hover .text {
+  color: #ffffff;
+}
+
+.filled:hover {
+  background-color: transparent;
+  border: 1px solid #000000;
+  padding: 11px 23px;
+}
+
+.filled.mobile:hover {
+  padding: 7px 19px;
+}
+
+.filled:hover .text {
+  color: #000000;
+}

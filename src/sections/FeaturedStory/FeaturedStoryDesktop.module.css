@@ -1,0 +1,164 @@
+/* Figma 2714:8800 */
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  padding: 240px var(--page-gutter);
+  background-color: #ffeab2;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+/* Figma 2714:8801 / 2714:8802.
+   Figma bleeds these almost entirely off the band; scaled down and
+   re-anchored here so both read as floating cards inside the section.
+   The bottom one is anchored to the bottom edge rather than the top, so
+   it stays put whatever the section's height turns out to be. */
+/* Figma 2714:8801 — anchored to the centred 1440 frame so it holds its
+   designed position once the band runs full width. */
+.papadTop {
+  position: absolute;
+  top: -463.21px;
+  left: calc(50% - var(--frame-width) / 2 + 730.96px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 617.072px;
+  height: 767.412px;
+}
+
+.papadTopRotate {
+  flex: none;
+  transform: rotate(-15.21deg);
+}
+
+/* Figma 2714:8802 */
+.papadBottom {
+  position: absolute;
+  top: 636.53px;
+  left: calc(50% - var(--frame-width) / 2 + 30.43px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 618.136px;
+  height: 767.945px;
+}
+
+.papadBottomRotate {
+  flex: none;
+  transform: rotate(15.33deg);
+}
+
+.papadFrame {
+  position: relative;
+  width: 457px;
+  height: 671px;
+}
+
+.papadImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Figma 2714:8803 */
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.stack24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.stack16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  text-align: center;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.heading {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  text-align: center;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2714:8805 — Abhaya Libre with a colour-burn blend */
+.quote {
+  position: relative;
+  width: 100%;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: normal;
+  letter-spacing: -0.576px;
+  color: #252525;
+  text-align: center;
+  font-style: normal;
+  mix-blend-mode: color-burn;
+  word-break: break-word;
+  flex-shrink: 0;
+}

@@ -1,0 +1,37 @@
+/* ---------------------------------------------------------------
+   tokens.css
+
+   Only values that are genuinely global live here. The Figma file
+   (DD_Website) has no bound colour variables — the inspector reports
+   raw hex — so colours are written literally in each section's own
+   module, exactly as Figma states them, rather than being rolled up
+   into an invented palette.
+
+   The two font families ARE global, so they sit here.
+   --------------------------------------------------------------- */
+
+:root {
+  /* Figma: "Noto Sans" — styles Regular (400) and Display SemiBold (600) */
+  --font-sans: 'Noto Sans', sans-serif;
+
+  /* Figma: "Abhaya Libre" — style Regular (400) */
+  --font-serif: 'Abhaya Libre', serif;
+
+  /* The frame is drawn at a fixed 1440px desktop artboard. */
+  --frame-width: 1440px;
+
+  /* Section backgrounds run edge to edge, but their contents stay on the
+     1120px column the frame uses (1440 minus its 160px side padding).
+     This gutter keeps that column centred at any viewport width, and never
+     drops below the frame's own 160px. */
+  --content-width: 1120px;
+  /* 160px gutters at the 1440 frame; below ~1200 they hold at 40px and
+     the column itself shrinks, so the desktop layout never overflows. */
+  --page-gutter: max(40px, calc((100% - 1120px) / 2));
+
+  /* Mobile frame (2715:10365) is 360 wide with 28px sides, so a 304px
+     column. Above 360 the column grows with the viewport and stops at
+     480px, which is interpolated — Figma has no tablet frame. */
+  --m-content-width: 480px;
+  --m-page-gutter: max(28px, calc((100% - 480px) / 2));
+}

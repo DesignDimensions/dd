@@ -1,0 +1,17 @@
+@import './reset.css';
+@import './tokens.css';
+
+/* ---------------------------------------------------------------
+   global.css — app-wide base.
+
+   Figma applies a font per text layer rather than a page default, so
+   the only thing set globally is the family every layer shares. Every
+   size, weight, line-height, tracking and colour is declared in the
+   section that uses it.
+   --------------------------------------------------------------- */
+
+body {
+  font-family: var(--font-sans);
+  /* Figma: Noto Sans is used at width axis 100 throughout. */
+  font-variation-settings: 'wdth' 100;
+}

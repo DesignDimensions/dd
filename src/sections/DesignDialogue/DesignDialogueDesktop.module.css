@@ -1,0 +1,141 @@
+/* Figma 2714:8806 */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: 40px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+/* Figma 2714:8807 */
+.head {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.stack24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.stack16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2714:8809 */
+.headRight {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.stack12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.stack8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.intro {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2714:8810 */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2714:8818 */
+.row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
