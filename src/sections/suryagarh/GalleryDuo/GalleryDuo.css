@@ -1,0 +1,49 @@
+/* Figma 2955:12731 — no card: a transparent full-bleed band with a
+   centred content column, reference wepresent's own
+   "fullscreen-section.is-transparent.has-centered-content" (its images
+   sit directly on the page ground rather than a white panel). No
+   vertical padding: Figma's own padding was sized for a white card
+   interior, and on a transparent section it just stacked as unexplained
+   dead space on top of --section-gap (ShowcaseBand.css and QuoteBig.css
+   share this same reasoning). */
+.galleryDuo_section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: flex-end;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+  padding: 0 var(--bleed-gutter);
+  flex-shrink: 0;
+}
+
+.galleryDuo_frame {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  background-color: #000000;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.galleryDuo_image {
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+@media (max-width: 1023.98px) {
+  .galleryDuo_section {
+    gap: 24px;
+    padding: 0 var(--m-page-gutter);
+  }
+
+  .galleryDuo_frame {
+    height: 360px;
+  }
+}

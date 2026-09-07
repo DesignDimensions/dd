@@ -1,6 +1,8 @@
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
+import { cn } from '@/lib/cn'
+
 import './ExplorationDesktop.css'
 
 /**
@@ -20,9 +22,11 @@ const TAGS = [
   { label: 'Corporate gifting', variant: 'outline' },
 ]
 
-export default function ExplorationDesktop() {
+export default function ExplorationDesktop({ variant = 'transparent' }) {
   return (
-    <section className="explorationDesktop_section">
+    <section
+      className={cn('explorationDesktop_section', `explorationDesktop_${variant}`)}
+    >
       <div className="explorationDesktop_textStack">
         <div className="explorationDesktop_stack24">
           <div className="explorationDesktop_stack16">

@@ -38,66 +38,68 @@ export default function HeaderMobile() {
   return (
     <header className="headerMobile_header">
       <div className={cn('headerMobile_pill', isOpen && 'headerMobile_pillOpen')} ref={containerRef}>
-        <div className="headerMobile_bar">
-          <button aria-label="Search" className="headerMobile_iconButton" type="button">
-            <img alt="" className="headerMobile_iconImage" src={searchIcon} />
-          </button>
+        <div className="headerMobile_pillSurface">
+          <div className="headerMobile_bar">
+            <button aria-label="Search" className="headerMobile_iconButton" type="button">
+              <img alt="" className="headerMobile_iconImage" src={searchIcon} />
+            </button>
 
-          <div className="headerMobile_logo">
-            <div className="headerMobile_logoGroup1">
-              <img alt="" className="headerMobile_logoImage" src={logoGroup1} />
+            <div className="headerMobile_logo">
+              <div className="headerMobile_logoGroup1">
+                <img alt="" className="headerMobile_logoImage" src={logoGroup1} />
+              </div>
+              <div className="headerMobile_logoGroup2">
+                <img alt="" className="headerMobile_logoImage" src={logoGroup2} />
+              </div>
             </div>
-            <div className="headerMobile_logoGroup2">
-              <img alt="" className="headerMobile_logoImage" src={logoGroup2} />
-            </div>
+
+            <button
+              aria-controls="header-nav-mobile"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              className="headerMobile_iconButton"
+              onClick={() => setIsOpen((open) => !open)}
+              type="button"
+            >
+              <span className={cn('headerMobile_menuIcon', isOpen && 'headerMobile_menuIconOpen')}>
+                <span className="headerMobile_menuBar" />
+                <span className="headerMobile_menuBar" />
+              </span>
+            </button>
           </div>
 
-          <button
-            aria-controls="header-nav-mobile"
-            aria-expanded={isOpen}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="headerMobile_iconButton"
-            onClick={() => setIsOpen((open) => !open)}
-            type="button"
+          <div
+            className="headerMobile_menuWrap"
+            data-open={isOpen || undefined}
+            id="header-nav-mobile"
+            style={{ height: isOpen ? menuHeight : 0 }}
           >
-            <span className={cn('headerMobile_menuIcon', isOpen && 'headerMobile_menuIconOpen')}>
-              <span className="headerMobile_menuBar" />
-              <span className="headerMobile_menuBar" />
-            </span>
-          </button>
-        </div>
+            <nav className="headerMobile_menuInner" ref={menuInnerRef}>
+              <p className="headerMobile_menuEyebrow">Explore</p>
 
-        <div
-          className="headerMobile_menuWrap"
-          data-open={isOpen || undefined}
-          id="header-nav-mobile"
-          style={{ height: isOpen ? menuHeight : 0 }}
-        >
-          <nav className="headerMobile_menuInner" ref={menuInnerRef}>
-            <p className="headerMobile_menuEyebrow">Explore</p>
-
-            <div className="headerMobile_navList">
-              {NAV_ITEMS.map((item) =>
-                item.to ? (
-                  <Link
-                    className="headerMobile_navItem"
-                    key={item.label}
-                    onClick={() => setIsOpen(false)}
-                    to={item.to}
-                  >
-                    <p className="headerMobile_navText">{item.label}</p>
-                    <span aria-hidden="true" className="headerMobile_navArrow">
-                      →
-                    </span>
-                  </Link>
-                ) : (
-                  <div className={cn('headerMobile_navItem', 'headerMobile_navItemDisabled')} key={item.label}>
-                    <p className="headerMobile_navText">{item.label}</p>
-                  </div>
-                ),
-              )}
-            </div>
-          </nav>
+              <div className="headerMobile_navList">
+                {NAV_ITEMS.map((item) =>
+                  item.to ? (
+                    <Link
+                      className="headerMobile_navItem"
+                      key={item.label}
+                      onClick={() => setIsOpen(false)}
+                      to={item.to}
+                    >
+                      <p className="headerMobile_navText">{item.label}</p>
+                      <span aria-hidden="true" className="headerMobile_navArrow">
+                        →
+                      </span>
+                    </Link>
+                  ) : (
+                    <div className={cn('headerMobile_navItem', 'headerMobile_navItemDisabled')} key={item.label}>
+                      <p className="headerMobile_navText">{item.label}</p>
+                    </div>
+                  ),
+                )}
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
     </header>

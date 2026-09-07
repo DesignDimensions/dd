@@ -1,0 +1,51 @@
+/* Ported from beyondbeyondV4 assets/testimonials.css (.tst__cursor and
+   children) — square tag, not rounded; that is the reference exactly. */
+.gravityCursor_tag {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.gravityCursor_enabled {
+  display: flex;
+}
+
+.gravityCursor_flip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.gravityCursor_mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.gravityCursor_text {
+  display: inline-block;
+  vertical-align: top;
+  will-change: transform;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .gravityCursor_tag {
+    display: none !important;
+  }
+}

@@ -1,0 +1,33 @@
+/* Figma 2955:12645 — the top block runs edge to edge and square: a
+   rounded corner here would sit at a different width from the boxed
+   sections below it and read as a misalignment (same reasoning as
+   HeroDesktop.css). */
+.projectBanner_hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 740px;
+  overflow: clip;
+  flex-shrink: 0;
+  background-color: #c4c4c4;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+  margin-bottom: calc(-1 * var(--section-gap));
+}
+
+.projectBanner_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+@media (max-width: 1023.98px) {
+  .projectBanner_hero {
+    height: 420px;
+  }
+}

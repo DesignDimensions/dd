@@ -45,76 +45,78 @@ export default function Header() {
   return (
     <header className="header_header">
       <div className={cn('header_pill', isOpen && 'header_pillOpen')} ref={containerRef}>
-        <div className="header_bar">
-          <button aria-label="Search" className="header_iconButton" type="button">
-            <img alt="" className="header_iconImage" src={searchIcon} />
-          </button>
+        <div className="header_pillSurface">
+          <div className="header_bar">
+            <button aria-label="Search" className="header_iconButton" type="button">
+              <img alt="" className="header_iconImage" src={searchIcon} />
+            </button>
 
-          <div className="header_logo">
-            <div className="header_logoGroup1">
-              <img alt="" className="header_logoImage" src={logoGroup1} />
+            <div className="header_logo">
+              <div className="header_logoGroup1">
+                <img alt="" className="header_logoImage" src={logoGroup1} />
+              </div>
+              <div className="header_logoGroup2">
+                <img alt="" className="header_logoImage" src={logoGroup2} />
+              </div>
             </div>
-            <div className="header_logoGroup2">
-              <img alt="" className="header_logoImage" src={logoGroup2} />
-            </div>
+
+            <button
+              aria-controls="header-nav"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              className="header_iconButton"
+              onClick={() => setIsOpen((open) => !open)}
+              type="button"
+            >
+              <span className={cn('header_menuIcon', isOpen && 'header_menuIconOpen')}>
+                <span className="header_menuBar" />
+                <span className="header_menuBar" />
+              </span>
+            </button>
           </div>
 
-          <button
-            aria-controls="header-nav"
-            aria-expanded={isOpen}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="header_iconButton"
-            onClick={() => setIsOpen((open) => !open)}
-            type="button"
+          <div
+            className="header_menuWrap"
+            data-open={isOpen || undefined}
+            id="header-nav"
+            style={{ height: isOpen ? menuHeight : 0 }}
           >
-            <span className={cn('header_menuIcon', isOpen && 'header_menuIconOpen')}>
-              <span className="header_menuBar" />
-              <span className="header_menuBar" />
-            </span>
-          </button>
-        </div>
+            <div className="header_menuInner" ref={menuInnerRef}>
+              <div className="header_menuColumn">
+                <p className="header_menuEyebrow">Explore</p>
 
-        <div
-          className="header_menuWrap"
-          data-open={isOpen || undefined}
-          id="header-nav"
-          style={{ height: isOpen ? menuHeight : 0 }}
-        >
-          <div className="header_menuInner" ref={menuInnerRef}>
-            <div className="header_menuColumn">
-              <p className="header_menuEyebrow">Explore</p>
+                <nav className="header_navList">
+                  {NAV_ITEMS.map((item) =>
+                    item.to ? (
+                      <Link
+                        className="header_navItem"
+                        key={item.label}
+                        onClick={() => setIsOpen(false)}
+                        to={item.to}
+                      >
+                        <p className="header_navText">{item.label}</p>
+                        <span aria-hidden="true" className="header_navArrow">
+                          →
+                        </span>
+                      </Link>
+                    ) : (
+                      <div className={cn('header_navItem', 'header_navItemDisabled')} key={item.label}>
+                        <p className="header_navText">{item.label}</p>
+                      </div>
+                    ),
+                  )}
+                </nav>
+              </div>
 
-              <nav className="header_navList">
-                {NAV_ITEMS.map((item) =>
-                  item.to ? (
-                    <Link
-                      className="header_navItem"
-                      key={item.label}
-                      onClick={() => setIsOpen(false)}
-                      to={item.to}
-                    >
-                      <p className="header_navText">{item.label}</p>
-                      <span aria-hidden="true" className="header_navArrow">
-                        →
-                      </span>
-                    </Link>
-                  ) : (
-                    <div className={cn('header_navItem', 'header_navItemDisabled')} key={item.label}>
-                      <p className="header_navText">{item.label}</p>
-                    </div>
-                  ),
-                )}
-              </nav>
-            </div>
+              <div className="header_menuColumn">
+                <p className="header_menuEyebrow">Recommended</p>
+                <WorkPreview />
+              </div>
 
-            <div className="header_menuColumn">
-              <p className="header_menuEyebrow">Recommended</p>
-              <WorkPreview />
-            </div>
-
-            <div className="header_menuColumn">
-              <p className="header_menuEyebrow">Design Dimensions</p>
-              <p className="header_menuBlurb">{STUDIO_BLURB}</p>
+              <div className="header_menuColumn">
+                <p className="header_menuEyebrow">Design Dimensions</p>
+                <p className="header_menuBlurb">{STUDIO_BLURB}</p>
+              </div>
             </div>
           </div>
         </div>

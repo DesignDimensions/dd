@@ -8,22 +8,28 @@
   flex-shrink: 0;
 }
 
+/* filter split from backdrop-filter — see Header.css for why. */
 .headerMobile_pill {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: var(--nav-pill-width);
-  overflow: hidden;
-  border-radius: var(--section-radius);
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(25px);
   filter: var(--elevation-rest);
   transition: filter 0.3s var(--ease-ref);
 }
 
 .headerMobile_pillOpen {
   filter: var(--elevation-hover);
+}
+
+.headerMobile_pillSurface {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--section-radius);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
 }
 
 .headerMobile_bar {

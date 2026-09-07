@@ -1,0 +1,30 @@
+/* Figma 2955:12615 — root frame fill is white; a page-specific accent
+   (#b0c3b4 for Suryagarh) is used instead, same reasoning as About.css,
+   so the white section boxes read as boxes rather than dissolving into
+   the page. Each project page gets its own ground colour here. */
+.suryagarh_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+  background-color: #b0c3b4;
+}
+
+/* Figma 2955:12659 + 3934:8284 merged into one card: the quote/meta panel
+   and the progress strip sit flush, sharing one radius and shadow instead
+   of each carrying their own. */
+.suryagarh_overviewGroup {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+  cursor: pointer;
+}

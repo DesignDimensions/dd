@@ -1,0 +1,60 @@
+/* Figma 3934:8284 */
+.projectProgress_section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  padding: 40px var(--page-gutter);
+  background-color: #f7f7f7;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.projectProgress_iconButton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: var(--icon-bg, transparent);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projectProgress_iconButton:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+/* Figma 3934:8286 */
+.projectProgress_track {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: clip;
+}
+
+/* Driven every frame by a requestAnimationFrame loop in the component
+   (reading audio.currentTime straight onto this element's style), not
+   by React state or a CSS transition — either would lag a frame behind
+   real playback. */
+.projectProgress_fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  height: 100%;
+  background-color: #252525;
+  border-radius: 4px;
+}
+
+@media (max-width: 1023.98px) {
+  .projectProgress_section {
+    gap: 20px;
+    padding: 24px var(--m-page-gutter);
+  }
+}

@@ -1,0 +1,36 @@
+/* Figma 2955:12676 — full bleed: a rounded corner here would sit at a
+   different x than the boxed sections around it and read as a
+   misalignment (same reasoning as ProjectBanner.css). Full-bleed width,
+   natural image height, no crop. Every single-photo band on the page is
+   this one component with a different src.
+
+   It also slides up under the card above by 32px — wepresent's own
+   "overlapping cards" move on this same story template: the card
+   carries z-index:1 so it keeps painting on top while this band tucks
+   in behind its rounded bottom corners. The parent's flex `gap` (not
+   block-flow margin collapsing) sits between every pair of sections, so
+   the negative margin has to cancel --section-gap first before any of
+   it reads as an actual overlap rather than just a smaller gap. */
+.showcaseBand_section {
+  position: relative;
+  z-index: 0;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+  margin-top: calc(-1 * var(--section-gap) - 32px);
+  flex-shrink: 0;
+}
+
+/* Opts out of the overlap above: sits on the page's normal
+   --section-gap like any other section. */
+.showcaseBand_flush {
+  margin-top: 0;
+}
+
+/* No forced ratio, no cover crop: scaled to full width, height follows
+   the image's own aspect ratio. */
+.showcaseBand_image {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}

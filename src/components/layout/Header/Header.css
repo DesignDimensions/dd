@@ -10,17 +10,20 @@
 }
 
 /* wepresent.wetransfer.com's floating nav pill — a fixed-width capsule
-   centred at the top of the frame, not a full-bleed bar. */
+   centred at the top of the frame, not a full-bleed bar.
+
+   filter (the drop-shadow) lives here, on its own element, rather than
+   alongside backdrop-filter as Figma's single "pill" layer implies.
+   Chromium has a standing bug where combining backdrop-filter and filter
+   on the same element can paint the blur as solid black — it surfaced on
+   the Suryagarh hero (a large image likely promotes its own compositing
+   layer) but not here, so the two are split defensively. */
 .header_pill {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: var(--nav-pill-width);
-  overflow: hidden;
-  border-radius: var(--section-radius);
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(25px);
   filter: var(--elevation-rest);
   transition:
     filter 0.3s var(--ease-ref),
@@ -37,6 +40,17 @@
   transition:
     filter 0.3s var(--ease-ref),
     width 0.6s var(--ease-bounce);
+}
+
+/* The frosted-glass surface — background, blur and clipping — split from
+   .header_pill above. */
+.header_pillSurface {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--section-radius);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
 }
 
 /* Pinned to the closed pill's width and centred, rather than

@@ -1,0 +1,44 @@
+/* Figma 2955:12729 — no card: the pull quote sits directly on the page
+   ground, same as wepresent's own big-quote sections.
+
+   Figma's 200px padding was sized for the inside of a white card; on a
+   transparent section it just reads as a huge, unexplained dead zone on
+   top of --section-gap (and a different amount from every other
+   transparent section, which is what broke the page's rhythm). Dropped
+   to 0 for the same uniform spacing as GalleryDuo/ShowcaseBand — the
+   quote's own size carries the emphasis instead. */
+.quoteBig_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(85% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+  padding: 0 var(--bleed-gutter);
+  flex-shrink: 0;
+}
+
+.quoteBig_quote {
+  width: 100%;
+  padding-block: 120px;
+  font-family: var(--font-adamina);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: -0.672px;
+  color: #000000;
+  text-align: center;
+  word-break: break-word;
+}
+
+@media (max-width: 1023.98px) {
+  .quoteBig_section {
+    padding: 0 var(--m-page-gutter);
+  }
+
+  .quoteBig_quote {
+    padding-block: 64px;
+    font-size: 32px;
+    line-height: 44px;
+    letter-spacing: -0.384px;
+  }
+}

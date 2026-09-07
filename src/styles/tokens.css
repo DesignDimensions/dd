@@ -17,6 +17,10 @@
   /* Figma: "Abhaya Libre" — style Regular (400) */
   --font-serif: 'Abhaya Libre', serif;
 
+  /* Figma: "Adamina" — style Regular (400), used for the Suryagarh
+     project page's pull quotes */
+  --font-adamina: 'Adamina', serif;
+
   /* The frame is drawn at a fixed 1440px desktop artboard. */
   --frame-width: 1440px;
 

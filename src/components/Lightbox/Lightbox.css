@@ -1,0 +1,21 @@
+.lightbox_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: none;
+}
+
+.lightbox_backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+.lightbox_image {
+  position: fixed;
+  object-fit: cover;
+  border-radius: 0;
+  cursor: pointer;
+  will-change: transform, top, left, width, height;
+}

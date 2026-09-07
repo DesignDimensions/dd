@@ -7,12 +7,26 @@
   padding: 120px var(--bleed-gutter);
   overflow: clip;
   flex-shrink: 0;
-  /* No background of its own: this section's colour in the frame is a
-     stop on the page gradient, so it runs full width and lets the page
-     show through. Nothing to round, nothing to misalign. */
+}
+
+/* On the home frame this section's fill (#ffc6c9) is a stop on the page
+   gradient, so it runs full width and lets the page show through.
+   Nothing to round, nothing to misalign. */
+.explorationDesktop_transparent {
   background-color: transparent;
   width: calc(100% + var(--page-inset) * 2);
   margin-inline: calc(-1 * var(--page-inset));
+}
+
+/* On a solid page (Figma 2955:12796 — Suryagarh) it is a box like any
+   other section, its fill painted directly rather than borrowed from a
+   gradient. */
+.explorationDesktop_boxed {
+  width: 100%;
+  background-color: #ffc6c9;
+  border-radius: var(--section-radius);
+  filter: var(--elevation-section);
+  padding-inline: var(--page-gutter);
 }
 
 .explorationDesktop_textStack {
