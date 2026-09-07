@@ -5,6 +5,8 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Repo is served from https://designdimensions.github.io/dd/
+  base: '/dd/',
   plugins: [react()],
   resolve: {
     alias: {
