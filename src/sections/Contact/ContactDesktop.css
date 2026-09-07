@@ -1,0 +1,299 @@
+/* Figma 2715:11778 */
+.contactDesktop_section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: flex-start;
+  padding: 120px var(--bleed-gutter);
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+/* On the home frame this section's fill is a stop on the page gradient,
+   so it runs full width and lets the page show through. */
+.contactDesktop_transparent {
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+}
+
+/* On a solid page it is a box like any other section. */
+.contactDesktop_boxed {
+  width: 100%;
+  background-color: #efddaf;
+  border-radius: var(--section-radius);
+  filter: var(--elevation-section);
+  padding-inline: var(--page-gutter);
+}
+
+/* Figma 2715:11779 */
+.contactDesktop_body {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactDesktop_textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.contactDesktop_stack12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactDesktop_stack8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactDesktop_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.contactDesktop_headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactDesktop_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.384px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2715:11781 */
+.contactDesktop_columns {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactDesktop_column {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.contactDesktop_columnHeadingRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contactDesktop_columnHeading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2715:11784 */
+.contactDesktop_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2715:11785 — drawn as a static box with a label; rendered as a
+   real input so the form is usable. Box and text match the frame. */
+.contactDesktop_field {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  padding: 16px 40px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #000000;
+  border-radius: 28px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  flex-shrink: 0;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  transition:
+    background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contactDesktop_field::placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Figma 2715:11793 */
+.contactDesktop_interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2715:11803 */
+.contactDesktop_divider {
+  position: relative;
+  width: 100%;
+  height: 0;
+  flex-shrink: 0;
+}
+
+.contactDesktop_dividerInner {
+  position: absolute;
+  inset: -0.5px 0;
+}
+
+.contactDesktop_dividerImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Figma 2715:11804 */
+.contactDesktop_footer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma "DD logo" 2949:12594 */
+.contactDesktop_logo {
+  position: relative;
+  width: 158px;
+  height: 77px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.contactDesktop_logoGroup1 {
+  position: absolute;
+  inset: 0 84.32% 65.05% 0;
+}
+
+.contactDesktop_logoGroup2 {
+  position: absolute;
+  inset: 50.08% 0 0 16.21%;
+}
+
+.contactDesktop_logoImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.contactDesktop_spacer {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  height: 1px;
+}
+
+/* Figma 2715:11807 — 281x64 box holding six absolutely placed labels */
+.contactDesktop_footerLinks {
+  position: relative;
+  width: 281px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.contactDesktop_footerLink {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+}
+
+.contactDesktop_footerLinkText {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  background-image: linear-gradient(#000000, #000000);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contactDesktop_footerLinkText:hover {
+  background-size: 100% 1px;
+}
+
+.contactDesktop_field:hover,
+.contactDesktop_field:focus {
+  background-color: rgba(255, 255, 255, 0.45);
+  outline: none;
+}

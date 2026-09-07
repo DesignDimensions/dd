@@ -1,0 +1,52 @@
+/* Figma 2714:8733 (desktop) / 2715:10365 (mobile) — root frame.
+
+   Backgrounds run the full viewport width at both sizes; contents stay on
+   the frame's centred column (1120px desktop, 304px growing to 480px
+   mobile). The two frames also carry different gradients. */
+.home_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  /* Framed down both sides and along the bottom, but not the top: the
+     header and hero run flush to the top edge of the viewport. */
+  padding: 0 var(--page-inset) var(--page-inset);
+
+  /* Mobile frame 2715:10365 */
+  gap: 28px;
+  background-image: linear-gradient(
+    180deg,
+    rgb(240, 240, 240) 0%,
+    rgb(240, 240, 240) 14.976%,
+    rgb(255, 234, 178) 45.578%,
+    rgb(255, 234, 178) 48.59%,
+    rgb(255, 198, 201) 58.386%,
+    rgb(255, 198, 201) 63.692%,
+    rgb(255, 198, 201) 66.373%,
+    rgb(239, 221, 175) 87.763%,
+    rgb(239, 221, 175) 92.05%,
+    rgb(240, 240, 240) 100%
+  );
+}
+
+/* Keep this 1024px in step with DESKTOP_MIN_WIDTH in src/lib/breakpoints.js */
+@media (min-width: 1024px) {
+  .home_page {
+    /* Desktop frame 2714:8733 */
+    gap: var(--section-gap);
+    background-image: linear-gradient(
+      180deg,
+      rgb(240, 240, 240) 0%,
+      rgb(240, 240, 240) 18.419%,
+      rgb(255, 234, 178) 37.07%,
+      rgb(255, 234, 178) 42.28%,
+      rgb(255, 234, 178) 48.583%,
+      rgb(255, 234, 178) 52.298%,
+      rgb(255, 198, 201) 67.251%,
+      rgb(255, 198, 201) 78.328%,
+      rgb(239, 221, 175) 89.818%,
+      rgb(240, 240, 240) 100%
+    );
+  }
+}

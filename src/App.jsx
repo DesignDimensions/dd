@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound/NotFound.jsx'
  * Route table.
  *
  * Add a page:
- *   1. src/pages/<Name>/<Name>.jsx  (+ .module.css)
+ *   1. src/pages/<Name>/<Name>.jsx  (+ .css)
  *   2. a <Route> below
  */
 export default function App() {

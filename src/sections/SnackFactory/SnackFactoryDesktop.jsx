@@ -1,6 +1,6 @@
 import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
 
-import styles from './SnackFactoryDesktop.module.css'
+import './SnackFactoryDesktop.css'
 
 /**
  * Figma 2714:8744
@@ -10,28 +10,28 @@ import styles from './SnackFactoryDesktop.module.css'
  */
 export default function SnackFactoryDesktop() {
   return (
-    <section className={styles.section}>
-      <div className={styles.left}>
-        <div className={styles.textStack}>
-          <div className={styles.stack24}>
-            <div className={styles.stack16}>
-              <div className={styles.headingRow}>
-                <p className={styles.heading}>Snack Factory</p>
+    <section className="snackFactoryDesktop_section">
+      <div className="snackFactoryDesktop_left">
+        <div className="snackFactoryDesktop_textStack">
+          <div className="snackFactoryDesktop_stack24">
+            <div className="snackFactoryDesktop_stack16">
+              <div className="snackFactoryDesktop_headingRow">
+                <p className="snackFactoryDesktop_heading">Snack Factory</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.right}>
-        <div className={styles.introRow}>
-          <p className={styles.intro}>
+      <div className="snackFactoryDesktop_right">
+        <div className="snackFactoryDesktop_introRow">
+          <p className="snackFactoryDesktop_intro">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className={styles.metaWrap}>
-          <div className={styles.metaRow}>
+        <div className="snackFactoryDesktop_metaWrap">
+          <div className="snackFactoryDesktop_metaRow">
             <MergeButton label="Paxkaging design" />
           </div>
         </div>

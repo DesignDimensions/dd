@@ -1,0 +1,95 @@
+.workPreview_preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.workPreview_card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: clip;
+  border-radius: var(--card-radius);
+  background-color: #d1d1d1;
+  filter: var(--elevation-rest);
+}
+
+.workPreview_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  animation: fade 0.4s var(--ease-ref);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.workPreview_caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 32px 20px 16px;
+  background: linear-gradient(to top, rgb(0 0 0 / 55%), rgb(0 0 0 / 0%));
+}
+
+.workPreview_tag {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.workPreview_title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.216px;
+  color: #ffffff;
+}
+
+.workPreview_controls {
+  display: flex;
+  gap: 12px;
+  align-self: flex-end;
+}
+
+.workPreview_control {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background-color: var(--icon-bg, transparent);
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ease-ref),
+    opacity 0.3s var(--ease-ref);
+}
+
+.workPreview_control:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+.workPreview_flip {
+  display: grid;
+  place-items: center;
+  transform: rotate(180deg);
+}

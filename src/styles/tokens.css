@@ -77,9 +77,24 @@
 
   /* Their house curve, used on every transition */
   --ease-ref: cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* Slight overshoot-and-settle, for the nav pill's open animation —
+     a springy "pop" rather than a plain ease-out. */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Their .card-wrapper hover */
   --card-zoom: 1.15;
+
+  /* Their --toolbar-close-width, -close-height and -offset — the floating
+     nav pill both headers use, read straight off .toolbar-wrapper_wrapper
+     and .toolbar-wrapper_nav. Their site never overrides these per
+     breakpoint, so neither do these. */
+  --nav-pill-width: min(100%, 428px);
+  --nav-pill-height: 76px;
+  --nav-pill-offset: 20px;
+  /* The desktop pill's open width. The menu panel itself is sized to
+     this same value (not 100%) so its layout never depends on the
+     pill's own animated width — see Header.module.css .menuInner. */
+  --nav-pill-open-width: min(90vw, 860px);
 }
 
 /* Sections become inset boxes from the desktop breakpoint up. Mobile is

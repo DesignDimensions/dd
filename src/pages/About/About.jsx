@@ -6,7 +6,7 @@ import Founder from '@/sections/about/Founder/Founder.jsx'
 import Mission from '@/sections/about/Mission/Mission.jsx'
 import ValueBlock from '@/sections/about/ValueBlock/ValueBlock.jsx'
 
-import styles from './About.module.css'
+import './About.css'
 
 /** Figma 7962:21256 */
 const VALUES = [
@@ -51,7 +51,7 @@ const PHILOSOPHY = [
  */
 export default function About() {
   return (
-    <div className={styles.page}>
+    <div className="about_page">
       <AboutHero />
       <AboutIntro />
       <Founder />

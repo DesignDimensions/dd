@@ -3,7 +3,7 @@ import story1 from '@/assets/mobile/story-1.jpg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
 
-import styles from './DesignDialogueMobile.module.css'
+import './DesignDialogueMobile.css'
 
 const CARD_COPY =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.'
@@ -49,48 +49,49 @@ const CARDS = [
 /** Figma 2715:11889 "7" */
 export default function DesignDialogueMobile() {
   return (
-    <section className={styles.section}>
-      <div className={styles.content}>
-        <div className={styles.head}>
-          <p className={styles.eyebrow}>We have more for you</p>
-          <p className={styles.heading}>Design Dialogue</p>
+    <section className="designDialogueMobile_section">
+      <div className="designDialogueMobile_content">
+        <div className="designDialogueMobile_head">
+          <p className="designDialogueMobile_eyebrow">We have more for you</p>
+          <p className="designDialogueMobile_heading">Design Dialogue</p>
         </div>
 
-        <div className={styles.introWrap}>
-          <div className={styles.introRow}>
-            <p className={styles.intro}>
+        <div className="designDialogueMobile_introWrap">
+          <div className="designDialogueMobile_introRow">
+            <p className="designDialogueMobile_intro">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua
             </p>
           </div>
         </div>
 
-        <div className={styles.slider}>
+        <div className="designDialogueMobile_slider">
           {CARDS.map((card) => (
-            <div className={styles.card} key={card.id}>
-              <div className={styles.media}>
-                <div className={styles.mediaClip}>
+            <div
+              className="designDialogueMobile_card"
+              key={card.id}
+              style={{ backgroundColor: card.background }}
+            >
+              <div className="designDialogueMobile_media">
+                <div className="designDialogueMobile_mediaClip">
                   <img
                     alt=""
                     className={
-                      card.cropped ? styles.imageCropped : styles.image
+                      card.cropped ? 'designDialogueMobile_imageCropped' : 'designDialogueMobile_image'
                     }
                     src={card.image}
                   />
                 </div>
               </div>
-              <div
-                className={styles.cardBody}
-                style={{ backgroundColor: card.background }}
-              >
-                <div className={styles.cardText}>
-                  <div className={styles.cardTitle}>
-                    <p className={styles.cardTitleLine}>
+              <div className="designDialogueMobile_cardBody">
+                <div className="designDialogueMobile_cardText">
+                  <div className="designDialogueMobile_cardTitle">
+                    <p className="designDialogueMobile_cardTitleLine">
                       3D slaying the design
                     </p>
-                    <p className={styles.cardTitleLine}>industry!</p>
+                    <p className="designDialogueMobile_cardTitleLine">industry!</p>
                   </div>
-                  <p className={styles.cardCopy}>{CARD_COPY}</p>
+                  <p className="designDialogueMobile_cardCopy">{CARD_COPY}</p>
                 </div>
                 <IconButton glyph={card.glyph} size={32} />
               </div>

@@ -1,0 +1,28 @@
+/* Placeholder styling — not from Figma. See NotFound.jsx. */
+.notFound_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 60dvh;
+  padding: 24px;
+  font-family: var(--font-sans);
+  color: #252525;
+}
+
+.notFound_code {
+  font-size: 48px;
+  line-height: 1;
+  color: #000000;
+}
+
+.notFound_message {
+  font-size: 14px;
+}
+
+.notFound_link {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: underline;
+}

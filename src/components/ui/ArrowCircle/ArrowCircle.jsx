@@ -1,4 +1,4 @@
-import styles from './ArrowCircle.module.css'
+import './ArrowCircle.css'
 
 /**
  * The "Icon button" vector, inlined.
@@ -33,16 +33,16 @@ export default function ArrowCircle({ size = 40, glyph = 'arrow' }) {
   return (
     <svg
       aria-hidden="true"
-      className={styles.svg}
+      className="arrowCircle_svg"
       fill="none"
       height={size}
       viewBox={`0 0 ${box} ${box}`}
       width={size}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle className={styles.ring} cx={centre} cy={centre} r={radius} />
+      <circle className="arrowCircle_ring" cx={centre} cy={centre} r={radius} />
       <path
-        className={styles.glyph}
+        className="arrowCircle_glyph"
         clipRule="evenodd"
         d={path}
         fillRule="evenodd"

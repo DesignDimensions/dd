@@ -1,0 +1,193 @@
+/* Figma 7962:21256 / 7962:21300 */
+.valueBlock_section {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+.valueBlock_head {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.valueBlock_headingStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.valueBlock_headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.valueBlock_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.valueBlock_ledeStack {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.valueBlock_lede {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 7962:21260 — zero-height rule drawn as a vector */
+.valueBlock_divider {
+  position: relative;
+  width: 100%;
+  height: 0;
+  flex-shrink: 0;
+}
+
+.valueBlock_dividerInner {
+  position: absolute;
+  inset: -0.5px 0;
+}
+
+.valueBlock_dividerImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Figma 7962:21261 */
+.valueBlock_columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.valueBlock_column {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.valueBlock_columnStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.valueBlock_columnHeadingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.valueBlock_columnHeading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.valueBlock_columnBody {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #231f20;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+@media (max-width: 1023.98px) {
+  .valueBlock_section {
+    gap: 40px;
+    padding: 80px var(--m-page-gutter);
+  }
+
+  .valueBlock_head {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .valueBlock_heading {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.336px;
+  }
+
+  .valueBlock_lede {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.192px;
+  }
+
+  /* Three equal columns become a stack rather than three slivers. */
+  .valueBlock_columns {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .valueBlock_column {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}

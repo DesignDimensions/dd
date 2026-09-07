@@ -1,7 +1,7 @@
 import divider from '@/assets/mobile/divider.svg'
 import portrait from '@/assets/images/testimonial-portrait.jpg'
 
-import styles from './TestimonialsMobile.module.css'
+import './TestimonialsMobile.css'
 
 const QUOTE =
   '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ...'
@@ -20,18 +20,18 @@ const TESTIMONIALS = [
 
 function Testimonial({ title, name, role }) {
   return (
-    <div className={styles.card}>
-      <div className={styles.portrait}>
-        <div className={styles.portraitInner}>
-          <img alt="" className={styles.portraitImage} src={portrait} />
+    <div className="testimonialsMobile_card">
+      <div className="testimonialsMobile_portrait">
+        <div className="testimonialsMobile_portraitInner">
+          <img alt="" className="testimonialsMobile_portraitImage" src={portrait} />
         </div>
       </div>
-      <div className={styles.comment}>
-        <div className={styles.commentText}>
-          <p className={styles.commentTitle}>{title}</p>
-          <p className={styles.quote}>{QUOTE}</p>
+      <div className="testimonialsMobile_comment">
+        <div className="testimonialsMobile_commentText">
+          <p className="testimonialsMobile_commentTitle">{title}</p>
+          <p className="testimonialsMobile_quote">{QUOTE}</p>
         </div>
-        <div className={styles.name}>
+        <div className="testimonialsMobile_name">
           <p>{name}</p>
           <p>{role}</p>
         </div>
@@ -42,20 +42,20 @@ function Testimonial({ title, name, role }) {
 
 export default function TestimonialsMobile() {
   return (
-    <section className={styles.section}>
-      <div className={styles.title}>
-        <p className={styles.eyebrow}>We believe</p>
-        <div className={styles.headingWrap}>
-          <p className={styles.headingLine}>{'Each one is a earned '}</p>
-          <p className={styles.headingLine}>and treasured</p>
+    <section className="testimonialsMobile_section">
+      <div className="testimonialsMobile_title">
+        <p className="testimonialsMobile_eyebrow">We believe</p>
+        <div className="testimonialsMobile_headingWrap">
+          <p className="testimonialsMobile_headingLine">{'Each one is a earned '}</p>
+          <p className="testimonialsMobile_headingLine">and treasured</p>
         </div>
       </div>
 
-      <div className={styles.list}>
+      <div className="testimonialsMobile_list">
         <Testimonial {...TESTIMONIALS[0]} />
-        <div className={styles.divider}>
-          <div className={styles.dividerInner}>
-            <img alt="" className={styles.dividerImage} src={divider} />
+        <div className="testimonialsMobile_divider">
+          <div className="testimonialsMobile_dividerInner">
+            <img alt="" className="testimonialsMobile_dividerImage" src={divider} />
           </div>
         </div>
         <Testimonial {...TESTIMONIALS[1]} />

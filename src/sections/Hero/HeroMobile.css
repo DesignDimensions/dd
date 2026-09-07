@@ -1,0 +1,32 @@
+/* Figma 2715:10545 */
+.heroMobile_hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  margin-bottom: calc(-1 * var(--section-gap));
+  /* The top block runs edge to edge and square: a rounded corner here
+     would sit at a different width from the boxed sections below it and
+     read as a misalignment. */
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+  margin-bottom: calc(-1 * var(--section-gap));
+}
+
+/* Figma "Banner" 2715:10438 — square, full frame width */
+.heroMobile_banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.heroMobile_bannerImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}

@@ -5,13 +5,12 @@ import workBangla from '@/assets/images/work-bangla-123.jpg'
 import workFeatured from '@/assets/images/work-featured-15ad.png'
 import workNupur from '@/assets/images/work-nupur-kanoi.jpg'
 import workWhiteRhino from '@/assets/images/work-white-rhino.jpg'
-import Carousel from '@/components/ui/Carousel/Carousel.jsx'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
 import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
 
-import styles from './WorkDiaryDesktop.module.css'
+import './WorkDiaryDesktop.css'
 
 const BODY_COPY =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -19,116 +18,119 @@ const BODY_COPY =
 /** Figma 2714:8758 */
 export default function WorkDiaryDesktop() {
   return (
-    <section className={styles.section}>
-      <div className={styles.head}>
-        <div className={styles.headLeft}>
-          <div className={styles.textStack}>
-            <div className={styles.stack24}>
-              <div className={styles.stack16}>
-                <p className={styles.eyebrow}>Our pride</p>
-                <div className={styles.headingRow}>
-                  <p className={styles.heading}>Work diary</p>
+    <section className="workDiaryDesktop_section">
+      <div className="workDiaryDesktop_head">
+        <div className="workDiaryDesktop_headLeft">
+          <div className="workDiaryDesktop_textStack">
+            <div className="workDiaryDesktop_stack24">
+              <div className="workDiaryDesktop_stack16">
+                <p className="workDiaryDesktop_eyebrow">Our pride</p>
+                <div className="workDiaryDesktop_headingRow">
+                  <p className="workDiaryDesktop_heading">Work diary</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <button className={styles.genre} type="button">
-          <div className={styles.genreLabel}>
-            <p className={styles.genreText}>Genre</p>
+        <button className="workDiaryDesktop_genre" type="button">
+          <div className="workDiaryDesktop_genreLabel">
+            <p className="workDiaryDesktop_genreText">Genre</p>
           </div>
-          <div className={styles.genreIconWrap}>
-            <div className={styles.genreIconRotate}>
-              <div className={styles.genreIcon}>
-                <img alt="" className={styles.genreIconImage} src={chevron} />
+          <div className="workDiaryDesktop_genreIconWrap">
+            <div className="workDiaryDesktop_genreIconRotate">
+              <div className="workDiaryDesktop_genreIcon">
+                <img alt="" className="workDiaryDesktop_genreIconImage" src={chevron} />
               </div>
             </div>
           </div>
         </button>
       </div>
 
-      <div className={styles.content}>
+      <div className="workDiaryDesktop_content">
         {/* Featured card — Figma 2714:8765 */}
-        <div className={styles.featured}>
-          <div className={styles.featuredMedia}>
-            <img alt="" className={styles.featuredImage} src={workFeatured} />
+        <div className="workDiaryDesktop_featured">
+          <div className="workDiaryDesktop_featuredMedia">
+            <img alt="" className="workDiaryDesktop_featuredImage" src={workFeatured} />
           </div>
-          <div className={styles.featuredBody}>
-            <div className={styles.featuredTextStack}>
-              <div className={styles.stack12}>
-                <div className={styles.stack8}>
-                  <div className={styles.headingRow}>
-                    <p className={styles.featuredTitle}>15 AD</p>
+          <div className="workDiaryDesktop_featuredBody">
+            <div className="workDiaryDesktop_featuredTextStack">
+              <div className="workDiaryDesktop_stack12">
+                <div className="workDiaryDesktop_stack8">
+                  <div className="workDiaryDesktop_headingRow">
+                    <p className="workDiaryDesktop_featuredTitle">15 AD</p>
                   </div>
-                  <p className={styles.featuredCopy}>{BODY_COPY}</p>
+                  <p className="workDiaryDesktop_featuredCopy">{BODY_COPY}</p>
                 </div>
               </div>
             </div>
-            <div className={styles.featuredMeta}>
+            <div className="workDiaryDesktop_featuredMeta">
               <MergeButton label="Packaging" />
             </div>
           </div>
         </div>
 
-        {/* Figma 2714:8772 — a rail, so the cards keep their frame width */}
-        <Carousel label="projects">
-          <ProjectCard
-            background="#859396"
-            body={BODY_COPY}
-            eyebrow="Branding"
-            image={workNupur}
-            title={['Nupur Kanoi']}
-          />
-          <ProjectCard
-            background="#fff27a"
-            body={BODY_COPY}
-            eyebrow="Merchandise"
-            image={workApag}
-            title={['APAG']}
-          />
-          <ProjectCard
-            background="#b0c3b4"
-            body={BODY_COPY}
-            eyebrow="Branding"
-            image={workBangla}
-            title={['Bangla 123']}
-          />
-        </Carousel>
+        {/* Figma 2714:8772 — grid cells now, not a rail.
 
-        {/* Figma 2714:8788 */}
-        <div className={styles.rowClipped}>
-          {/* Wide card — Figma 2714:8789 */}
-          <div className={styles.wideCard}>
-            <div className={styles.wideMedia}>
-              <div className={styles.wideMediaClip}>
-                <img alt="" className={styles.wideImage} src={workWhiteRhino} />
-              </div>
-            </div>
-            <div className={styles.wideBody}>
-              <div className={styles.wideTextStack}>
-                <div className={styles.stack12}>
-                  <div className={styles.stack8}>
-                    <p className={styles.cardEyebrow}>Packaging design</p>
-                    <div className={styles.headingRow}>
-                      <p className={styles.cardTitle}>White Rhino</p>
-                    </div>
-                    <p className={styles.cardCopy}>{BODY_COPY}</p>
+            Order matters here: [2,1,1,2,1,1] column-spans across a
+            3-column grid — featured+Nupur, APAG+wideCard, Bangla+AQUA —
+            fills every row exactly with no ragged gap, so wideCard sits
+            between APAG and Bangla rather than in its original spot
+            next to AQUA. */}
+        <ProjectCard
+          background="#859396"
+          body={BODY_COPY}
+          eyebrow="Branding"
+          fluid
+          image={workNupur}
+          title={['Nupur Kanoi']}
+        />
+        <ProjectCard
+          background="#fff27a"
+          body={BODY_COPY}
+          eyebrow="Merchandise"
+          fluid
+          image={workApag}
+          title={['APAG']}
+        />
+
+        {/* Wide card — Figma 2714:8789 — spans 2 columns like .featured */}
+        <div className="workDiaryDesktop_wideCard">
+          <div className="workDiaryDesktop_wideMedia">
+            <img alt="" className="workDiaryDesktop_wideImage" src={workWhiteRhino} />
+          </div>
+          <div className="workDiaryDesktop_wideBody">
+            <div className="workDiaryDesktop_wideTextStack">
+              <div className="workDiaryDesktop_stack12">
+                <div className="workDiaryDesktop_stack8">
+                  <p className="workDiaryDesktop_cardEyebrow">Packaging design</p>
+                  <div className="workDiaryDesktop_headingRow">
+                    <p className="workDiaryDesktop_cardTitle">White Rhino</p>
                   </div>
+                  <p className="workDiaryDesktop_cardCopy">{BODY_COPY}</p>
                 </div>
               </div>
-              <IconButton />
             </div>
+            <IconButton />
           </div>
-
-          <ProjectCard
-            background="#d6dfff"
-            body={BODY_COPY}
-            eyebrow="Packaging design"
-            image={workAqua}
-            title={['AQUA']}
-          />
         </div>
+
+        <ProjectCard
+          background="#b0c3b4"
+          body={BODY_COPY}
+          eyebrow="Branding"
+          fluid
+          image={workBangla}
+          title={['Bangla 123']}
+        />
+        <ProjectCard
+          background="#d6dfff"
+          body={BODY_COPY}
+          eyebrow="Packaging design"
+          fluid
+          image={workAqua}
+          title={['AQUA']}
+        />
       </div>
 
       <Cta>View All Projects</Cta>

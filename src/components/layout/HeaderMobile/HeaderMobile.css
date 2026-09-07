@@ -1,0 +1,219 @@
+/* Figma 4840:9211, reshaped into the same floating nav pill as the
+   desktop Header — stacked in flow above the banner, not overlaid. */
+.headerMobile_header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: var(--nav-pill-offset);
+  flex-shrink: 0;
+}
+
+.headerMobile_pill {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: var(--nav-pill-width);
+  overflow: hidden;
+  border-radius: var(--section-radius);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.headerMobile_pillOpen {
+  filter: var(--elevation-hover);
+}
+
+.headerMobile_bar {
+  display: flex;
+  width: 100%;
+  height: var(--nav-pill-height);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+/* Figma "Search bar phone" / "Drop Down Button" — kept at the icon sizes
+   those frames specify; the pill itself now matches the desktop capsule. */
+.headerMobile_iconButton {
+  display: flex;
+  width: 60px;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 0.3s var(--ease-ref);
+}
+
+.headerMobile_iconButton:hover {
+  background-color: #000000;
+}
+
+.headerMobile_iconImage {
+  display: block;
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.headerMobile_iconButton:hover .headerMobile_iconImage {
+  filter: invert(1);
+}
+
+/* Figma "Layer_1" 4840:9034 — 84 x 41 */
+.headerMobile_logo {
+  position: relative;
+  width: 84px;
+  height: 41px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.headerMobile_logoGroup1 {
+  position: absolute;
+  inset: 0 84.32% 65.05% 0;
+}
+
+.headerMobile_logoGroup2 {
+  position: absolute;
+  inset: 50.08% 0 0 16.21%;
+}
+
+.headerMobile_logoImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.headerMobile_menuIcon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.headerMobile_menuBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #000000;
+  transition:
+    transform 0.3s var(--ease-ref),
+    background-color 0.3s var(--ease-ref);
+}
+
+.headerMobile_iconButton:hover .headerMobile_menuBar {
+  background-color: #ffffff;
+}
+
+.headerMobile_menuIconOpen .headerMobile_menuBar:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.headerMobile_menuIconOpen .headerMobile_menuBar:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Animates to the list's real measured height (set inline from
+   HeaderMobile.jsx via ResizeObserver), not a guessed max-height cap —
+   a cap can only ever ease down to content size, never past it, so a
+   bounce curve had nothing to visibly overshoot against. Bounce only
+   going open; closing uses the plain curve so the eased value never
+   has to swing negative past zero height. */
+.headerMobile_menuWrap {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.4s var(--ease-ref);
+}
+
+.headerMobile_menuWrap[data-open] {
+  transition: height 0.6s var(--ease-bounce);
+}
+
+.headerMobile_menuInner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  padding: 4px 20px 24px;
+}
+
+/* The one hairline in the panel, separating the icon row from the list
+   instead of a line under every item. */
+.headerMobile_menuEyebrow {
+  margin-top: 4px;
+  padding: 16px 0 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+.headerMobile_navList {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Large serif links, matching the display type the About page's own
+   sections (Mission, AboutIntro) already use — their real menu sets its
+   nav in the same register, so a small sans list read flat next to it.
+   All three sit at the same weight; only the hover affordance marks the
+   one item that actually has a page.
+
+   Rendered at its final position always — no opacity/transform
+   entrance of its own. The panel opening is purely .headerMobile_pill and .headerMobile_menuWrap
+   growing; the content underneath just sits there getting clipped in,
+   rather than also animating itself as that clip grows. */
+.headerMobile_navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.headerMobile_navItemDisabled {
+  cursor: default;
+}
+
+.headerMobile_navText {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.288px;
+  color: #111111;
+  font-style: normal;
+  word-break: break-word;
+}
+
+.headerMobile_navArrow {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: #111111;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s var(--ease-ref),
+    transform 0.3s var(--ease-ref);
+}
+
+.headerMobile_navItem:hover .headerMobile_navArrow {
+  opacity: 1;
+  transform: translateX(0);
+}

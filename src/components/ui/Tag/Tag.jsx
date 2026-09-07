@@ -1,6 +1,6 @@
 import { cn } from '@/lib/cn'
 
-import styles from './Tag.module.css'
+import './Tag.css'
 
 /**
  * Figma component "Tags".
@@ -16,9 +16,9 @@ export default function Tag({
   size = 'desktop',
 }) {
   return (
-    <div className={cn(styles.tag, styles[variant], styles[size])}>
-      <div className={styles.label}>
-        <p className={styles.text}>{children}</p>
+    <div className={cn('tag_tag', `tag_${variant}`, `tag_${size}`)}>
+      <div className="tag_label">
+        <p className="tag_text">{children}</p>
       </div>
     </div>
   )

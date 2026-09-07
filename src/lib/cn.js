@@ -1,7 +1,7 @@
 /**
- * Joins CSS-module class names, dropping falsy values.
+ * Joins class names, dropping falsy values.
  *
- *   cn(styles.card, isActive && styles.active)
+ *   cn('card', isActive && 'card_active')
  */
 export function cn(...classes) {
   return classes.filter(Boolean).join(' ')

@@ -1,0 +1,66 @@
+.mergeButton_group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Matches the Figma "Tags" component at rest. */
+.mergeButton_pill {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 24px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  overflow: clip;
+  flex-shrink: 0;
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mergeButton_label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  transition: color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.mergeButton_arrow {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background-color: var(--icon-bg, transparent);
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mergeButton_group:hover .mergeButton_pill {
+  background-color: #000000;
+}
+
+.mergeButton_group:hover .mergeButton_label {
+  color: #ffffff;
+}
+
+.mergeButton_group:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+/* Mobile tag metrics — Figma 2715:10535 */
+.mergeButton_mobile .mergeButton_pill {
+  padding: 8px 20px;
+}
+
+.mergeButton_mobile .mergeButton_label {
+  font-size: 8px;
+  letter-spacing: -0.096px;
+}

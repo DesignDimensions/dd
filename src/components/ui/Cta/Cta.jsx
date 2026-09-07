@@ -1,6 +1,6 @@
 import { cn } from '@/lib/cn'
 
-import styles from './Cta.module.css'
+import './Cta.css'
 
 /**
  * Figma component "CTA" (desktop) / "Button" (mobile) — black pill.
@@ -9,9 +9,9 @@ import styles from './Cta.module.css'
  */
 export default function Cta({ children, size = 'desktop', type = 'button' }) {
   return (
-    <button className={cn(styles.cta, styles[size])} type={type}>
-      <span className={styles.label}>
-        <p className={styles.text}>{children}</p>
+    <button className={cn('cta_cta', `cta_${size}`)} type={type}>
+      <span className="cta_label">
+        <p className="cta_text">{children}</p>
       </span>
     </button>
   )

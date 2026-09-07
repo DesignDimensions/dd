@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 import ScrollToTop from './ScrollToTop.jsx'
-import styles from './Layout.module.css'
+import './Layout.css'
 
 /**
  * Shell wrapped around every route.
@@ -11,9 +11,9 @@ import styles from './Layout.module.css'
  */
 export default function Layout() {
   return (
-    <div className={styles.layout}>
+    <div className="layout_layout">
       <ScrollToTop />
-      <main className={styles.main}>
+      <main className="layout_main">
         <Outlet />
       </main>
     </div>

@@ -7,7 +7,7 @@ import SnackFactory from '@/sections/SnackFactory/SnackFactory.jsx'
 import Testimonials from '@/sections/Testimonials/Testimonials.jsx'
 import WorkDiary from '@/sections/WorkDiary/WorkDiary.jsx'
 
-import styles from './Home.module.css'
+import './Home.css'
 
 /**
  * Figma 2714:8733 (desktop) / 2715:10365 (mobile).
@@ -21,7 +21,7 @@ import styles from './Home.module.css'
  */
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className="home_page">
       <Hero />
       <SnackFactory />
       <WorkDiary />

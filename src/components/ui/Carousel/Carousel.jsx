@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import ArrowCircle from '@/components/ui/ArrowCircle/ArrowCircle.jsx'
 
-import styles from './Carousel.module.css'
+import './Carousel.css'
 
 /**
  * Horizontal card rail. Reference: wepresent.
@@ -57,23 +57,23 @@ export default function Carousel({ children, label = 'cards' }) {
   }
 
   return (
-    <div className={styles.carousel}>
+    <div className="carousel_carousel">
       {overflowing && (
-        <div className={styles.controls}>
+        <div className="carousel_controls">
           <button
             aria-label={`Previous ${label}`}
-            className={styles.control}
+            className="carousel_control"
             disabled={atStart}
             onClick={() => scrollByCard(-1)}
             type="button"
           >
-            <span className={styles.flip}>
+            <span className="carousel_flip">
               <ArrowCircle size={40} />
             </span>
           </button>
           <button
             aria-label={`Next ${label}`}
-            className={styles.control}
+            className="carousel_control"
             disabled={atEnd}
             onClick={() => scrollByCard(1)}
             type="button"
@@ -82,7 +82,7 @@ export default function Carousel({ children, label = 'cards' }) {
           </button>
         </div>
       )}
-      <div className={styles.viewport} ref={viewportRef}>
+      <div className="carousel_viewport" ref={viewportRef}>
         {children}
       </div>
     </div>

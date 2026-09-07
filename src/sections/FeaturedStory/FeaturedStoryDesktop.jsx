@@ -1,6 +1,6 @@
 import papad from '@/assets/images/papad.png'
 
-import styles from './FeaturedStoryDesktop.module.css'
+import './FeaturedStoryDesktop.css'
 
 /**
  * Figma 2714:8800
@@ -10,35 +10,35 @@ import styles from './FeaturedStoryDesktop.module.css'
  */
 export default function FeaturedStoryDesktop() {
   return (
-    <section className={styles.section}>
-      <div className={styles.papadTop}>
-        <div className={styles.papadTopRotate}>
-          <div className={styles.papadFrame}>
-            <img alt="" className={styles.papadImage} src={papad} />
+    <section className="featuredStoryDesktop_section">
+      <div className="featuredStoryDesktop_papadTop">
+        <div className="featuredStoryDesktop_papadTopRotate">
+          <div className="featuredStoryDesktop_papadFrame">
+            <img alt="" className="featuredStoryDesktop_papadImage" src={papad} />
           </div>
         </div>
       </div>
 
-      <div className={styles.papadBottom}>
-        <div className={styles.papadBottomRotate}>
-          <div className={styles.papadFrame}>
-            <img alt="" className={styles.papadImage} src={papad} />
+      <div className="featuredStoryDesktop_papadBottom">
+        <div className="featuredStoryDesktop_papadBottomRotate">
+          <div className="featuredStoryDesktop_papadFrame">
+            <img alt="" className="featuredStoryDesktop_papadImage" src={papad} />
           </div>
         </div>
       </div>
 
-      <div className={styles.content}>
-        <div className={styles.textStack}>
-          <div className={styles.stack24}>
-            <div className={styles.stack16}>
-              <p className={styles.eyebrow}>Featured Story</p>
-              <div className={styles.headingRow}>
-                <p className={styles.heading}>PAPADMALJI</p>
+      <div className="featuredStoryDesktop_content">
+        <div className="featuredStoryDesktop_textStack">
+          <div className="featuredStoryDesktop_stack24">
+            <div className="featuredStoryDesktop_stack16">
+              <p className="featuredStoryDesktop_eyebrow">Featured Story</p>
+              <div className="featuredStoryDesktop_headingRow">
+                <p className="featuredStoryDesktop_heading">PAPADMALJI</p>
               </div>
             </div>
           </div>
         </div>
-        <p className={styles.quote}>
+        <p className="featuredStoryDesktop_quote">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>

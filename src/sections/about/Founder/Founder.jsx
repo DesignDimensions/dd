@@ -1,6 +1,6 @@
 import founder from '@/assets/about/founder.jpg'
 
-import styles from './Founder.module.css'
+import './Founder.css'
 
 /**
  * Figma 7962:21218 — heading, then a split card: photograph on the left,
@@ -12,15 +12,15 @@ import styles from './Founder.module.css'
  */
 export default function Founder() {
   return (
-    <section className={styles.section}>
-      <div className={styles.head}>
-        <div className={styles.headLeft}>
-          <div className={styles.textStack}>
-            <div className={styles.stack24}>
-              <div className={styles.stack16}>
-                <p className={styles.eyebrow}>Lorem Ipsum</p>
-                <div className={styles.headingRow}>
-                  <p className={styles.heading}>Meet the founder</p>
+    <section className="founder_section">
+      <div className="founder_head">
+        <div className="founder_headLeft">
+          <div className="founder_textStack">
+            <div className="founder_stack24">
+              <div className="founder_stack16">
+                <p className="founder_eyebrow">Lorem Ipsum</p>
+                <div className="founder_headingRow">
+                  <p className="founder_heading">Meet the founder</p>
                 </div>
               </div>
             </div>
@@ -28,24 +28,24 @@ export default function Founder() {
         </div>
       </div>
 
-      <div className={styles.cardWrap}>
-        <div className={styles.card}>
-          <div className={styles.media}>
-            <div className={styles.mediaInner}>
+      <div className="founder_cardWrap">
+        <div className="founder_card">
+          <div className="founder_media">
+            <div className="founder_mediaInner">
               <img
                 alt="Aparna Kakrania"
-                className={styles.image}
+                className="founder_image"
                 src={founder}
               />
             </div>
           </div>
-          <div className={styles.panel}>
-            <div className={styles.panelStack}>
-              <p className={styles.role}>FOUNDER</p>
-              <div className={styles.nameRow}>
-                <p className={styles.name}>Aparna Kakrania</p>
+          <div className="founder_panel">
+            <div className="founder_panelStack">
+              <p className="founder_role">FOUNDER</p>
+              <div className="founder_nameRow">
+                <p className="founder_name">Aparna Kakrania</p>
               </div>
-              <p className={styles.bio}>
+              <p className="founder_bio">
                 Growing up in eastern India and studying in the west, I
                 developed a deep appreciation for our diverse cultures and
                 crafts. At Maharani Gayatri Devi Girls School in Jaipur, my

@@ -6,7 +6,7 @@ import Tag from '@/components/ui/Tag/Tag.jsx'
 
 import { cn } from '@/lib/cn'
 
-import styles from './ContactDesktop.module.css'
+import './ContactDesktop.css'
 
 /** Figma 2715:11785 / 11787 / 11789 */
 const FIELDS = ['Your name', 'Email address', 'Phone number']
@@ -36,14 +36,14 @@ const FOOTER_LINKS = [
 /** Figma 2715:11778 */
 export default function ContactDesktop({ variant = 'transparent' }) {
   return (
-    <section className={cn(styles.section, styles[variant])}>
-      <div className={styles.body}>
-        <div className={styles.textStack}>
-          <div className={styles.stack12}>
-            <div className={styles.stack8}>
-              <p className={styles.eyebrow}>Feel free to connect!</p>
-              <div className={styles.headingRow}>
-                <p className={styles.heading}>
+    <section className={cn('contactDesktop_section', `contactDesktop_${variant}`)}>
+      <div className="contactDesktop_body">
+        <div className="contactDesktop_textStack">
+          <div className="contactDesktop_stack12">
+            <div className="contactDesktop_stack8">
+              <p className="contactDesktop_eyebrow">Feel free to connect!</p>
+              <div className="contactDesktop_headingRow">
+                <p className="contactDesktop_heading">
                   This could be a start of a new relation
                 </p>
               </div>
@@ -51,16 +51,16 @@ export default function ContactDesktop({ variant = 'transparent' }) {
           </div>
         </div>
 
-        <div className={styles.columns}>
-          <div className={styles.column}>
-            <div className={styles.columnHeadingRow}>
-              <p className={styles.columnHeading}>Your Information</p>
+        <div className="contactDesktop_columns">
+          <div className="contactDesktop_column">
+            <div className="contactDesktop_columnHeadingRow">
+              <p className="contactDesktop_columnHeading">Your Information</p>
             </div>
-            <div className={styles.fields}>
+            <div className="contactDesktop_fields">
               {FIELDS.map((field) => (
                 <input
                   aria-label={field}
-                  className={styles.field}
+                  className="contactDesktop_field"
                   key={field}
                   placeholder={field}
                   type="text"
@@ -69,11 +69,11 @@ export default function ContactDesktop({ variant = 'transparent' }) {
             </div>
           </div>
 
-          <div className={styles.column}>
-            <div className={styles.columnHeadingRow}>
-              <p className={styles.columnHeading}>Pick your interest</p>
+          <div className="contactDesktop_column">
+            <div className="contactDesktop_columnHeadingRow">
+              <p className="contactDesktop_columnHeading">Pick your interest</p>
             </div>
-            <div className={styles.interests}>
+            <div className="contactDesktop_interests">
               {INTERESTS.map((interest) => (
                 <Tag key={interest.label} variant={interest.variant}>
                   {interest.label}
@@ -86,32 +86,32 @@ export default function ContactDesktop({ variant = 'transparent' }) {
         <Cta type="submit">Submit</Cta>
       </div>
 
-      <div className={styles.divider}>
-        <div className={styles.dividerInner}>
-          <img alt="" className={styles.dividerImage} src={divider} />
+      <div className="contactDesktop_divider">
+        <div className="contactDesktop_dividerInner">
+          <img alt="" className="contactDesktop_dividerImage" src={divider} />
         </div>
       </div>
 
-      <div className={styles.footer}>
-        <div className={styles.logo}>
-          <div className={styles.logoGroup1}>
-            <img alt="" className={styles.logoImage} src={logoGroup1} />
+      <div className="contactDesktop_footer">
+        <div className="contactDesktop_logo">
+          <div className="contactDesktop_logoGroup1">
+            <img alt="" className="contactDesktop_logoImage" src={logoGroup1} />
           </div>
-          <div className={styles.logoGroup2}>
-            <img alt="" className={styles.logoImage} src={logoGroup2} />
+          <div className="contactDesktop_logoGroup2">
+            <img alt="" className="contactDesktop_logoImage" src={logoGroup2} />
           </div>
         </div>
 
-        <div className={styles.spacer} />
+        <div className="contactDesktop_spacer" />
 
-        <div className={styles.footerLinks}>
+        <div className="contactDesktop_footerLinks">
           {FOOTER_LINKS.map((link) => (
             <div
-              className={styles.footerLink}
+              className="contactDesktop_footerLink"
               key={link.label}
               style={{ left: `${link.left}px`, top: `${link.top}px` }}
             >
-              <p className={styles.footerLinkText}>{link.label}</p>
+              <p className="contactDesktop_footerLinkText">{link.label}</p>
             </div>
           ))}
         </div>

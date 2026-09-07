@@ -1,7 +1,7 @@
 import banner from '@/assets/images/hero-bg.jpg'
 import HeaderMobile from '@/components/layout/HeaderMobile/HeaderMobile.jsx'
 
-import styles from './HeroMobile.module.css'
+import './HeroMobile.css'
 
 /**
  * Figma 2715:10545 — header stacked above a square 360x360 banner.
@@ -11,10 +11,10 @@ import styles from './HeroMobile.module.css'
  */
 export default function HeroMobile() {
   return (
-    <section className={styles.hero}>
+    <section className="heroMobile_hero">
       <HeaderMobile />
-      <div className={styles.banner}>
-        <img alt="" className={styles.bannerImage} src={banner} />
+      <div className="heroMobile_banner">
+        <img alt="" className="heroMobile_bannerImage" src={banner} />
       </div>
     </section>
   )

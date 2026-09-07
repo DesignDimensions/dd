@@ -1,0 +1,62 @@
+/* Figma "CTA" — black pill. Hover inverts it to an outlined white pill.
+   Padding is 1px short of Figma's on each side because the border makes
+   up the difference, so the box matches the frame at rest. */
+.cta_cta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  overflow: clip;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta_desktop {
+  padding: 15px 39px;
+}
+
+.cta_mobile {
+  padding: 7px 19px;
+}
+
+.cta_label {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cta_text {
+  font-family: var(--font-sans);
+  line-height: 24px;
+  color: #ffffff;
+  white-space: nowrap;
+  word-break: break-word;
+  transition: color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.cta_cta:hover {
+  background-color: #ffffff;
+}
+
+.cta_cta:hover .cta_text {
+  color: #000000;
+}
+
+.cta_desktop .cta_text {
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.192px;
+}
+
+.cta_mobile .cta_text {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.144px;
+}

@@ -1,0 +1,187 @@
+/* Figma 2714:8800 */
+.featuredStoryDesktop_section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 240px var(--bleed-gutter);
+  overflow: clip;
+  flex-shrink: 0;
+  /* No background of its own: this section's colour in the frame is a
+     stop on the page gradient, so it runs full width and lets the page
+     show through. Nothing to round, nothing to misalign. */
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+
+  /* Cancels .page's own inter-section gap on both sides, so this band
+     sits flush against WorkDiary above and Design Dialogue below
+     instead of a gap interrupting the floating papad images' bleed. */
+  margin-block: calc(-1 * var(--section-gap));
+}
+
+/* Figma 2714:8801 / 2714:8802.
+   Figma bleeds these almost entirely off the band; scaled down and
+   re-anchored here so both read as floating cards inside the section.
+   The bottom one is anchored to the bottom edge rather than the top, so
+   it stays put whatever the section's height turns out to be. */
+/* Figma 2714:8801 — anchored to the centred 1440 frame so it holds its
+   designed position once the band runs full width. */
+.featuredStoryDesktop_papadTop {
+  position: absolute;
+  top: -463.21px;
+  left: calc(50% - var(--frame-width) / 2 + 730.96px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 617.072px;
+  height: 767.412px;
+}
+
+.featuredStoryDesktop_papadTopRotate {
+  flex: none;
+  transform: rotate(-15.21deg);
+}
+
+/* Figma 2714:8802 — raised from the frame's literal 636.53px: at that
+   offset the section's own bottom edge (240px padding below .featuredStoryDesktop_content)
+   clipped all but a ~70px sliver of this 768px-tall box, versus
+   .featuredStoryDesktop_papadTop showing roughly 300px. Now clipped right at .featuredStoryDesktop_content's own
+   bottom edge, showing the full 240px padding band and none of the
+   text overlap .featuredStoryDesktop_papadTop already has. */
+.featuredStoryDesktop_papadBottom {
+  position: absolute;
+  top: 468px;
+  left: calc(50% - var(--frame-width) / 2 + 30.43px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 618.136px;
+  height: 767.945px;
+}
+
+.featuredStoryDesktop_papadBottomRotate {
+  flex: none;
+  transform: rotate(15.33deg);
+}
+
+.featuredStoryDesktop_papadFrame {
+  position: relative;
+  width: 457px;
+  height: 671px;
+}
+
+.featuredStoryDesktop_papadImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Figma 2714:8803 */
+.featuredStoryDesktop_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.featuredStoryDesktop_textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.featuredStoryDesktop_stack24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.featuredStoryDesktop_stack16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.featuredStoryDesktop_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  text-align: center;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.featuredStoryDesktop_headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.featuredStoryDesktop_heading {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 62px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  text-align: center;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2714:8805 — Abhaya Libre with a colour-burn blend */
+.featuredStoryDesktop_quote {
+  position: relative;
+  width: 100%;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: normal;
+  letter-spacing: -0.576px;
+  color: #252525;
+  text-align: center;
+  font-style: normal;
+  mix-blend-mode: color-burn;
+  word-break: break-word;
+  flex-shrink: 0;
+}
+
+/* Boxy sections — reference: wepresent. Radius matches the frame's own
+   40px desktop / 24px mobile language rather than introducing a new one. */
+
+@media (min-width: 1024px) {
+  .featuredStoryDesktop_section {
+    border-radius: var(--section-radius);
+  }
+}

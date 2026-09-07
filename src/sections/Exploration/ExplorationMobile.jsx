@@ -1,7 +1,7 @@
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
-import styles from './ExplorationMobile.module.css'
+import './ExplorationMobile.css'
 
 /**
  * Figma 2715:10895 "5".
@@ -22,9 +22,9 @@ const TAGS = [
 
 export default function ExplorationMobile() {
   return (
-    <section className={styles.section}>
-      <p className={styles.heading}>Let’s do a quick exploration!</p>
-      <div className={styles.tags}>
+    <section className="explorationMobile_section">
+      <p className="explorationMobile_heading">Let’s do a quick exploration!</p>
+      <div className="explorationMobile_tags">
         {TAGS.map((tag) => (
           <Tag key={tag.label} size="mobile" variant={tag.variant}>
             {tag.label}

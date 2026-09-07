@@ -6,7 +6,7 @@ import chevron from '@/assets/mobile/chevron.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProductCardMobile from '@/components/ui/ProductCardMobile/ProductCardMobile.jsx'
 
-import styles from './WorkDiaryMobile.module.css'
+import './WorkDiaryMobile.css'
 
 const BODY_COPY =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -43,25 +43,25 @@ const CARDS = [
 
 export default function WorkDiaryMobile() {
   return (
-    <section className={styles.section}>
-      <div className={styles.content}>
-        <div className={styles.head}>
-          <div className={styles.headText}>
-            <p className={styles.eyebrow}>Our pride</p>
-            <p className={styles.heading}>Work diary</p>
+    <section className="workDiaryMobile_section">
+      <div className="workDiaryMobile_content">
+        <div className="workDiaryMobile_head">
+          <div className="workDiaryMobile_headText">
+            <p className="workDiaryMobile_eyebrow">Our pride</p>
+            <p className="workDiaryMobile_heading">Work diary</p>
           </div>
-          <button className={styles.filter} type="button">
-            <div className={styles.filterLabel}>
-              <div className={styles.filterTextWrap}>
-                <p className={styles.filterText}>Newest</p>
+          <button className="workDiaryMobile_filter" type="button">
+            <div className="workDiaryMobile_filterLabel">
+              <div className="workDiaryMobile_filterTextWrap">
+                <p className="workDiaryMobile_filterText">Newest</p>
               </div>
             </div>
-            <div className={styles.filterIconWrap}>
-              <div className={styles.filterIconRotate}>
-                <div className={styles.filterIcon}>
+            <div className="workDiaryMobile_filterIconWrap">
+              <div className="workDiaryMobile_filterIconRotate">
+                <div className="workDiaryMobile_filterIcon">
                   <img
                     alt=""
-                    className={styles.filterIconImage}
+                    className="workDiaryMobile_filterIconImage"
                     src={chevron}
                   />
                 </div>

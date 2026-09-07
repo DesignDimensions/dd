@@ -1,0 +1,170 @@
+.projectCard_card {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px; /* wepresent's own --card-gap */
+
+  /* wepresent's --card-padding for a "has-frame" card: the coloured
+     background (set inline via `background`) now belongs to the whole
+     card, not just the caption panel, with the image inset inside it. */
+  padding: 20px 20px 30px;
+
+  /* Figma's exact card width. The carousel scrolls when three of these
+     no longer fit, rather than letting them shrink below the design. */
+  flex: 0 0 352px;
+  width: 352px;
+  border-radius: var(--card-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+/* For a card placed in a responsive grid instead of the carousel rail —
+   fills its grid cell rather than keeping Figma's fixed rail width. */
+.projectCard_fluid {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* wepresent's .projectCard_card-media_wrapper: overflow:hidden here (not just on
+   .projectCard_card) so the hover zoom clips right at the image's own box instead
+   of bleeding down over .projectCard_footer's text — .projectCard_card's own overflow:clip
+   only catches content that escapes the *entire* card, not one sibling
+   spilling into another. A smaller nested radius than the card's own,
+   since the image now sits inset rather than flush to the corners. */
+.projectCard_media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--card-media-radius);
+  flex-shrink: 0;
+}
+
+.projectCard_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-ref);
+}
+
+.projectCard_footer {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.projectCard_textStack {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.projectCard_stack12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.projectCard_stack8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.projectCard_eyebrow {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.projectCard_headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma wraps the title in a leading-0 box and sets the line height
+   on each line individually. */
+.projectCard_title {
+  position: relative;
+  line-height: 0;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.24px;
+  color: #000000;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.projectCard_titleLine {
+  line-height: 24px;
+  white-space: pre;
+}
+
+.projectCard_body {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Hovering anywhere on the card inverts its arrow, since the whole card
+   is the target rather than the 40px button alone. */
+.projectCard_card:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+/* Reference: wepresent's .projectCard_card-wrapper —
+     rest   filter: drop-shadow(0 10px 19px rgb(0 0 0/4%))
+     hover  filter: drop-shadow(0 30px 30px rgb(0 0 0/15%))  over .3s
+     image  transform: scale(1.15)                            over .5s
+   both on cubic-bezier(.165,.84,.44,1). */
+
+.projectCard_card:hover {
+  filter: var(--elevation-hover);
+}
+
+.projectCard_card:hover .projectCard_image {
+  transform: scale(var(--card-zoom));
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import styles from './FigmaOverlay.module.css'
+import './FigmaOverlay.css'
 
 /**
  * Dev-only pixel checker.
@@ -62,7 +62,7 @@ export default function FigmaOverlay({ src, width }) {
     <img
       alt=""
       aria-hidden="true"
-      className={cn(styles.overlay, difference && styles.difference)}
+      className={cn('figmaOverlay_overlay', difference && 'figmaOverlay_difference')}
       src={src}
       style={{ opacity, width }}
     />

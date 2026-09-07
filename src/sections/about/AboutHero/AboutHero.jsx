@@ -1,7 +1,7 @@
 import heroBg from '@/assets/about/hero-bg.png'
 import Header from '@/components/layout/Header/Header.jsx'
 
-import styles from './AboutHero.module.css'
+import './AboutHero.css'
 
 /**
  * Figma 7962:21192 — 736px band with the headline set low in the frame.
@@ -12,11 +12,11 @@ import styles from './AboutHero.module.css'
  */
 export default function AboutHero() {
   return (
-    <section className={styles.hero}>
+    <section className="aboutHero_hero">
       <Header />
-      <img alt="" className={styles.background} src={heroBg} />
-      <div className={styles.labelRow}>
-        <p className={styles.label}>Creating Design, weaving craft</p>
+      <img alt="" className="aboutHero_background" src={heroBg} />
+      <div className="aboutHero_labelRow">
+        <p className="aboutHero_label">Creating Design, weaving craft</p>
       </div>
     </section>
   )

@@ -1,0 +1,425 @@
+/* Figma 2714:8758 */
+.workDiaryDesktop_section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  padding: 160px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+/* --- head row, Figma 2714:8759 --- */
+.workDiaryDesktop_head {
+  display: flex;
+  gap: 64px;
+  align-items: flex-end;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_headLeft {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 1px;
+}
+
+.workDiaryDesktop_textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_stack24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_stack16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_eyebrow {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* --- "Genre" button, Figma 4847:9100 --- */
+.workDiaryDesktop_genre {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  overflow: clip;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.workDiaryDesktop_genreLabel {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_genreText {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #000000;
+  text-align: left;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  transition: color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.workDiaryDesktop_genreIconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_genreIconRotate {
+  flex: none;
+  transform: rotate(180deg);
+}
+
+.workDiaryDesktop_genreIcon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.workDiaryDesktop_genreIconImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transition: filter 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- content, Figma 2714:8764 ---
+   A real grid rather than a flex column + carousel + a separate flex
+   row: wepresent's own grid-item_md is just grid-column-end: span 2
+   inside a grid like this one, so .workDiaryDesktop_featured and .workDiaryDesktop_wideCard use that
+   directly instead of three different one-off layout mechanisms. Card
+   order in the JSX is arranged as [2,1,1,2,1,1] column-spans so every
+   row fills exactly, with no auto-placement gap to work around. */
+.workDiaryDesktop_content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px; /* wepresent's own --grid-gap at desktop */
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* --- featured card, Figma 2714:8765 — restructured to the same
+   stacked, single-frame-colour recipe as every other card on the page
+   (image inset on top, text below, one background as the frame)
+   instead of Figma's original side-by-side split, which read as a
+   different card format entirely once the rest of the grid followed
+   wepresent's has-frame recipe. Sized like .workDiaryDesktop_wideCard, since both span
+   2 of 3 grid columns. */
+.workDiaryDesktop_featured {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px 20px 30px;
+  grid-column: span 2;
+  background-color: #e0a968;
+  border-radius: var(--card-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.workDiaryDesktop_featured:hover {
+  filter: var(--elevation-hover);
+}
+
+.workDiaryDesktop_featuredMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 736 / 360; /* matches .workDiaryDesktop_wideMedia — both span 2 columns */
+  overflow: hidden;
+  border-radius: var(--card-media-radius);
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_featuredImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-ref);
+}
+
+.workDiaryDesktop_featured:hover .workDiaryDesktop_featuredImage {
+  transform: scale(var(--card-zoom));
+}
+
+.workDiaryDesktop_featuredBody {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.workDiaryDesktop_featuredTextStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_stack12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_stack8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_featuredTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.384px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_featuredCopy {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_featuredMeta {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* --- wide card, Figma 2714:8789 — spans 2 columns, same as .workDiaryDesktop_featured.
+   Same has-frame recipe as ProjectCard: one background colours the
+   whole card, media sits inset inside it instead of running edge to
+   edge, matching the rest of the grid. */
+.workDiaryDesktop_wideCard {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px 20px 30px;
+  grid-column: span 2;
+  background-color: #fac97f;
+  border-radius: var(--card-radius);
+  overflow: clip;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+.workDiaryDesktop_wideCard:hover {
+  filter: var(--elevation-hover);
+}
+
+/* wepresent's .card-media_wrapper: overflow:hidden right on the media
+   box so the hover zoom clips at the image's own bounds, at a nested
+   radius since the image now sits inset rather than flush to the
+   card's corners. Figma crops this image by offsetting/scaling it
+   inside the frame — .workDiaryDesktop_wideImage's percentages are relative to this
+   box either way, so that crop is unaffected by the inset. */
+.workDiaryDesktop_wideMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 736 / 360;
+  overflow: hidden;
+  border-radius: var(--card-media-radius);
+  flex-shrink: 0;
+}
+
+.workDiaryDesktop_wideImage {
+  position: absolute;
+  top: -12.85%;
+  left: -5.09%;
+  width: 110.87%;
+  height: 162.57%;
+  max-width: none;
+  transition: transform 0.5s var(--ease-ref);
+}
+
+.workDiaryDesktop_wideCard:hover .workDiaryDesktop_wideImage {
+  transform: scale(var(--card-zoom));
+}
+
+.workDiaryDesktop_wideBody {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.workDiaryDesktop_wideTextStack {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 1px;
+}
+
+.workDiaryDesktop_cardEyebrow {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_cardTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.24px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_cardCopy {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.workDiaryDesktop_genre:hover {
+  background-color: #000000;
+}
+
+.workDiaryDesktop_genre:hover .workDiaryDesktop_genreText {
+  color: #ffffff;
+}
+
+/* The chevron is a flat black export, so it inverts with a filter. */
+.workDiaryDesktop_genre:hover .workDiaryDesktop_genreIconImage {
+  filter: invert(1);
+}
+
+.workDiaryDesktop_wideCard:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}

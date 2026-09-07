@@ -5,7 +5,7 @@ import Tag from '@/components/ui/Tag/Tag.jsx'
 
 import { cn } from '@/lib/cn'
 
-import styles from './ContactMobile.module.css'
+import './ContactMobile.css'
 
 /** Figma 2715:11081 — seven tags, where desktop's interest list has eight */
 const INTERESTS = [
@@ -38,15 +38,15 @@ const FOOTER_LINKS = [
  */
 export default function ContactMobile({ variant = 'transparent' }) {
   return (
-    <section className={cn(styles.section, styles[variant])}>
-      <div className={styles.heading}>
-        <p className={styles.eyebrow}>Feel free to connect!</p>
-        <p className={styles.title}>This could be a start of a new relation.</p>
+    <section className={cn('contactMobile_section', `contactMobile_${variant}`)}>
+      <div className="contactMobile_heading">
+        <p className="contactMobile_eyebrow">Feel free to connect!</p>
+        <p className="contactMobile_title">This could be a start of a new relation.</p>
       </div>
 
-      <div className={styles.group}>
-        <p className={styles.groupLabel}>Pick Your Interest</p>
-        <div className={styles.tags}>
+      <div className="contactMobile_group">
+        <p className="contactMobile_groupLabel">Pick Your Interest</p>
+        <div className="contactMobile_tags">
           {INTERESTS.map((interest) => (
             <Tag key={interest.label} size="mobile" variant={interest.variant}>
               {interest.label}
@@ -55,14 +55,14 @@ export default function ContactMobile({ variant = 'transparent' }) {
         </div>
       </div>
 
-      <div className={styles.group}>
-        <p className={styles.groupLabel}>Your Information</p>
-        <div className={styles.form}>
-          <div className={styles.fields}>
+      <div className="contactMobile_group">
+        <p className="contactMobile_groupLabel">Your Information</p>
+        <div className="contactMobile_form">
+          <div className="contactMobile_fields">
             {FIELDS.map((field) => (
               <input
                 aria-label={field}
-                className={styles.field}
+                className="contactMobile_field"
                 key={field}
                 placeholder={field}
                 type="text"
@@ -76,12 +76,12 @@ export default function ContactMobile({ variant = 'transparent' }) {
       </div>
 
       {/* Figma 2715:11107 — a solid 1px rule, not the vector desktop uses */}
-      <div className={styles.divider} />
+      <div className="contactMobile_divider" />
 
-      <div className={styles.links}>
+      <div className="contactMobile_links">
         {FOOTER_LINKS.map((link) => (
           <p
-            className={styles.link}
+            className="contactMobile_link"
             key={link.label}
             style={{ left: `${link.left}px`, top: `${link.top}px` }}
           >
@@ -90,12 +90,12 @@ export default function ContactMobile({ variant = 'transparent' }) {
         ))}
       </div>
 
-      <div className={styles.logo}>
-        <div className={styles.logoGroup1}>
-          <img alt="" className={styles.logoImage} src={logoGroup1} />
+      <div className="contactMobile_logo">
+        <div className="contactMobile_logoGroup1">
+          <img alt="" className="contactMobile_logoImage" src={logoGroup1} />
         </div>
-        <div className={styles.logoGroup2}>
-          <img alt="" className={styles.logoImage} src={logoGroup2} />
+        <div className="contactMobile_logoGroup2">
+          <img alt="" className="contactMobile_logoImage" src={logoGroup2} />
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ import brand10 from '@/assets/about/brand-10.png'
 import brand11 from '@/assets/about/brand-11.png'
 import brand12 from '@/assets/about/brand-12.png'
 
-import styles from './Brands.module.css'
+import './Brands.css'
 
 /**
  * Figma 7962:21344 — twelve 248x108 logo tiles on a 1120 wrap.
@@ -37,22 +37,22 @@ const BRANDS = [
 
 export default function Brands() {
   return (
-    <section className={styles.section}>
-      <div className={styles.textStack}>
-        <div className={styles.stack24}>
-          <div className={styles.stack16}>
-            <p className={styles.eyebrow}>Our Association</p>
-            <div className={styles.headingRow}>
-              <p className={styles.heading}>Brands love us</p>
+    <section className="brands_section">
+      <div className="brands_textStack">
+        <div className="brands_stack24">
+          <div className="brands_stack16">
+            <p className="brands_eyebrow">Our Association</p>
+            <div className="brands_headingRow">
+              <p className="brands_heading">Brands love us</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.grid}>
+      <div className="brands_grid">
         {BRANDS.map((brand, index) => (
-          <div className={styles.tile} key={`${brand.name}-${index}`}>
-            <img alt={brand.name} className={styles.logo} src={brand.src} />
+          <div className="brands_tile" key={`${brand.name}-${index}`}>
+            <img alt={brand.name} className="brands_logo" src={brand.src} />
           </div>
         ))}
       </div>

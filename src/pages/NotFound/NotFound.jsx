@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import styles from './NotFound.module.css'
+import './NotFound.css'
 
 /**
  * Placeholder — Figma has no 404 frame yet.
@@ -10,10 +10,10 @@ import styles from './NotFound.module.css'
  */
 export default function NotFound() {
   return (
-    <div className={styles.page}>
-      <h1 className={styles.code}>404</h1>
-      <p className={styles.message}>This page does not exist.</p>
-      <Link className={styles.link} to="/">
+    <div className="notFound_page">
+      <h1 className="notFound_code">404</h1>
+      <p className="notFound_message">This page does not exist.</p>
+      <Link className="notFound_link" to="/">
         Back to home
       </Link>
     </div>

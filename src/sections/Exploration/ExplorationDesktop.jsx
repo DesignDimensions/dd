@@ -1,7 +1,7 @@
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
-import styles from './ExplorationDesktop.module.css'
+import './ExplorationDesktop.css'
 
 /**
  * Figma 2714:8846
@@ -22,19 +22,19 @@ const TAGS = [
 
 export default function ExplorationDesktop() {
   return (
-    <section className={styles.section}>
-      <div className={styles.textStack}>
-        <div className={styles.stack24}>
-          <div className={styles.stack16}>
-            <div className={styles.headingRow}>
-              <p className={styles.heading}>Let’s do a quick exploration!</p>
+    <section className="explorationDesktop_section">
+      <div className="explorationDesktop_textStack">
+        <div className="explorationDesktop_stack24">
+          <div className="explorationDesktop_stack16">
+            <div className="explorationDesktop_headingRow">
+              <p className="explorationDesktop_heading">Let’s do a quick exploration!</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.tagsWrap}>
-        <div className={styles.tags}>
+      <div className="explorationDesktop_tagsWrap">
+        <div className="explorationDesktop_tags">
           {TAGS.map((tag) => (
             <Tag key={tag.label} variant={tag.variant}>
               {tag.label}

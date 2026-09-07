@@ -1,6 +1,6 @@
 import papad from '@/assets/images/papad.png'
 
-import styles from './FeaturedStoryMobile.module.css'
+import './FeaturedStoryMobile.css'
 
 /**
  * Figma 2715:10751 "3".
@@ -10,28 +10,28 @@ import styles from './FeaturedStoryMobile.module.css'
  */
 export default function FeaturedStoryMobile() {
   return (
-    <section className={styles.section}>
-      <div className={styles.papadTop}>
-        <div className={styles.papadRotate}>
-          <div className={styles.papadTopFrame}>
-            <img alt="" className={styles.papadImage} src={papad} />
+    <section className="featuredStoryMobile_section">
+      <div className="featuredStoryMobile_papadTop">
+        <div className="featuredStoryMobile_papadRotate">
+          <div className="featuredStoryMobile_papadTopFrame">
+            <img alt="" className="featuredStoryMobile_papadImage" src={papad} />
           </div>
         </div>
       </div>
 
-      <div className={styles.papadBottom}>
-        <div className={styles.papadRotate}>
-          <div className={styles.papadBottomFrame}>
-            <img alt="" className={styles.papadImage} src={papad} />
+      <div className="featuredStoryMobile_papadBottom">
+        <div className="featuredStoryMobile_papadRotate">
+          <div className="featuredStoryMobile_papadBottomFrame">
+            <img alt="" className="featuredStoryMobile_papadImage" src={papad} />
           </div>
         </div>
       </div>
 
-      <div className={styles.heading}>
-        <p className={styles.eyebrow}>Featured Story</p>
-        <p className={styles.title}>Papadmalji</p>
+      <div className="featuredStoryMobile_heading">
+        <p className="featuredStoryMobile_eyebrow">Featured Story</p>
+        <p className="featuredStoryMobile_title">Papadmalji</p>
       </div>
-      <p className={styles.quote}>
+      <p className="featuredStoryMobile_quote">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </p>

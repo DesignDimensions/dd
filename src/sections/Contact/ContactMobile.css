@@ -1,0 +1,219 @@
+/* Figma 2715:11075 */
+.contactMobile_section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 40px var(--m-bleed-gutter);
+  flex-shrink: 0;
+}
+
+/* On the home frame this section's fill is a stop on the page gradient,
+   so it runs full width and lets the page show through. */
+.contactMobile_transparent {
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+}
+
+/* On a solid page it is a box like any other section. */
+.contactMobile_boxed {
+  width: 100%;
+  background-color: #efddaf;
+  border-radius: var(--section-radius);
+  filter: var(--elevation-section);
+  padding-inline: var(--m-page-gutter);
+}
+
+/* Figma "Heading" 2715:11076 */
+.contactMobile_heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  word-break: break-word;
+  flex-shrink: 0;
+}
+
+.contactMobile_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.144px;
+  color: #626262;
+  white-space: nowrap;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.contactMobile_title {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.288px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma "Footer Tags" 2715:11079 / 2715:11520 */
+.contactMobile_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactMobile_groupLabel {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.144px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.contactMobile_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 8px;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma "Form" 2715:11522 */
+.contactMobile_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contactMobile_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2715:11524 — static box in the frame, rendered as a real input */
+.contactMobile_field {
+  display: block;
+  width: 100%;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #000000;
+  border-radius: 28px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.144px;
+  color: #000000;
+  flex-shrink: 0;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  transition:
+    background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contactMobile_field::placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Figma "Divider" 2715:11107 */
+.contactMobile_divider {
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+  flex-shrink: 0;
+}
+
+/* Figma "Links" 2715:11108 */
+.contactMobile_links {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.contactMobile_link {
+  position: absolute;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  background-image: linear-gradient(#000000, #000000);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Figma "Layer_1" 2715:11115 — 84 x 41 */
+.contactMobile_logo {
+  position: relative;
+  width: 84px;
+  height: 41px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.contactMobile_logoGroup1 {
+  position: absolute;
+  inset: 0 84.32% 65.05% 0;
+}
+
+.contactMobile_logoGroup2 {
+  position: absolute;
+  inset: 50.08% 0 0 16.21%;
+}
+
+.contactMobile_logoImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.contactMobile_link:hover {
+  background-size: 100% 1px;
+}
+
+.contactMobile_field:hover,
+.contactMobile_field:focus {
+  background-color: rgba(255, 255, 255, 0.45);
+  outline: none;
+}

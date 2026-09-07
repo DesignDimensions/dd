@@ -1,0 +1,133 @@
+/* Figma 2715:10751 */
+.featuredStoryMobile_section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 73px 60px;
+  overflow: clip;
+  flex-shrink: 0;
+  /* No background of its own: this section's colour in the frame is a
+     stop on the page gradient, so it runs full width and lets the page
+     show through. Nothing to round, nothing to misalign. */
+  background-color: transparent;
+  width: calc(100% + var(--page-inset) * 2);
+  margin-inline: calc(-1 * var(--page-inset));
+}
+
+/* Figma 2715:10756 / 2715:10757 — anchored to the centred 360 frame so
+   they hold their position once the band runs wider than the frame. */
+.featuredStoryMobile_papadTop {
+  position: absolute;
+  top: -60.46px;
+  left: calc(50% - 180px + 226.63px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110.329px;
+  height: 137.209px;
+}
+
+.featuredStoryMobile_papadBottom {
+  position: absolute;
+  top: 221px;
+  left: calc(50% - 180px + 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95.289px;
+  height: 118.504px;
+}
+
+.featuredStoryMobile_papadRotate {
+  flex: none;
+  transform: rotate(-15.21deg);
+}
+
+.featuredStoryMobile_papadTopFrame {
+  position: relative;
+  width: 81.709px;
+  height: 119.971px;
+}
+
+.featuredStoryMobile_papadBottomFrame {
+  position: relative;
+  width: 70.57px;
+  height: 103.616px;
+}
+
+.featuredStoryMobile_papadImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Figma 2715:10752 */
+.featuredStoryMobile_heading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  word-break: break-word;
+  flex-shrink: 0;
+}
+
+.featuredStoryMobile_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.144px;
+  color: #252525;
+  white-space: nowrap;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.featuredStoryMobile_title {
+  width: 123px;
+  height: 34px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: -0.288px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2715:10755 */
+.featuredStoryMobile_quote {
+  position: relative;
+  width: 240px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: -0.192px;
+  color: #252525;
+  text-align: center;
+  font-style: normal;
+  mix-blend-mode: color-burn;
+  word-break: break-word;
+  flex-shrink: 0;
+}
+
+/* Boxy sections — reference: wepresent. Radius matches the frame's own
+   40px desktop / 24px mobile language rather than introducing a new one. */
+
+@media (min-width: 1024px) {
+  .featuredStoryMobile_section {
+    border-radius: var(--section-radius);
+  }
+}

@@ -5,7 +5,7 @@ import Carousel from '@/components/ui/Carousel/Carousel.jsx'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 
-import styles from './DesignDialogueDesktop.module.css'
+import './DesignDialogueDesktop.css'
 
 const BODY_COPY =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -13,29 +13,29 @@ const BODY_COPY =
 /** Figma 2714:8806 */
 export default function DesignDialogueDesktop() {
   return (
-    <section className={styles.section}>
-      <div className={styles.head}>
-        <div className={styles.textStack}>
-          <div className={styles.stack24}>
-            <div className={styles.stack16}>
-              <p className={styles.eyebrow}>We dig deep</p>
-              <div className={styles.headingRow}>
-                <p className={styles.heading}>Design Dialogue</p>
+    <section className="designDialogueDesktop_section">
+      <div className="designDialogueDesktop_head">
+        <div className="designDialogueDesktop_textStack">
+          <div className="designDialogueDesktop_stack24">
+            <div className="designDialogueDesktop_stack16">
+              <p className="designDialogueDesktop_eyebrow">We dig deep</p>
+              <div className="designDialogueDesktop_headingRow">
+                <p className="designDialogueDesktop_heading">Design Dialogue</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={styles.headRight}>
-          <div className={styles.stack12}>
-            <div className={styles.stack8}>
-              <p className={styles.intro}>{BODY_COPY}</p>
+        <div className="designDialogueDesktop_headRight">
+          <div className="designDialogueDesktop_stack12">
+            <div className="designDialogueDesktop_stack8">
+              <p className="designDialogueDesktop_intro">{BODY_COPY}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.content}>
+      <div className="designDialogueDesktop_content">
         <Carousel label="stories">
           <ProjectCard
             background="#dcf6f8"

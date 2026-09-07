@@ -1,7 +1,7 @@
 import heroBg from '@/assets/images/hero-bg.jpg'
 import Header from '@/components/layout/Header/Header.jsx'
 
-import styles from './HeroDesktop.module.css'
+import './HeroDesktop.css'
 
 /**
  * Figma 2714:8734 — 880px band, full-bleed image, header pinned to top.
@@ -11,8 +11,8 @@ import styles from './HeroDesktop.module.css'
  */
 export default function HeroDesktop() {
   return (
-    <section className={styles.hero}>
-      <img alt="" className={styles.background} src={heroBg} />
+    <section className="heroDesktop_hero">
+      <img alt="" className="heroDesktop_background" src={heroBg} />
       <Header />
     </section>
   )

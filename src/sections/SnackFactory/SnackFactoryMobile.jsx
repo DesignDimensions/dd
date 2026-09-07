@@ -1,6 +1,6 @@
 import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
 
-import styles from './SnackFactoryMobile.module.css'
+import './SnackFactoryMobile.css'
 
 /**
  * Figma 2715:10544 "After".
@@ -10,14 +10,14 @@ import styles from './SnackFactoryMobile.module.css'
  */
 export default function SnackFactoryMobile() {
   return (
-    <section className={styles.section}>
-      <p className={styles.heading}>Snack Factory</p>
-      <div className={styles.body}>
-        <p className={styles.intro}>
+    <section className="snackFactoryMobile_section">
+      <p className="snackFactoryMobile_heading">Snack Factory</p>
+      <div className="snackFactoryMobile_body">
+        <p className="snackFactoryMobile_intro">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <div className={styles.buttons}>
+        <div className="snackFactoryMobile_buttons">
           <MergeButton gap={12} label="Packaging Design" size={32} />
         </div>
       </div>
