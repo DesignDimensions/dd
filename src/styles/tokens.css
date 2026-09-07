@@ -94,7 +94,7 @@
   /* The desktop pill's open width. The menu panel itself is sized to
      this same value (not 100%) so its layout never depends on the
      pill's own animated width — see Header.module.css .menuInner. */
-  --nav-pill-open-width: min(90vw, 860px);
+  --nav-pill-open-width: min(90vw, 1250px);
 }
 
 /* Sections become inset boxes from the desktop breakpoint up. Mobile is

@@ -39,14 +39,21 @@
     width 0.6s var(--ease-bounce);
 }
 
+/* Pinned to the closed pill's width and centred, rather than
+   stretching to 100% of .header_pill: the pill itself grows wider when
+   the menu opens, and a 100%-wide bar would drag the search/menu
+   buttons outward with it since they sit at its edges. Capping the bar
+   at --nav-pill-width keeps their screen position fixed through the
+   open/close animation — only the panel underneath grows. */
 .header_bar {
   display: flex;
-  width: 100%;
-  height: var(--nav-pill-height);
+  width: var(--nav-pill-width);
+  align-self: center;
+  min-height: var(--nav-pill-height);
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8px;
+  padding: 12px 8px;
 }
 
 .header_iconButton {
@@ -171,7 +178,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: grid;
-  grid-template-columns: minmax(140px, 200px) minmax(160px, 1fr) minmax(180px, 260px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
   min-height: 0;
   width: var(--nav-pill-open-width);
