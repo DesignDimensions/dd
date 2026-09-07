@@ -137,8 +137,12 @@ export default function Suryagarh() {
       </QuoteBig>
       <ShowcaseBand flush src={imageFull} />
       <MoreProjects />
-      <Exploration variant="boxed" />
-      <Contact variant="boxed" />
+      {/* Footer zone: both transparent and full bleed, run together as one
+          continuous band sitting on the page ground (see Suryagarh.css). */}
+      <div className="suryagarh_footerZone">
+        <Exploration variant="transparent" />
+        <Contact variant="transparent" />
+      </div>
     </div>
   )
 }

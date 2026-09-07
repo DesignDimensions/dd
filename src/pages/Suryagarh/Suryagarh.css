@@ -28,3 +28,28 @@
   filter: var(--elevation-section);
   cursor: pointer;
 }
+
+/* Footer zone — Exploration and Contact run together as one continuous
+   band on the page ground rather than two boxes. Both are already
+   transparent and full bleed in that variant; what makes them read as a
+   single section is dropping the --section-gap between them and the
+   doubled 120px of card-interior padding either side of the seam. */
+.suryagarh_footerZone {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.suryagarh_footerZone .explorationDesktop_section,
+.suryagarh_footerZone .explorationMobile_section {
+  padding-bottom: 64px;
+  /* Nothing to round: a bleeding section's corner would sit at the
+     viewport edge, not on the boxed sections' column. */
+  border-radius: 0;
+}
+
+.suryagarh_footerZone .contactDesktop_section,
+.suryagarh_footerZone .contactMobile_section {
+  padding-top: 0;
+}
