@@ -97,6 +97,7 @@
 }
 
 .projectOverview_iconButton {
+  position: relative;
   display: grid;
   place-items: center;
   width: 40px;
@@ -112,6 +113,31 @@
   --icon-bg: #000000;
   --icon-ring: transparent;
   --icon-glyph: #ffffff;
+}
+
+/* Clipboard fallback confirmation for the share button. */
+.projectOverview_iconButton::after {
+  content: attr(data-flash);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #000000;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #ffffff;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projectOverview_iconButton[data-flash]::after {
+  opacity: 1;
 }
 
 @media (max-width: 1023.98px) {

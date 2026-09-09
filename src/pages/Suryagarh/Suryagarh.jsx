@@ -61,7 +61,7 @@ export default function Suryagarh() {
           progress strip below, no gap between them. The whole card is the
           audio player's hover/click zone, not just the progress strip. */}
       <div className="suryagarh_overviewGroup" onClick={player.toggle} ref={overviewZoneRef}>
-        <ProjectOverview />
+        <ProjectOverview isPlaying={player.isPlaying} onTogglePlay={player.toggle} />
         <ProjectProgress audioRef={player.audioRef} isPlaying={player.isPlaying} src={storyAudio} />
       </div>
       <ShowcaseBand src={showcaseBand} />
