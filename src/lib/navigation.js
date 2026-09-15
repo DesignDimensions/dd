@@ -3,7 +3,7 @@
  * destinations, so only the items that have a page are links.
  */
 export const NAV_ITEMS = [
-  { label: 'Work diary', to: null },
-  { label: 'Design dialogue', to: null },
+  { label: 'Work diary', to: '/work' },
+  { label: 'Design dialogue', to: '/design-dialogue' },
   { label: 'About us', to: '/about' },
 ]

@@ -1,0 +1,19 @@
+/* Figma 2955:12659 + 3934:8284 (Suryagarh) / 2719:16451 + 3980:8523
+   (Design dialogue article) merged into one card: the title/meta panel
+   and the progress strip sit flush, sharing one radius and shadow instead
+   of each carrying their own. margin-top restores the --section-gap the
+   banner above cancels; z-index:1 keeps it painting over a band that
+   tucks under it. */
+.storyOverview_group {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--section-gap);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+  cursor: pointer;
+}

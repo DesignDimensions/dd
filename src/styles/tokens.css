@@ -17,8 +17,8 @@
   /* Figma: "Abhaya Libre" — style Regular (400) */
   --font-serif: 'Abhaya Libre', serif;
 
-  /* Figma: "Adamina" — style Regular (400), used for the Suryagarh
-     project page's pull quotes */
+  /* Figma: "Adamina" — style Regular (400). The display serif for the
+     Suryagarh project page's pull quotes, and Home's to match */
   --font-adamina: 'Adamina', serif;
 
   /* The frame is drawn at a fixed 1440px desktop artboard. */
@@ -78,6 +78,11 @@
   /* Their --drop-elevation-1 and -3 */
   --elevation-rest: drop-shadow(0 10px 19px rgb(0 0 0 / 4%));
   --elevation-hover: drop-shadow(0 30px 30px rgb(0 0 0 / 15%));
+  /* The same two as box-shadow, for frosted surfaces: a filter on the
+     surface or any ancestor becomes its backdrop root, which cuts
+     backdrop-filter off from the page behind so nothing gets blurred. */
+  --shadow-rest: 0 10px 19px rgb(0 0 0 / 4%);
+  --shadow-hover: 0 30px 30px rgb(0 0 0 / 15%);
 
   /* Their house curve, used on every transition */
   --ease-ref: cubic-bezier(0.165, 0.84, 0.44, 1);

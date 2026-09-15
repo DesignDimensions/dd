@@ -1,0 +1,11 @@
+/* Figma 2719:20388 — root frame is white; the flat #f0f0f0 About uses is
+   the ground instead, so the form reads as a box. */
+.contactUs_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+  background-color: #f0f0f0;
+}

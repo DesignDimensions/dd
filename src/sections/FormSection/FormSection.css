@@ -1,0 +1,193 @@
+/* Figma 2719:20411 / 2719:21208 — a white box like every other card.
+   Figma's 120px top / 60px bottom ran straight on into the footer; as a
+   box it closes on 120px. */
+.formSection_section {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+/* Figma 2719:20412 */
+.formSection_aside {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 552px;
+}
+
+/* Figma 2719:20413 */
+.formSection_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2719:20414 — 504px */
+.formSection_intro {
+  max-width: 504px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  letter-spacing: -0.24px;
+  color: #252525;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:20415 */
+.formSection_reach {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.formSection_reachTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Underlines on hover like the footer links. */
+.formSection_email,
+.formSection_link {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.formSection_email {
+  color: #626262;
+}
+
+/* Figma 2719:21217 — underlined at rest */
+.formSection_link {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.formSection_email:hover {
+  background-size: 100% 1px;
+}
+
+/* Figma 2719:20416 */
+.formSection_studio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.formSection_studioName {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.formSection_pin {
+  width: 14px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Figma 2719:20420 — Noto Sans SemiBold 20 at 1.8 */
+.formSection_studioTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:20421 */
+.formSection_address {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.6);
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:20422 — 552px, 40px between fields and the CTA */
+.formSection_form {
+  display: flex;
+  flex: 0 1 552px;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+@media (max-width: 1023.98px) {
+  .formSection_section {
+    flex-direction: column;
+    gap: 48px;
+    padding: 40px var(--m-page-gutter);
+  }
+
+  .formSection_aside {
+    gap: 28px;
+    max-width: none;
+  }
+
+  .formSection_heading {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.384px;
+  }
+
+  .formSection_intro {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.192px;
+  }
+
+  .formSection_form {
+    flex: none;
+    gap: 28px;
+    width: 100%;
+  }
+}

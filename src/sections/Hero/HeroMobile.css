@@ -4,13 +4,15 @@
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
-  margin-bottom: calc(-1 * var(--section-gap));
   /* The top block runs edge to edge and square: a rounded corner here
      would sit at a different width from the boxed sections below it and
-     read as a misalignment. */
+     read as a misalignment. The boxed intro below sits on the page's
+     normal --section-gap, same as Suryagarh's banner and overview card. */
   width: calc(100% + var(--page-inset) * 2);
   margin-inline: calc(-1 * var(--page-inset));
-  margin-bottom: calc(-1 * var(--section-gap));
+  /* The space the fixed HeaderMobile used to take up in flow: its bar
+     plus the pill offset above and below. */
+  padding-top: calc(var(--nav-pill-height) + var(--nav-pill-offset) * 2);
 }
 
 /* Figma "Banner" 2715:10438 — square, full frame width */

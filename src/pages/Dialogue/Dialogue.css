@@ -1,0 +1,48 @@
+/* Figma 2719:24274 — root frame.
+
+   The frame's ground is flat #f0f0f0, with Featured Story, Exploration and
+   Contact painted as #ffeab2, #ffc6c9 and #efddaf bands. As on Home and
+   Work diary, those sections are transparent and a gradient in the same
+   colours shows through them — grey again behind the reading rail between
+   Featured Story and Exploration. Stops are anchored in px from the page's
+   bottom edge, where everything below the article grid sits at a fixed
+   height; the grid above grows with the viewport. */
+.dialogue_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+  background-color: rgb(240, 240, 240);
+  background-image: linear-gradient(
+    0deg,
+    rgb(240, 240, 240) 0,
+    rgb(239, 221, 175) 420px,
+    rgb(255, 198, 201) 950px,
+    rgb(255, 198, 201) 1150px,
+    rgb(240, 240, 240) 1500px,
+    rgb(240, 240, 240) 1800px,
+    rgb(255, 234, 178) 2230px,
+    rgb(255, 234, 178) 2430px,
+    rgb(240, 240, 240) 2800px
+  );
+}
+
+/* Keep this 1024px in step with DESKTOP_MIN_WIDTH in src/lib/breakpoints.js */
+@media (min-width: 1024px) {
+  .dialogue_page {
+    background-image: linear-gradient(
+      0deg,
+      rgb(240, 240, 240) 0,
+      rgb(239, 221, 175) 440px,
+      rgb(255, 198, 201) 1000px,
+      rgb(255, 198, 201) 1300px,
+      rgb(240, 240, 240) 1800px,
+      rgb(240, 240, 240) 2100px,
+      rgb(255, 234, 178) 2650px,
+      rgb(255, 234, 178) 3050px,
+      rgb(240, 240, 240) 3600px
+    );
+  }
+}

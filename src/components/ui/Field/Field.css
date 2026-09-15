@@ -1,0 +1,98 @@
+/* Figma 2719:20424 — label over its field, 24px apart */
+.field_group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Figma 2719:20425 — Noto Sans SemiBold 16/24 */
+.field_label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:20426 — the same pill as the footer form's fields
+   (ContactDesktop), with Figma's 30%-opacity placeholder. The focus fill
+   is the progress strip's #f7f7f7, already in the design. */
+.field_control {
+  display: block;
+  width: 100%;
+  padding: 16px 40px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #000000;
+  border-radius: 28px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  transition: background-color 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.field_control::placeholder,
+.field_placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.field_control:hover,
+.field_control:focus,
+.field_control:focus-within {
+  background-color: #f7f7f7;
+  outline: none;
+}
+
+/* Figma 2719:20438 — 240px tall, text from the top, 48px clear below.
+   The browser's own resize handle stands in for Figma's drawn grip. */
+.field_textarea {
+  min-height: 240px;
+  padding-bottom: 48px;
+  resize: vertical;
+}
+
+/* Figma 2719:21244 — attach icon and file name, 4px apart; 58px like
+   every other pill. */
+.field_file {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-height: 58px;
+  cursor: pointer;
+}
+
+.field_fileIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.field_fileName {
+  min-width: 0;
+  overflow: hidden;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Kept in the accessibility tree and focusable; the pill is its label. */
+.field_fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}

@@ -1,8 +1,15 @@
+/* Fixed to the viewport, so the pill stays in reach down the whole page.
+   Pages still render <Header/> inside their banner, but no ancestor sets
+   transform / filter / contain, so fixed resolves against the viewport
+   rather than that banner. z-index sits above the cards (1) and below the
+   Lightbox (9998). The full-width strip ignores the pointer so it never
+   blocks clicks on content scrolling under it — only the pill takes them. */
 .header_header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 100;
+  pointer-events: none;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -12,22 +19,20 @@
 /* wepresent.wetransfer.com's floating nav pill — a fixed-width capsule
    centred at the top of the frame, not a full-bleed bar.
 
-   filter (the drop-shadow) lives here, on its own element, rather than
-   alongside backdrop-filter as Figma's single "pill" layer implies.
-   Chromium has a standing bug where combining backdrop-filter and filter
-   on the same element can paint the blur as solid black — it surfaced on
-   the Suryagarh hero (a large image likely promotes its own compositing
-   layer) but not here, so the two are split defensively. */
+   Deliberately no filter here or on the surface: a drop-shadow filter
+   makes this the surface's backdrop root, so its blur saw nothing and
+   page text read straight through the 95% white once the header was
+   fixed over content. The shadow is a box-shadow on the surface instead
+   (which also sidesteps Chromium painting backdrop-filter + filter on
+   one element as solid black). */
 .header_pill {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: var(--nav-pill-width);
-  filter: var(--elevation-rest);
-  transition:
-    filter 0.3s var(--ease-ref),
-    width 0.4s var(--ease-ref);
+  pointer-events: auto;
+  transition: width 0.4s var(--ease-ref);
 }
 
 /* Opens into a three-column panel — Explore / Recommended / the studio
@@ -36,14 +41,11 @@
    ease-ref so it doesn't try to overshoot past zero. */
 .header_pillOpen {
   width: var(--nav-pill-open-width);
-  filter: var(--elevation-hover);
-  transition:
-    filter 0.3s var(--ease-ref),
-    width 0.6s var(--ease-bounce);
+  transition: width 0.6s var(--ease-bounce);
 }
 
-/* The frosted-glass surface — background, blur and clipping — split from
-   .header_pill above. */
+/* The frosted-glass surface — background, blur, shadow and clipping —
+   split from .header_pill above. */
 .header_pillSurface {
   display: flex;
   flex-direction: column;
@@ -51,6 +53,12 @@
   border-radius: var(--section-radius);
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(25px);
+  box-shadow: var(--shadow-rest);
+  transition: box-shadow 0.3s var(--ease-ref);
+}
+
+.header_pillOpen .header_pillSurface {
+  box-shadow: var(--shadow-hover);
 }
 
 /* Pinned to the closed pill's width and centred, rather than

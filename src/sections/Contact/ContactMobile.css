@@ -63,6 +63,17 @@
 }
 
 /* Figma "Footer Tags" 2715:11079 / 2715:11520 */
+/* Wraps the interests and fields groups so the pills submit with the
+   fields; spaced like the section around it, so the layout is unchanged. */
+.contactMobile_enquiry {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
 .contactMobile_group {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,11 @@
+/* A project case-study page (Figma 12357:15253). The same presentation as
+   Suryagarh: the banner runs flush, everything below is a box on the
+   project's own ground colour (set inline), --section-gap apart. */
+.project_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+}

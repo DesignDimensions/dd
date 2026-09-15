@@ -1,0 +1,271 @@
+/* Figma 2719:24305 — a white box like Work diary's. Figma's 80px top
+   padding assumed its header bar sat inside the same block; with the
+   header in its own band above, the top matches the 160px bottom. */
+.articles_section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  padding: 160px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+/* Figma 2719:24306 */
+.articles_head {
+  display: flex;
+  gap: 64px;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.articles_textStack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.articles_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.articles_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  white-space: nowrap;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Figma 2719:24313 — 577px wide */
+.articles_intro {
+  width: 577px;
+  min-width: 0;
+  flex-shrink: 1;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Same grid as WorkDiaryDesktop's: three columns at wepresent's 42px
+   grid gap. Figma's rows — featured (3), three singles, wide (2) + single
+   — fill every row exactly. */
+.articles_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2719:24315 — spans the whole row, image beside text as the frame
+   draws it, in the same has-frame recipe as ProjectCard. */
+.articles_featured {
+  position: relative;
+  display: flex;
+  gap: 64px;
+  align-items: stretch;
+  grid-column: 1 / -1;
+  padding: 20px;
+  background-color: #dcf6f8;
+  border-radius: var(--card-radius);
+  overflow: clip;
+  cursor: pointer;
+  filter: var(--elevation-rest);
+  transition: filter 0.3s var(--ease-ref);
+}
+
+/* Figma 2719:24316 — 432 x 404 */
+.articles_featuredMedia {
+  position: relative;
+  flex: 0 1 432px;
+  aspect-ratio: 432 / 404;
+  overflow: hidden;
+  border-radius: var(--card-media-radius);
+}
+
+.articles_featuredImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-ref);
+}
+
+/* Figma 2719:24317 — the text row sits vertically centred, 64px in from
+   the card's right edge (less the frame's own 20px padding). */
+.articles_featuredBody {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+  padding-right: 44px;
+}
+
+/* Figma 2719:24318 */
+.articles_featuredRow {
+  display: flex;
+  flex: 1 1 0;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+/* Figma 2719:24319 — 488px */
+.articles_featuredText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: 488px;
+  min-width: 0;
+}
+
+.articles_cardEyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.144px;
+  color: #252525;
+  white-space: nowrap;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.articles_featuredTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 40px;
+  letter-spacing: -0.24px;
+  color: #000000;
+  white-space: nowrap;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.articles_featuredCopy {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+  color: #252525;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Reference: wepresent's .card-wrapper hover, as ProjectCard */
+.articles_featured:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+  filter: var(--elevation-hover);
+}
+
+.articles_featured:hover .articles_featuredImage {
+  transform: scale(var(--card-zoom));
+}
+
+/* No mobile frame exists; below the desktop breakpoint the grid stacks to
+   one column, at Home's mobile Design Dialogue type sizes. */
+@media (max-width: 1023.98px) {
+  .articles_section {
+    gap: 28px;
+    padding: 40px var(--m-page-gutter);
+  }
+
+  .articles_head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .articles_heading {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.288px;
+  }
+
+  .articles_intro {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.192px;
+  }
+
+  .articles_grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* A two-column span in a one-column grid would add an implicit column. */
+  .articles_grid .projectCard_wide {
+    grid-column: auto;
+  }
+
+  .articles_featured {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 16px 20px;
+  }
+
+  .articles_featuredMedia {
+    flex: none;
+    width: 100%;
+  }
+
+  .articles_featuredBody {
+    padding-right: 0;
+  }
+
+  .articles_featuredTitle {
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  .articles_featuredCopy {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.168px;
+  }
+}

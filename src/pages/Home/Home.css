@@ -9,12 +9,15 @@
   align-items: center;
   width: 100%;
 
+  /* One gap at every width, the same --section-gap scale Suryagarh and
+     About use, in place of the mobile frame's 28px. */
+  gap: var(--section-gap);
+
   /* Framed down both sides and along the bottom, but not the top: the
      header and hero run flush to the top edge of the viewport. */
   padding: 0 var(--page-inset) var(--page-inset);
 
   /* Mobile frame 2715:10365 */
-  gap: 28px;
   background-image: linear-gradient(
     180deg,
     rgb(240, 240, 240) 0%,
@@ -34,7 +37,6 @@
 @media (min-width: 1024px) {
   .home_page {
     /* Desktop frame 2714:8733 */
-    gap: var(--section-gap);
     background-image: linear-gradient(
       180deg,
       rgb(240, 240, 240) 0%,

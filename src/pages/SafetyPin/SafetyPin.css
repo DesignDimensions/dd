@@ -1,0 +1,31 @@
+/* Figma 2719:16435 — root frame. The ground is #f0f0f0 warming to #efddaf
+   behind Contact at the foot of the page (77.5% → 88.9% → 100%). As on
+   Work diary and Design dialogue, the stops are anchored in px from the
+   page's bottom edge, where Contact sits at a fixed height. */
+.safetyPin_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+  background-color: rgb(240, 240, 240);
+  background-image: linear-gradient(
+    0deg,
+    rgb(240, 240, 240) 0,
+    rgb(239, 221, 175) 440px,
+    rgb(240, 240, 240) 1100px
+  );
+}
+
+/* Keep this 1024px in step with DESKTOP_MIN_WIDTH in src/lib/breakpoints.js */
+@media (min-width: 1024px) {
+  .safetyPin_page {
+    background-image: linear-gradient(
+      0deg,
+      rgb(240, 240, 240) 0,
+      rgb(239, 221, 175) 500px,
+      rgb(240, 240, 240) 1250px
+    );
+  }
+}

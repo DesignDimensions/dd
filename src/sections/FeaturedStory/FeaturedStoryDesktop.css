@@ -160,18 +160,19 @@
     'wdth' 100;
 }
 
-/* Figma 2714:8805 — Abhaya Libre with a colour-burn blend */
+/* Figma 2714:8805 — set in Suryagarh's big pull-quote style (QuoteBig:
+   Adamina 40/60) in place of Abhaya Libre 48. The colour-burn blend is
+   kept: it is what tints the quote against the page gradient. */
 .featuredStoryDesktop_quote {
   position: relative;
   width: 100%;
-  font-family: var(--font-serif);
+  font-family: var(--font-adamina);
   font-weight: 400;
-  font-size: 48px;
-  line-height: normal;
-  letter-spacing: -0.576px;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: -0.672px;
   color: #252525;
   text-align: center;
-  font-style: normal;
   mix-blend-mode: color-burn;
   word-break: break-word;
   flex-shrink: 0;

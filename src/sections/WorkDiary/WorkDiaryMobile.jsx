@@ -1,47 +1,22 @@
-import workApag from '@/assets/images/work-apag.jpg'
-import workBangla from '@/assets/images/work-bangla-123.jpg'
-import workFeatured from '@/assets/images/work-featured-15ad.png'
-import workNupur from '@/assets/images/work-nupur-kanoi.jpg'
 import chevron from '@/assets/mobile/chevron.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProductCardMobile from '@/components/ui/ProductCardMobile/ProductCardMobile.jsx'
+import { PROJECTS } from '@/lib/projects'
 
 import './WorkDiaryMobile.css'
 
-const BODY_COPY =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-
 /**
- * Figma 2715:10684 "2".
+ * Figma 2715:10684 "2" — one stacked card per project in lib/projects.js,
+ * linking to each project that has a page. The filter chip reads "Newest" rather than
+ * desktop's "Genre", as the frame states.
  *
- * Mobile shows four stacked cards where desktop shows six in three
- * different layouts, and the filter chip reads "Newest" rather than
- * "Genre". Both are as their frames state them.
+ * Same props as WorkDiaryDesktop; `cta={null}` drops the button.
  */
-const CARDS = [
-  {
-    title: '15 AD',
-    tag: 'Packaging',
-    image: workFeatured,
-    background: '#e0a968',
-    mediaBackground: '#edd0af',
-  },
-  {
-    title: 'Bangla 123',
-    tag: 'Branding',
-    image: workBangla,
-    background: '#b0c3b4',
-  },
-  {
-    title: 'Nupur Kanoi',
-    tag: 'Branding',
-    image: workNupur,
-    background: '#859396',
-  },
-  { title: 'APAG', tag: 'Merchandise', image: workApag, background: '#fff27a' },
-]
-
-export default function WorkDiaryMobile() {
+export default function WorkDiaryMobile({
+  cta = 'View More Projects',
+  filterLabel = 'Newest',
+  limit,
+}) {
   return (
     <section className="workDiaryMobile_section">
       <div className="workDiaryMobile_content">
@@ -53,7 +28,7 @@ export default function WorkDiaryMobile() {
           <button className="workDiaryMobile_filter" type="button">
             <div className="workDiaryMobile_filterLabel">
               <div className="workDiaryMobile_filterTextWrap">
-                <p className="workDiaryMobile_filterText">Newest</p>
+                <p className="workDiaryMobile_filterText">{filterLabel}</p>
               </div>
             </div>
             <div className="workDiaryMobile_filterIconWrap">
@@ -70,20 +45,23 @@ export default function WorkDiaryMobile() {
           </button>
         </div>
 
-        {CARDS.map((card) => (
+        {PROJECTS.slice(0, limit).map((project) => (
           <ProductCardMobile
-            background={card.background}
-            body={BODY_COPY}
-            image={card.image}
-            key={card.title}
-            mediaBackground={card.mediaBackground}
-            tag={card.tag}
-            title={card.title}
+            background={project.background}
+            image={project.image}
+            key={project.slug}
+            tag={project.category}
+            title={project.title}
+            to={project.path}
           />
         ))}
       </div>
 
-      <Cta size="mobile">View More Projects</Cta>
+      {cta ? (
+        <Cta size="mobile" to="/work">
+          {cta}
+        </Cta>
+      ) : null}
     </section>
   )
 }

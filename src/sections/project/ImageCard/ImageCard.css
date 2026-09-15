@@ -1,0 +1,27 @@
+/* A project frame's image section sits on the 1120 column with 64px above
+   and below; as a card it keeps that padding. z-index:1 so a following
+   full-bleed band can tuck under its bottom corners (ShowcaseBand). */
+.imageCard_section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 64px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+.imageCard_image {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+@media (max-width: 1023.98px) {
+  .imageCard_section {
+    padding: 24px var(--m-page-gutter);
+  }
+}

@@ -17,7 +17,8 @@ const STUDIO_BLURB =
   'At Design Dimensions, our mission is to provide meticulously tailored and conceptually fitting design solutions to our clients. We offer a comprehensive suite of services aimed at fortifying brands with clarity, elegance, and pride.'
 
 /**
- * Figma 2714:8735 — sits absolutely at the top of the hero frame.
+ * Figma 2714:8735 — drawn at the top of the hero frame; fixed to the
+ * viewport so it stays put as the page scrolls.
  *
  * Reshaped to match wepresent.wetransfer.com's floating nav pill: a
  * search button and a menu button flank a centred logo, and the menu
@@ -51,14 +52,20 @@ export default function Header() {
               <img alt="" className="header_iconImage" src={searchIcon} />
             </button>
 
-            <div className="header_logo">
+            {/* The logo is the way home, from any page. */}
+            <Link
+              aria-label="Design Dimensions home"
+              className="header_logo"
+              onClick={() => setIsOpen(false)}
+              to="/"
+            >
               <div className="header_logoGroup1">
                 <img alt="" className="header_logoImage" src={logoGroup1} />
               </div>
               <div className="header_logoGroup2">
                 <img alt="" className="header_logoImage" src={logoGroup2} />
               </div>
-            </div>
+            </Link>
 
             <button
               aria-controls="header-nav"
@@ -110,7 +117,7 @@ export default function Header() {
 
               <div className="header_menuColumn">
                 <p className="header_menuEyebrow">Recommended</p>
-                <WorkPreview />
+                <WorkPreview onNavigate={() => setIsOpen(false)} />
               </div>
 
               <div className="header_menuColumn">

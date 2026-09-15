@@ -1,17 +1,18 @@
-/* Figma 2714:8744 */
+/* Figma 2714:8744 — boxed like Suryagarh's opening card
+   (ProjectOverview.css): the first white box under the hero, with its
+   120px padding, radius and elevation, rather than Figma's square
+   full-bleed band. */
 .snackFactoryDesktop_section {
   display: flex;
   gap: 64px;
   align-items: flex-start;
-  padding: 80px var(--bleed-gutter);
+  width: 100%;
+  padding: 120px var(--page-gutter);
   background-color: #ffffff;
+  border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
-  /* The top block runs edge to edge and square: a rounded corner here
-     would sit at a different width from the boxed sections below it and
-     read as a misalignment. */
-  width: calc(100% + var(--page-inset) * 2);
-  margin-inline: calc(-1 * var(--page-inset));
+  filter: var(--elevation-section);
 }
 
 /* Figma 2714:8745 — measured 319x170 at x=160.
@@ -91,17 +92,18 @@
   flex-shrink: 0;
 }
 
+/* Suryagarh's serif display style (ProjectOverview's quote): Adamina
+   40/56 in black, in place of Figma's Abhaya Libre. */
 .snackFactoryDesktop_intro {
   position: relative;
   flex: 1 0 0;
   min-width: 1px;
-  font-family: var(--font-serif);
+  font-family: var(--font-adamina);
   font-weight: 400;
   font-size: 40px;
-  line-height: normal;
+  line-height: 56px;
   letter-spacing: -0.48px;
-  color: #252525;
-  font-style: normal;
+  color: #000000;
   word-break: break-word;
 }
 

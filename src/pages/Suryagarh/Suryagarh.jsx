@@ -6,18 +6,14 @@ import grid44 from '@/assets/suryagarh/grid-44.jpg'
 import grid59 from '@/assets/suryagarh/grid-59.jpg'
 import imageFull from '@/assets/suryagarh/image-full.jpg'
 import showcaseBand from '@/assets/suryagarh/showcase-band.jpg'
-import Contact from '@/sections/Contact/Contact.jsx'
-import Exploration from '@/sections/Exploration/Exploration.jsx'
-import MoreProjects from '@/sections/suryagarh/MoreProjects/MoreProjects.jsx'
-import ProjectBanner from '@/sections/suryagarh/ProjectBanner/ProjectBanner.jsx'
-import ProjectOverview from '@/sections/suryagarh/ProjectOverview/ProjectOverview.jsx'
-import ProjectProgress from '@/sections/suryagarh/ProjectProgress/ProjectProgress.jsx'
-import ProjectTextBlock from '@/sections/suryagarh/ProjectTextBlock/ProjectTextBlock.jsx'
-import QuoteBig from '@/sections/suryagarh/QuoteBig/QuoteBig.jsx'
-import ShowcaseBand from '@/sections/suryagarh/ShowcaseBand/ShowcaseBand.jsx'
+import FooterZone from '@/sections/FooterZone/FooterZone.jsx'
+import ShowcaseBand from '@/sections/ShowcaseBand/ShowcaseBand.jsx'
+import StoryOverview from '@/sections/StoryOverview/StoryOverview.jsx'
+import MoreProjects from '@/sections/project/MoreProjects/MoreProjects.jsx'
+import ProjectBanner from '@/sections/project/ProjectBanner/ProjectBanner.jsx'
+import ProjectTextBlock from '@/sections/project/ProjectTextBlock/ProjectTextBlock.jsx'
+import QuoteBig from '@/sections/project/QuoteBig/QuoteBig.jsx'
 
-import { useAudioPlayer } from '@/hooks/useAudioPlayer'
-import { useGravityZone } from '@/hooks/useGravityZone'
 import { useZoomable } from '@/hooks/useZoomable'
 
 import './Suryagarh.css'
@@ -33,13 +29,9 @@ import './Suryagarh.css'
  * Presentation follows Home/About exactly: the banner runs flush to the
  * viewport, everything below it is a white box on a #f0f0f0 ground with
  * shared --page-inset padding, --section-gap between boxes, and
- * --section-radius corners (MoreProjects keeps Figma's own 40px radius
- * as a deliberate exception — see MoreProjects.css).
+ * --section-radius corners.
  */
 export default function Suryagarh() {
-  const player = useAudioPlayer(storyAudio)
-  const overviewZoneRef = useGravityZone(player.isPlaying ? 'Pause Audio' : 'Play Audio')
-
   // Figma 2955:12696 — GalleryTrio's top two rows, now living inside the
   // first ProjectTextBlock's card instead of their own section (see
   // ProjectTextBlock's `media` prop); its second full-width row
@@ -57,13 +49,15 @@ export default function Suryagarh() {
     <div className="suryagarh_page">
       <ProjectBanner />
 
-      {/* Figma 2955:12659 + 3934:8284 — one card: quote/meta above, the
-          progress strip below, no gap between them. The whole card is the
-          audio player's hover/click zone, not just the progress strip. */}
-      <div className="suryagarh_overviewGroup" onClick={player.toggle} ref={overviewZoneRef}>
-        <ProjectOverview isPlaying={player.isPlaying} onTogglePlay={player.toggle} />
-        <ProjectProgress audioRef={player.audioRef} isPlaying={player.isPlaying} src={storyAudio} />
-      </div>
+      <StoryOverview
+        audio={storyAudio}
+        meta={[
+          { label: 'Client', value: 'Pappadmalji' },
+          { label: 'Project', value: 'Branding & Packaging' },
+        ]}
+        tags={['Branding', 'Packaging']}
+        title="Pappadmalji : Reframing the Familiar"
+      />
       <ShowcaseBand src={showcaseBand} />
       {/* Figma 2955:12679 */}
       <ProjectTextBlock
@@ -100,7 +94,7 @@ export default function Suryagarh() {
         eiusmod tempor incididunt ut labore et dolore magna.
       </QuoteBig>
       {/* Figma 2955:12708 */}
-      <ProjectTextBlock showLeft>
+      <ProjectTextBlock title="A name with a memory">
         <p className="projectTextBlock_paragraph">
           The name came first. We called it Papadmalji. The name already held warmth, almost conversational, almost human. It felt less like a brand and more like someone you might know. Instead of treating it as a static mark, we imagined lineage. A family shaped by trade, spice, and desert towns. The turbans, the moustaches, the silhouettes were not decorative caricatures but subtle acknowledgments of Rajasthan’s mercantile past. Traders who once moved flavour across borders long before packaging did. The brand began to carry personality, not just product.
         </p>
@@ -136,13 +130,8 @@ export default function Suryagarh() {
         about reframing the familiar until it could finally be seen.
       </QuoteBig>
       <ShowcaseBand flush src={imageFull} />
-      <MoreProjects />
-      {/* Footer zone: both transparent and full bleed, run together as one
-          continuous band sitting on the page ground (see Suryagarh.css). */}
-      <div className="suryagarh_footerZone">
-        <Exploration variant="transparent" />
-        <Contact variant="transparent" />
-      </div>
+      <MoreProjects current="suryagarh" />
+      <FooterZone />
     </div>
   )
 }

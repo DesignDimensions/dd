@@ -44,14 +44,20 @@ export default function HeaderMobile() {
               <img alt="" className="headerMobile_iconImage" src={searchIcon} />
             </button>
 
-            <div className="headerMobile_logo">
+            {/* The logo is the way home, from any page. */}
+            <Link
+              aria-label="Design Dimensions home"
+              className="headerMobile_logo"
+              onClick={() => setIsOpen(false)}
+              to="/"
+            >
               <div className="headerMobile_logoGroup1">
                 <img alt="" className="headerMobile_logoImage" src={logoGroup1} />
               </div>
               <div className="headerMobile_logoGroup2">
                 <img alt="" className="headerMobile_logoImage" src={logoGroup2} />
               </div>
-            </div>
+            </Link>
 
             <button
               aria-controls="header-nav-mobile"

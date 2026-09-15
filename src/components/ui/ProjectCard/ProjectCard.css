@@ -29,6 +29,16 @@
   width: 100%;
 }
 
+/* Spans two grid columns, with Figma's 736x360 wide media frame instead
+   of the square (Figma 2719:24343). */
+.projectCard_wide {
+  grid-column: span 2;
+}
+
+.projectCard_wide .projectCard_media {
+  aspect-ratio: 736 / 360;
+}
+
 /* wepresent's .projectCard_card-media_wrapper: overflow:hidden here (not just on
    .projectCard_card) so the hover zoom clips right at the image's own box instead
    of bleeding down over .projectCard_footer's text — .projectCard_card's own overflow:clip
@@ -167,4 +177,10 @@
 
 .projectCard_card:hover .projectCard_image {
   transform: scale(var(--card-zoom));
+}
+
+/* A project still waiting on its cover: the media box keeps its shape as
+   a faint tint of the card's own frame colour. */
+.projectCard_mediaEmpty {
+  background-color: rgb(0 0 0 / 6%);
 }

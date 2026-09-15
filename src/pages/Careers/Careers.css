@@ -1,0 +1,44 @@
+/* Figma 2719:21185 — root frame is white; the flat #f0f0f0 About uses is
+   the ground instead, as on Contact us. */
+.careers_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+  background-color: #f0f0f0;
+}
+
+/* Figma 2719:21232 — the link fields, then "Add More +" right-aligned
+   beneath, 24px apart */
+.careers_portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* Figma 2719:21237 */
+.careers_addMore {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  letter-spacing: -0.24px;
+  color: #000000;
+  cursor: pointer;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+  background-image: linear-gradient(#000000, #000000);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.careers_addMore:hover {
+  background-size: 100% 1px;
+}

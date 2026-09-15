@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
 import { cn } from '@/lib/cn'
 
@@ -17,6 +19,16 @@ import './ProjectCard.css'
  * `fluid` fills the card's container instead of keeping Figma's fixed
  * 352px rail width — for a card sitting in a responsive grid
  * (WorkDiaryDesktop) rather than Carousel's fixed-width scroll rail.
+ *
+ * `wide` is a fluid card spanning two grid columns, with Figma's 736x360
+ * wide media frame in place of the square (Design dialogue page).
+ *
+ * `glyph` picks the icon button's glyph — see ArrowCircle.
+ *
+ * `to` makes the whole card a link to that route.
+ *
+ * `image`, `eyebrow` and `body` may be left out: a project still waiting
+ * on its cover keeps an empty, tinted media box rather than a stand-in.
  */
 export default function ProjectCard({
   image,
@@ -25,20 +37,30 @@ export default function ProjectCard({
   body,
   background,
   fluid = false,
+  wide = false,
+  glyph = 'arrow',
+  to,
 }) {
+  const Root = to ? Link : 'div'
+
   return (
-    <div
-      className={cn('projectCard_card', fluid && 'projectCard_fluid')}
+    <Root
+      className={cn(
+        'projectCard_card',
+        (fluid || wide) && 'projectCard_fluid',
+        wide && 'projectCard_wide',
+      )}
       style={{ backgroundColor: background }}
+      {...(to && { to })}
     >
-      <div className="projectCard_media">
-        <img alt="" className="projectCard_image" src={image} />
+      <div className={cn('projectCard_media', !image && 'projectCard_mediaEmpty')}>
+        {image ? <img alt="" className="projectCard_image" src={image} /> : null}
       </div>
       <div className="projectCard_footer">
         <div className="projectCard_textStack">
           <div className="projectCard_stack12">
             <div className="projectCard_stack8">
-              <p className="projectCard_eyebrow">{eyebrow}</p>
+              {eyebrow ? <p className="projectCard_eyebrow">{eyebrow}</p> : null}
               <div className="projectCard_headingRow">
                 <div className="projectCard_title">
                   {title.map((line) => (
@@ -48,12 +70,12 @@ export default function ProjectCard({
                   ))}
                 </div>
               </div>
-              <p className="projectCard_body">{body}</p>
+              {body ? <p className="projectCard_body">{body}</p> : null}
             </div>
           </div>
         </div>
-        <IconButton />
+        <IconButton glyph={glyph} />
       </div>
-    </div>
+    </Root>
   )
 }

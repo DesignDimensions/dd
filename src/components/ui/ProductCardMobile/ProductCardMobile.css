@@ -113,3 +113,8 @@
 .productCardMobile_card:hover .productCardMobile_image {
   transform: scale(var(--card-zoom));
 }
+
+/* A project still waiting on its cover — see ProjectCard. */
+.productCardMobile_mediaEmpty {
+  background-color: rgb(0 0 0 / 6%);
+}

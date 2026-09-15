@@ -3,22 +3,25 @@ import logoGroup2 from '@/assets/mobile/logo-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
+import { ENQUIRY_FIELDS, useEnquiryForm } from '@/hooks/useEnquiryForm'
 import { cn } from '@/lib/cn'
 
 import './ContactMobile.css'
 
-/** Figma 2715:11081 — seven tags, where desktop's interest list has eight */
+/**
+ * Figma 2715:11081 — seven tags, where desktop's interest list has eight.
+ * The frame draws two filled to show the selected state; here they are
+ * toggles and none start selected.
+ */
 const INTERESTS = [
-  { label: 'Packaging design', variant: 'filled' },
-  { label: 'Identity design', variant: 'outline' },
-  { label: 'Web design', variant: 'filled' },
-  { label: 'Installation design', variant: 'outline' },
-  { label: 'Communication design', variant: 'outline' },
-  { label: 'Social Media', variant: 'outline' },
-  { label: 'Brand Films', variant: 'outline' },
+  'Packaging design',
+  'Identity design',
+  'Web design',
+  'Installation design',
+  'Communication design',
+  'Social Media',
+  'Brand Films',
 ]
-
-const FIELDS = ['Your name', 'Email address', 'Phone number']
 
 /** Figma 2715:11108 — same 281-wide absolute grid as desktop */
 const FOOTER_LINKS = [
@@ -37,6 +40,8 @@ const FOOTER_LINKS = [
  * two columns side by side, and the heading gains a full stop.
  */
 export default function ContactMobile({ variant = 'transparent' }) {
+  const { handleSubmit, interests, submitLabel, toggleInterest } = useEnquiryForm()
+
   return (
     <section className={cn('contactMobile_section', `contactMobile_${variant}`)}>
       <div className="contactMobile_heading">
@@ -44,36 +49,48 @@ export default function ContactMobile({ variant = 'transparent' }) {
         <p className="contactMobile_title">This could be a start of a new relation.</p>
       </div>
 
-      <div className="contactMobile_group">
-        <p className="contactMobile_groupLabel">Pick Your Interest</p>
-        <div className="contactMobile_tags">
-          {INTERESTS.map((interest) => (
-            <Tag key={interest.label} size="mobile" variant={interest.variant}>
-              {interest.label}
-            </Tag>
-          ))}
-        </div>
-      </div>
-
-      <div className="contactMobile_group">
-        <p className="contactMobile_groupLabel">Your Information</p>
-        <div className="contactMobile_form">
-          <div className="contactMobile_fields">
-            {FIELDS.map((field) => (
-              <input
-                aria-label={field}
-                className="contactMobile_field"
-                key={field}
-                placeholder={field}
-                type="text"
-              />
+      <form aria-label="Enquiry" className="contactMobile_enquiry" onSubmit={handleSubmit}>
+        <div className="contactMobile_group">
+          <p className="contactMobile_groupLabel">Pick Your Interest</p>
+          <div aria-label="Pick your interest" className="contactMobile_tags" role="group">
+            {INTERESTS.map((interest) => (
+              <Tag
+                key={interest}
+                onClick={() => toggleInterest(interest)}
+                selected={interests.includes(interest)}
+                size="mobile"
+              >
+                {interest}
+              </Tag>
+            ))}
+            {interests.map((interest) => (
+              <input key={interest} name="interests" type="hidden" value={interest} />
             ))}
           </div>
-          <Cta size="mobile" type="submit">
-            Submit
-          </Cta>
         </div>
-      </div>
+
+        <div className="contactMobile_group">
+          <p className="contactMobile_groupLabel">Your Information</p>
+          <div className="contactMobile_form">
+            <div className="contactMobile_fields">
+              {ENQUIRY_FIELDS.map((field) => (
+                <input
+                  aria-label={field.label}
+                  autoComplete={field.autoComplete}
+                  className="contactMobile_field"
+                  key={field.name}
+                  name={field.name}
+                  placeholder={field.label}
+                  type={field.type}
+                />
+              ))}
+            </div>
+            <Cta size="mobile" type="submit">
+              {submitLabel}
+            </Cta>
+          </div>
+        </div>
+      </form>
 
       {/* Figma 2715:11107 — a solid 1px rule, not the vector desktop uses */}
       <div className="contactMobile_divider" />

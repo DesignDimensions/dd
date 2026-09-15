@@ -4,23 +4,24 @@ import logoGroup2 from '@/assets/icons/logo-footer-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 
+import { ENQUIRY_FIELDS, useEnquiryForm } from '@/hooks/useEnquiryForm'
 import { cn } from '@/lib/cn'
 
 import './ContactDesktop.css'
 
-/** Figma 2715:11785 / 11787 / 11789 */
-const FIELDS = ['Your name', 'Email address', 'Phone number']
-
-/** Figma 2715:11794 – 11801 */
+/**
+ * Figma 2715:11794 – 11801. The frame draws the first two filled to show
+ * the selected state; here they are toggles and none start selected.
+ */
 const INTERESTS = [
-  { label: 'Identity design', variant: 'filled' },
-  { label: 'Packaging design', variant: 'filled' },
-  { label: 'Web design', variant: 'outline' },
-  { label: 'Communication design', variant: 'outline' },
-  { label: 'Social media', variant: 'outline' },
-  { label: 'Brand film', variant: 'outline' },
-  { label: 'Corporate gifting', variant: 'outline' },
-  { label: 'Wedding cards', variant: 'outline' },
+  'Identity design',
+  'Packaging design',
+  'Web design',
+  'Communication design',
+  'Social media',
+  'Brand film',
+  'Corporate gifting',
+  'Wedding cards',
 ]
 
 /** Figma 2715:11808 – 11813, placed on a 281x64 grid by absolute offset */
@@ -35,9 +36,11 @@ const FOOTER_LINKS = [
 
 /** Figma 2715:11778 */
 export default function ContactDesktop({ variant = 'transparent' }) {
+  const { handleSubmit, interests, submitLabel, toggleInterest } = useEnquiryForm()
+
   return (
     <section className={cn('contactDesktop_section', `contactDesktop_${variant}`)}>
-      <div className="contactDesktop_body">
+      <form aria-label="Enquiry" className="contactDesktop_body" onSubmit={handleSubmit}>
         <div className="contactDesktop_textStack">
           <div className="contactDesktop_stack12">
             <div className="contactDesktop_stack8">
@@ -57,13 +60,15 @@ export default function ContactDesktop({ variant = 'transparent' }) {
               <p className="contactDesktop_columnHeading">Your Information</p>
             </div>
             <div className="contactDesktop_fields">
-              {FIELDS.map((field) => (
+              {ENQUIRY_FIELDS.map((field) => (
                 <input
-                  aria-label={field}
+                  aria-label={field.label}
+                  autoComplete={field.autoComplete}
                   className="contactDesktop_field"
-                  key={field}
-                  placeholder={field}
-                  type="text"
+                  key={field.name}
+                  name={field.name}
+                  placeholder={field.label}
+                  type={field.type}
                 />
               ))}
             </div>
@@ -73,18 +78,25 @@ export default function ContactDesktop({ variant = 'transparent' }) {
             <div className="contactDesktop_columnHeadingRow">
               <p className="contactDesktop_columnHeading">Pick your interest</p>
             </div>
-            <div className="contactDesktop_interests">
+            <div aria-label="Pick your interest" className="contactDesktop_interests" role="group">
               {INTERESTS.map((interest) => (
-                <Tag key={interest.label} variant={interest.variant}>
-                  {interest.label}
+                <Tag
+                  key={interest}
+                  onClick={() => toggleInterest(interest)}
+                  selected={interests.includes(interest)}
+                >
+                  {interest}
                 </Tag>
+              ))}
+              {interests.map((interest) => (
+                <input key={interest} name="interests" type="hidden" value={interest} />
               ))}
             </div>
           </div>
         </div>
 
-        <Cta type="submit">Submit</Cta>
-      </div>
+        <Cta type="submit">{submitLabel}</Cta>
+      </form>
 
       <div className="contactDesktop_divider">
         <div className="contactDesktop_dividerInner">

@@ -65,27 +65,53 @@
   color: #ffffff;
 }
 
-/* Hover inverts each variant into the other. */
+/* Hover inverts each variant into the other — not on toggles, below. */
 
-.tag_outline:hover {
+.tag_outline:not(.tag_toggle):hover {
   background-color: #000000;
   border-color: #000000;
 }
 
-.tag_outline:hover .tag_text {
+.tag_outline:not(.tag_toggle):hover .tag_text {
   color: #ffffff;
 }
 
-.tag_filled:hover {
+.tag_filled:not(.tag_toggle):hover {
   background-color: transparent;
   border: 1px solid #000000;
   padding: 11px 23px;
 }
 
-.tag_filled.tag_mobile:hover {
+.tag_filled.tag_mobile:not(.tag_toggle):hover {
   padding: 7px 19px;
 }
 
-.tag_filled:hover .tag_text {
+.tag_filled:not(.tag_toggle):hover .tag_text {
   color: #000000;
+}
+
+/* Toggle tags (Tag with onClick): filled is selected, outline is not.
+   They skip the hover inversion: it previews exactly the state a click
+   lands on, so the click itself would look like it did nothing. Hover
+   only tints instead, and only where there is a real pointer hover, so a
+   tap on a phone doesn't leave the tint stuck on. The selected state keeps
+   a 1px border too, so toggling never nudges the pills around it. */
+.tag_toggle.tag_filled {
+  border: 1px solid #000000;
+}
+
+@media (hover: hover) {
+  .tag_toggle.tag_outline:hover {
+    background-color: rgb(0 0 0 / 8%);
+  }
+
+  .tag_toggle.tag_filled:hover {
+    background-color: #333333;
+    border-color: #333333;
+  }
+}
+
+.tag_toggle:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
 }

@@ -161,12 +161,11 @@
 }
 
 /* --- content, Figma 2714:8764 ---
-   A real grid rather than a flex column + carousel + a separate flex
-   row: wepresent's own grid-item_md is just grid-column-end: span 2
-   inside a grid like this one, so .workDiaryDesktop_featured and .workDiaryDesktop_wideCard use that
-   directly instead of three different one-off layout mechanisms. Card
-   order in the JSX is arranged as [2,1,1,2,1,1] column-spans so every
-   row fills exactly, with no auto-placement gap to work around. */
+   A real grid: wepresent's own grid-item_md is just a column span inside a
+   grid like this one. The projects come from lib/projects.js, so their
+   count isn't fixed — the featured card takes the whole first row, as the
+   Work diary frame (2715:12234) lays it out, and the rest follow three to
+   a row, so no row is left with a gap in its middle. */
 .workDiaryDesktop_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -175,20 +174,18 @@
   flex-shrink: 0;
 }
 
-/* --- featured card, Figma 2714:8765 — restructured to the same
-   stacked, single-frame-colour recipe as every other card on the page
-   (image inset on top, text below, one background as the frame)
-   instead of Figma's original side-by-side split, which read as a
-   different card format entirely once the rest of the grid followed
-   wepresent's has-frame recipe. Sized like .workDiaryDesktop_wideCard, since both span
-   2 of 3 grid columns. */
+/* --- featured card, Figma 2714:8765 — restructured to the same stacked,
+   single-frame-colour recipe as every other card on the page (image inset
+   on top, text below, one background as the frame) instead of Figma's
+   original side-by-side split, which read as a different card format
+   entirely once the rest of the grid followed wepresent's has-frame
+   recipe. The frame colour is the project's own, set inline. */
 .workDiaryDesktop_featured {
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 20px 20px 30px;
-  grid-column: span 2;
-  background-color: #e0a968;
+  grid-column: 1 / -1;
   border-radius: var(--card-radius);
   overflow: clip;
   flex-shrink: 0;
@@ -200,10 +197,11 @@
   filter: var(--elevation-hover);
 }
 
+/* Figma's 736x360 wide media frame */
 .workDiaryDesktop_featuredMedia {
   position: relative;
   width: 100%;
-  aspect-ratio: 736 / 360; /* matches .workDiaryDesktop_wideMedia — both span 2 columns */
+  aspect-ratio: 736 / 360;
   overflow: hidden;
   border-radius: var(--card-media-radius);
   flex-shrink: 0;
@@ -293,118 +291,6 @@
   flex-shrink: 0;
 }
 
-/* --- wide card, Figma 2714:8789 — spans 2 columns, same as .workDiaryDesktop_featured.
-   Same has-frame recipe as ProjectCard: one background colours the
-   whole card, media sits inset inside it instead of running edge to
-   edge, matching the rest of the grid. */
-.workDiaryDesktop_wideCard {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 20px 20px 30px;
-  grid-column: span 2;
-  background-color: #fac97f;
-  border-radius: var(--card-radius);
-  overflow: clip;
-  filter: var(--elevation-rest);
-  transition: filter 0.3s var(--ease-ref);
-}
-
-.workDiaryDesktop_wideCard:hover {
-  filter: var(--elevation-hover);
-}
-
-/* wepresent's .card-media_wrapper: overflow:hidden right on the media
-   box so the hover zoom clips at the image's own bounds, at a nested
-   radius since the image now sits inset rather than flush to the
-   card's corners. Figma crops this image by offsetting/scaling it
-   inside the frame — .workDiaryDesktop_wideImage's percentages are relative to this
-   box either way, so that crop is unaffected by the inset. */
-.workDiaryDesktop_wideMedia {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 736 / 360;
-  overflow: hidden;
-  border-radius: var(--card-media-radius);
-  flex-shrink: 0;
-}
-
-.workDiaryDesktop_wideImage {
-  position: absolute;
-  top: -12.85%;
-  left: -5.09%;
-  width: 110.87%;
-  height: 162.57%;
-  max-width: none;
-  transition: transform 0.5s var(--ease-ref);
-}
-
-.workDiaryDesktop_wideCard:hover .workDiaryDesktop_wideImage {
-  transform: scale(var(--card-zoom));
-}
-
-.workDiaryDesktop_wideBody {
-  position: relative;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.workDiaryDesktop_wideTextStack {
-  position: relative;
-  display: flex;
-  flex: 1 0 0;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 1px;
-}
-
-.workDiaryDesktop_cardEyebrow {
-  width: 100%;
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: -0.144px;
-  color: #252525;
-  word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
-}
-
-.workDiaryDesktop_cardTitle {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: -0.24px;
-  color: #000000;
-  white-space: nowrap;
-  word-break: break-word;
-  font-variation-settings:
-    'CTGR' 100,
-    'wdth' 100;
-}
-
-.workDiaryDesktop_cardCopy {
-  width: 100%;
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
-  word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
-}
-
 .workDiaryDesktop_genre:hover {
   background-color: #000000;
 }
@@ -418,8 +304,7 @@
   filter: invert(1);
 }
 
-.workDiaryDesktop_wideCard:hover {
-  --icon-bg: #000000;
-  --icon-ring: transparent;
-  --icon-glyph: #ffffff;
+/* A project still waiting on its cover — see ProjectCard. */
+.workDiaryDesktop_featuredMediaEmpty {
+  background-color: rgb(0 0 0 / 6%);
 }

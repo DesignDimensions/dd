@@ -1,0 +1,10 @@
+/* Figma 2715:13252 / 2719:24276 — 144px, full bleed. The header itself is
+   fixed to the viewport, so the band is the page ground it sits over
+   before the first card scrolls up beneath it. */
+.headerBand_band {
+  position: relative;
+  width: calc(100% + var(--page-inset) * 2);
+  height: 144px;
+  margin-inline: calc(-1 * var(--page-inset));
+  flex-shrink: 0;
+}

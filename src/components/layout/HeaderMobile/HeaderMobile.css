@@ -1,6 +1,13 @@
 /* Figma 4840:9211, reshaped into the same floating nav pill as the
-   desktop Header — stacked in flow above the banner, not overlaid. */
+   desktop Header. Fixed to the viewport like Header — see Header.css.
+   Figma stacks it above the banner rather than over it, so HeroMobile
+   reserves the header's height as top padding. */
 .headerMobile_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -8,19 +15,15 @@
   flex-shrink: 0;
 }
 
-/* filter split from backdrop-filter — see Header.css for why. */
+/* No filter here — the shadow lives on the surface so its backdrop blur
+   works; see Header.css for why. */
 .headerMobile_pill {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   width: var(--nav-pill-width);
-  filter: var(--elevation-rest);
-  transition: filter 0.3s var(--ease-ref);
-}
-
-.headerMobile_pillOpen {
-  filter: var(--elevation-hover);
+  pointer-events: auto;
 }
 
 .headerMobile_pillSurface {
@@ -30,6 +33,12 @@
   border-radius: var(--section-radius);
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(25px);
+  box-shadow: var(--shadow-rest);
+  transition: box-shadow 0.3s var(--ease-ref);
+}
+
+.headerMobile_pillOpen .headerMobile_pillSurface {
+  box-shadow: var(--shadow-hover);
 }
 
 .headerMobile_bar {

@@ -1,17 +1,17 @@
-/* Figma 2715:10544 */
+/* Figma 2715:10544 — boxed like Suryagarh's opening card at this size
+   (ProjectOverview.css): 40px padding, radius and elevation, rather than
+   Figma's square full-bleed band. */
 .snackFactoryMobile_section {
   display: flex;
   flex-direction: column;
   gap: 28px;
   align-items: flex-start;
-  padding: 40px var(--m-bleed-gutter);
+  width: 100%;
+  padding: 40px var(--m-page-gutter);
   background-color: #ffffff;
+  border-radius: var(--section-radius);
   flex-shrink: 0;
-  /* The top block runs edge to edge and square: a rounded corner here
-     would sit at a different width from the boxed sections below it and
-     read as a misalignment. */
-  width: calc(100% + var(--page-inset) * 2);
-  margin-inline: calc(-1 * var(--page-inset));
+  filter: var(--elevation-section);
 }
 
 .snackFactoryMobile_heading {
@@ -38,15 +38,16 @@
   flex-shrink: 0;
 }
 
+/* Adamina in black, as on desktop; the size stays as the mobile frame
+   states it. */
 .snackFactoryMobile_intro {
   width: 100%;
-  font-family: var(--font-serif);
+  font-family: var(--font-adamina);
   font-weight: 400;
   font-size: 16px;
   line-height: normal;
   letter-spacing: -0.192px;
-  color: #252525;
-  font-style: normal;
+  color: #000000;
   word-break: break-word;
 }
 

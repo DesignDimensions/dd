@@ -1,0 +1,148 @@
+/* Figma 2719:20398 / 2719:21195 — 736px, edge to edge and square, like
+   every top banner. */
+.formHero_hero {
+  position: relative;
+  width: calc(100% + var(--page-inset) * 2);
+  height: 736px;
+  margin-inline: calc(-1 * var(--page-inset));
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.formHero_image {
+  position: absolute;
+  left: 50%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Figma 2719:20399 — a 2125x1594 frame turned 180deg at (-170, -200),
+   anchored to the centred 1440 frame. It widens past 2125px on larger
+   screens (by the 345px its offset needs) so it always covers. */
+.formHero_ocean {
+  background-color: #ffba7a;
+}
+
+.formHero_ocean .formHero_image {
+  top: -200px;
+  width: max(2125px, calc(100% + 346px));
+  height: 1594px;
+  transform: translateX(calc(-50% + 172.5px)) rotate(180deg);
+}
+
+/* Figma 2719:21195 / 2719:21196 — a 3359x1889 building multiplied over a
+   yellow-to-olive gradient, at (-630, -400). */
+.formHero_building {
+  background-image: linear-gradient(180deg, #ffda7a 37.947%, #6f8050 114.56%);
+}
+
+.formHero_building .formHero_image {
+  top: -400px;
+  width: max(3359.311px, calc(100% + 660px));
+  height: 1889px;
+  transform: translateX(calc(-50% + 329.656px));
+  mix-blend-mode: multiply;
+}
+
+/* Figma 2719:20400 — 735px, on the content column, centred 74px above the
+   band's middle. */
+.formHero_text {
+  position: absolute;
+  top: calc(50% - 74px);
+  left: var(--bleed-gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(735px, calc(100% - var(--bleed-gutter) * 2));
+  transform: translateY(-50%);
+}
+
+/* Figma 2719:20403 */
+.formHero_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 20px;
+  letter-spacing: -0.288px;
+  color: #e2e2e2;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:20404 — two hard lines */
+.formHero_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: -0.768px;
+  color: #ffffff;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.formHero_line {
+  display: block;
+}
+
+/* Figma 2719:20407 / 2719:20409 — 40px, 10% white, 40px in from each edge */
+.formHero_arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%);
+}
+
+.formHero_prev {
+  left: 40px;
+}
+
+.formHero_next {
+  right: 40px;
+}
+
+.formHero_arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.formHero_next .formHero_arrowIcon {
+  transform: rotate(180deg);
+}
+
+/* No mobile frame: the band shortens as ProjectBanner's does, and the
+   heading drops to the mobile heading scale. */
+@media (max-width: 1023.98px) {
+  .formHero_hero {
+    height: 420px;
+  }
+
+  .formHero_text {
+    top: calc(50% + 40px);
+    left: var(--m-bleed-gutter);
+    width: calc(100% - var(--m-bleed-gutter) * 2);
+  }
+
+  .formHero_eyebrow {
+    font-size: 16px;
+    letter-spacing: -0.192px;
+  }
+
+  .formHero_heading {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.384px;
+  }
+
+  .formHero_arrow {
+    display: none;
+  }
+}

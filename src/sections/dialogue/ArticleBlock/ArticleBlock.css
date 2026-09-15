@@ -1,0 +1,159 @@
+/* Figma 2719:16467 / 2719:16492 — Figma rounds only the corners facing
+   away from the paper band between the two; as boxes on the page ground
+   both take the full --section-radius, like every other card. z-index:1
+   so the band can tuck under the first card's bottom corners
+   (ShowcaseBand). */
+.articleBlock_section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: flex-start;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  overflow: clip;
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+/* Figma 2719:16468 — 200 + 880 across the 1120 column */
+.articleBlock_row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Figma 2719:16469 */
+.articleBlock_label {
+  flex: 0 0 200px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #626262;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:16470 — 880px. Figma separates paragraphs with an empty
+   line; one line of the 24px body is ~32px. */
+.articleBlock_content {
+  display: flex;
+  flex: 0 1 880px;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+/* Figma 2719:16471 — Abhaya Libre 40 in the frame, set in the site's
+   Adamina display serif at Suryagarh's 40/56. */
+.articleBlock_lead {
+  font-family: var(--font-adamina);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+  color: #000000;
+  word-break: break-word;
+}
+
+/* Figma 2719:16490 */
+.articleBlock_body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: -0.288px;
+  color: #000000;
+  word-break: break-word;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+/* Figma 2719:16474 — exported whole, since it is built from masks, crops
+   and IBM Plex Serif type. */
+.articleBlock_image {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Figma 2719:16499 — rebuilt from its source photo: an 880x1090 panel,
+   the photo at 1121px square, and a blurred 50% luminosity copy of it 17px
+   to the right. Offsets are percentages of the panel so it scales. */
+.articleBlock_collage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 880 / 1090;
+  background-color: #ffcaca;
+  overflow: clip;
+}
+
+.articleBlock_collagePhoto,
+.articleBlock_collageEcho {
+  position: absolute;
+  top: -1.009%;
+  width: 127.386%;
+  height: 102.844%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.articleBlock_collagePhoto {
+  left: -15.114%;
+  cursor: pointer;
+}
+
+.articleBlock_collageEcho {
+  left: -13.182%;
+  opacity: 0.5;
+  filter: blur(6px);
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+/* No mobile frame: rows stack, at the mobile sizes Suryagarh's cards use. */
+@media (max-width: 1023.98px) {
+  .articleBlock_section {
+    gap: 40px;
+    padding: 40px var(--m-page-gutter);
+  }
+
+  .articleBlock_row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .articleBlock_label {
+    flex: none;
+  }
+
+  .articleBlock_content {
+    flex: none;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .articleBlock_lead {
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: -0.288px;
+  }
+
+  .articleBlock_body {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.192px;
+  }
+}
