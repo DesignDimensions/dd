@@ -161,6 +161,30 @@
   padding: 4px 20px 24px;
 }
 
+.headerMobile_nav {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Search mode: a fixed-height panel filling the screen below the bar
+   (--search-open-height), scrolling inside; SearchPanel brings its own
+   padding. Solid white with no rule under the bar, as theirs. */
+.headerMobile_pillSearch .headerMobile_pillSurface {
+  background-color: #ffffff;
+  backdrop-filter: none;
+}
+
+.headerMobile_menuInnerSearch {
+  height: calc(var(--search-open-height) - var(--nav-pill-height));
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.headerMobile_menuInnerSearch::-webkit-scrollbar {
+  display: none;
+}
+
 /* The one hairline in the panel, separating the icon row from the list
    instead of a line under every item. */
 .headerMobile_menuEyebrow {

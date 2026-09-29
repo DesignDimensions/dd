@@ -1,10 +1,12 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import logoGroup1 from '@/assets/icons/logo-header-group-1.svg'
 import logoGroup2 from '@/assets/icons/logo-header-group-2.svg'
 import searchIcon from '@/assets/icons/search.svg'
+import SearchPanel from '@/components/layout/Search/SearchPanel.jsx'
 import { useDismissableMenu } from '@/hooks/useDismissableMenu'
+import { useSearchShortcut } from '@/hooks/useSearchShortcut'
 import { cn } from '@/lib/cn'
 import { NAV_ITEMS } from '@/lib/navigation'
 
@@ -24,11 +26,29 @@ const STUDIO_BLURB =
  * search button and a menu button flank a centred logo, and the menu
  * button expands the pill into a three-column panel — nav, a Work
  * diary preview, a studio blurb — instead of a plain dropdown.
+ *
+ * The search button opens the same pill in search mode instead — as
+ * theirs, near full screen, the button turning into an × (SearchPanel);
+ * so do ⌘K / Ctrl+K and "/". One panel shows at a time: the menu button
+ * switches a search over to the menu, and each button's × closes its own.
  */
 export default function Header() {
   const { containerRef, isOpen, setIsOpen } = useDismissableMenu()
   const menuInnerRef = useRef(null)
   const [menuHeight, setMenuHeight] = useState(0)
+  const [panel, setPanel] = useState('menu')
+  // Bumped on every search open, remounting SearchPanel so it starts empty.
+  const [searchSession, setSearchSession] = useState(0)
+  const searching = isOpen && panel === 'search'
+  const menuOpen = isOpen && panel === 'menu'
+
+  const openSearch = useCallback(() => {
+    setPanel('search')
+    setSearchSession((n) => n + 1)
+    setIsOpen(true)
+  }, [setIsOpen])
+
+  useSearchShortcut(openSearch)
 
   // Measured (not guessed) so the open transition can animate to the
   // panel's real height and actually show the bounce easing's overshoot.
@@ -45,11 +65,31 @@ export default function Header() {
 
   return (
     <header className="header_header">
-      <div className={cn('header_pill', isOpen && 'header_pillOpen')} ref={containerRef}>
+      <div
+        className={cn(
+          'header_pill',
+          isOpen && 'header_pillOpen',
+          searching && 'header_pillSearch',
+        )}
+        ref={containerRef}
+      >
         <div className="header_pillSurface">
           <div className="header_bar">
-            <button aria-label="Search" className="header_iconButton" type="button">
-              <img alt="" className="header_iconImage" src={searchIcon} />
+            <button
+              aria-expanded={searching}
+              aria-label={searching ? 'Close search' : 'Search'}
+              className="header_iconButton"
+              onClick={() => (searching ? setIsOpen(false) : openSearch())}
+              type="button"
+            >
+              {searching ? (
+                <span className={cn('header_menuIcon', 'header_menuIconOpen')}>
+                  <span className="header_menuBar" />
+                  <span className="header_menuBar" />
+                </span>
+              ) : (
+                <img alt="" className="header_iconImage" src={searchIcon} />
+              )}
             </button>
 
             {/* The logo is the way home, from any page. */}
@@ -69,13 +109,25 @@ export default function Header() {
 
             <button
               aria-controls="header-nav"
-              aria-expanded={isOpen}
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               className="header_iconButton"
-              onClick={() => setIsOpen((open) => !open)}
+              onClick={() => {
+                if (menuOpen) {
+                  setIsOpen(false)
+                } else {
+                  setPanel('menu')
+                  setIsOpen(true)
+                }
+              }}
               type="button"
             >
-              <span className={cn('header_menuIcon', isOpen && 'header_menuIconOpen')}>
+              <span
+                className={cn(
+                  'header_menuIcon',
+                  menuOpen && 'header_menuIconOpen',
+                )}
+              >
                 <span className="header_menuBar" />
                 <span className="header_menuBar" />
               </span>
@@ -88,42 +140,66 @@ export default function Header() {
             id="header-nav"
             style={{ height: isOpen ? menuHeight : 0 }}
           >
-            <div className="header_menuInner" ref={menuInnerRef}>
-              <div className="header_menuColumn">
-                <p className="header_menuEyebrow">Explore</p>
+            <div
+              className={cn(
+                'header_menuInner',
+                panel === 'search' && 'header_menuInnerSearch',
+              )}
+              ref={menuInnerRef}
+            >
+              {panel === 'search' ? (
+                <SearchPanel
+                  key={searchSession}
+                  onNavigate={() => setIsOpen(false)}
+                />
+              ) : (
+                <>
+                  <div className="header_menuColumn">
+                    <p className="header_menuEyebrow">Explore</p>
 
-                <nav className="header_navList">
-                  {NAV_ITEMS.map((item) =>
-                    item.to ? (
-                      <Link
-                        className="header_navItem"
-                        key={item.label}
-                        onClick={() => setIsOpen(false)}
-                        to={item.to}
-                      >
-                        <p className="header_navText">{item.label}</p>
-                        <span aria-hidden="true" className="header_navArrow">
-                          →
-                        </span>
-                      </Link>
-                    ) : (
-                      <div className={cn('header_navItem', 'header_navItemDisabled')} key={item.label}>
-                        <p className="header_navText">{item.label}</p>
-                      </div>
-                    ),
-                  )}
-                </nav>
-              </div>
+                    <nav className="header_navList">
+                      {NAV_ITEMS.map((item) =>
+                        item.to ? (
+                          <Link
+                            className="header_navItem"
+                            key={item.label}
+                            onClick={() => setIsOpen(false)}
+                            to={item.to}
+                          >
+                            <p className="header_navText">{item.label}</p>
+                            <span
+                              aria-hidden="true"
+                              className="header_navArrow"
+                            >
+                              →
+                            </span>
+                          </Link>
+                        ) : (
+                          <div
+                            className={cn(
+                              'header_navItem',
+                              'header_navItemDisabled',
+                            )}
+                            key={item.label}
+                          >
+                            <p className="header_navText">{item.label}</p>
+                          </div>
+                        ),
+                      )}
+                    </nav>
+                  </div>
 
-              <div className="header_menuColumn">
-                <p className="header_menuEyebrow">Recommended</p>
-                <WorkPreview onNavigate={() => setIsOpen(false)} />
-              </div>
+                  <div className="header_menuColumn">
+                    <p className="header_menuEyebrow">Recommended</p>
+                    <WorkPreview onNavigate={() => setIsOpen(false)} />
+                  </div>
 
-              <div className="header_menuColumn">
-                <p className="header_menuEyebrow">Design Dimensions</p>
-                <p className="header_menuBlurb">{STUDIO_BLURB}</p>
-              </div>
+                  <div className="header_menuColumn">
+                    <p className="header_menuEyebrow">Design Dimensions</p>
+                    <p className="header_menuBlurb">{STUDIO_BLURB}</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

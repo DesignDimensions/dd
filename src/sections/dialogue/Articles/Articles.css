@@ -88,6 +88,25 @@
   flex-shrink: 0;
 }
 
+/* As in Work diary: each card spans two grid rows — image, then text —
+   and lays its media and footer onto them through subgrid, so cards
+   sharing a row share one image height and start their text on one
+   line. The row takes the tallest image; the others stretch to it and
+   crop (object-fit: cover). */
+@media (min-width: 1024px) {
+  .articles_grid > .projectCard_card {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 30px; /* the card's own gap, not the grid's */
+    align-items: stretch; /* fill both tracks — ProjectCard's own is flex-start */
+  }
+
+  .articles_featured {
+    grid-row: span 2;
+  }
+}
+
 /* Figma 2719:24315 — spans the whole row, image beside text as the frame
    draws it, in the same has-frame recipe as ProjectCard. */
 .articles_featured {
@@ -212,6 +231,8 @@
   .articles_section {
     gap: 28px;
     padding: 40px var(--m-page-gutter);
+    /* Room for the last card's hover shadow — see --elevation-room-bottom. */
+    padding-bottom: var(--elevation-room-bottom);
   }
 
   .articles_head {
@@ -233,8 +254,10 @@
     letter-spacing: -0.192px;
   }
 
+  /* minmax(0, …): a plain 1fr track grows to fit its widest content and
+     pushes the card off screen. */
   .articles_grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 

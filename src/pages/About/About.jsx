@@ -1,4 +1,4 @@
-import Contact from '@/sections/Contact/Contact.jsx'
+import FooterZone from '@/sections/FooterZone/FooterZone.jsx'
 import AboutHero from '@/sections/about/AboutHero/AboutHero.jsx'
 import AboutIntro from '@/sections/about/AboutIntro/AboutIntro.jsx'
 import Brands from '@/sections/about/Brands/Brands.jsx'
@@ -45,9 +45,8 @@ const PHILOSOPHY = [
  *
  * Carries the home page's presentation language: the header and hero run
  * flush to the page edges, everything below is a box of one width with the
- * shared radius and elevation, and the footer is the same component the
- * home page uses — boxed here, since this page's ground is a flat colour
- * rather than the gradient its fill matches.
+ * shared radius and elevation, on Home's gradient, and the page closes on
+ * the same FooterZone Home does.
  */
 export default function About() {
   return (
@@ -57,19 +56,17 @@ export default function About() {
       <Founder />
       <Mission />
       <ValueBlock
-        background="#ffffff"
         columns={VALUES}
         heading="Our values"
         lede="We specializes in crafting bespoke design solutions that blend cultural richness with innovative creativity, aiming to fortify brands with impactful visual narratives."
       />
       <ValueBlock
-        background="#e8eadc"
         columns={PHILOSOPHY}
         heading="Design Philosophy"
         lede="At Design Dimensions, our design philosophy revolves around delivering perfection, clarity, and precision in every project, ensuring that our bold and beautiful designs empower and inspire."
       />
       <Brands />
-      <Contact variant="boxed" />
+      <FooterZone />
     </div>
   )
 }

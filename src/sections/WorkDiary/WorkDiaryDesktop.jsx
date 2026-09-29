@@ -13,9 +13,14 @@ import './WorkDiaryDesktop.css'
  * Figma 2714:8758 (Home) / 2715:12228 (Work diary page).
  *
  * Lists lib/projects.js, a card linking to each project that has a page.
- * The first leads as the featured card across the full row, as the Work
- * diary frame lays it out; the rest follow three to a row. `limit` caps how
- * many are shown (Home shows the first few; /work shows them all).
+ * `limit` caps how many are shown (Home shows the first few; /work shows
+ * them all).
+ *
+ * Laid out like wepresent's "Latest stories" grid: rows of one wide card
+ * (two columns) and one narrow card, the wide one swapping sides each row.
+ * Rows hold two cards, so with an odd count the first leads as the
+ * featured card across the full row, as the Work diary frame has it, and
+ * no row is left with a gap.
  *
  * The two frames differ only in the filter chip's label ("Genre" on Home,
  * "Newest" on the page) and whether a "View All Projects" CTA closes the
@@ -27,7 +32,9 @@ export default function WorkDiaryDesktop({
   filterLabel = 'Genre',
   limit,
 }) {
-  const [featured, ...rest] = PROJECTS.slice(0, limit)
+  const shown = PROJECTS.slice(0, limit)
+  const featured = shown.length % 2 === 1 ? shown[0] : undefined
+  const rest = featured ? shown.slice(1) : shown
   const FeaturedRoot = featured?.path ? Link : 'div'
 
   return (
@@ -98,8 +105,8 @@ export default function WorkDiaryDesktop({
           </FeaturedRoot>
         ) : null}
 
-        {/* Figma 2714:8772 */}
-        {rest.map((project) => (
+        {/* Figma 2714:8772 — wide, narrow | narrow, wide | … */}
+        {rest.map((project, i) => (
           <ProjectCard
             background={project.background}
             eyebrow={project.category}
@@ -108,6 +115,7 @@ export default function WorkDiaryDesktop({
             key={project.slug}
             title={[project.title]}
             to={project.path}
+            wide={i % 4 === 0 || i % 4 === 3}
           />
         ))}
       </div>

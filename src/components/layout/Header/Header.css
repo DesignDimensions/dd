@@ -44,6 +44,25 @@
   transition: width 0.6s var(--ease-bounce);
 }
 
+/* Search mode opens near full screen, on their plain curve (no bounce):
+   --search-open-width across, the panel below the bar filling the rest
+   of --search-open-height. */
+.header_pillSearch {
+  width: var(--search-open-width);
+  transition: width 0.5s var(--ease-ref);
+}
+
+.header_pillSearch .header_menuWrap[data-open] {
+  transition: height 0.5s var(--ease-ref);
+}
+
+/* Solid white rather than the frosted glass, as their open search is —
+   a full-screen panel of cards reads muddy over a blurred hero. */
+.header_pillSearch .header_pillSurface {
+  background-color: #ffffff;
+  backdrop-filter: none;
+}
+
 /* The frosted-glass surface — background, blur, shadow and clipping —
    split from .header_pill above. */
 .header_pillSurface {
@@ -206,6 +225,22 @@
   width: var(--nav-pill-open-width);
   padding: 24px 32px 32px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* In search mode the panel is one block (SearchPanel) at the search
+   width and a fixed height, scrolling inside, rather than the grid. */
+.header_menuInnerSearch {
+  display: block;
+  width: var(--search-open-width);
+  height: calc(var(--search-open-height) - var(--nav-pill-height));
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  border-top: 0; /* theirs has no rule under the bar */
+}
+
+.header_menuInnerSearch::-webkit-scrollbar {
+  display: none;
 }
 
 .header_menuColumn {

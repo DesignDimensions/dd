@@ -4,7 +4,7 @@ import walterHunt from '@/assets/dialogue/walter-hunt-collage.png'
 import story3d from '@/assets/images/story-3d.jpg'
 import storyAi from '@/assets/images/story-ai-designer.jpg'
 import storyGradients from '@/assets/images/story-gradients.gif'
-import Contact from '@/sections/Contact/Contact.jsx'
+import FooterZone from '@/sections/FooterZone/FooterZone.jsx'
 import ArticleBanner from '@/sections/dialogue/ArticleBanner/ArticleBanner.jsx'
 import ArticleBlock, { ArticleRow } from '@/sections/dialogue/ArticleBlock/ArticleBlock.jsx'
 import FinishReading from '@/sections/dialogue/FinishReading/FinishReading.jsx'
@@ -42,13 +42,15 @@ const READING = [
  *
  * The article counterpart of the Suryagarh project page, built from the
  * same parts: a flush banner, the title/meta/audio card, white text cards
- * with a full-bleed band tucked between them, the reading rail, Contact.
+ * with a full-bleed band tucked between them, the reading rail, and the
+ * FooterZone every page closes on.
  *
  * - No narration file exists for this article, so the player runs without
  *   a source (see StoryOverview).
  * - The frame's print-advert block (2719:16507) sits inside a 1px-tall
  *   clipping frame and never renders in Figma; dropped.
- * - Figma closes this page on Contact alone, without Exploration.
+ * - Figma closes this page on Contact alone; it closes on the full
+ *   FooterZone (Exploration + Contact) instead, as Home does.
  * - The side labels read "Lorem Ipsum" in the frame; kept verbatim.
  */
 export default function SafetyPin() {
@@ -122,7 +124,7 @@ export default function SafetyPin() {
       </ArticleBlock>
 
       <FinishReading cards={READING} />
-      <Contact variant="transparent" />
+      <FooterZone />
     </div>
   )
 }

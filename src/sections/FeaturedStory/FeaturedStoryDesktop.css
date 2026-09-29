@@ -30,13 +30,25 @@
    designed position once the band runs full width. */
 .featuredStoryDesktop_papadTop {
   position: absolute;
-  top: -463.21px;
+  top: -550px;
   left: calc(50% - var(--frame-width) / 2 + 730.96px);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 617.072px;
   height: 767.412px;
+  animation: featuredStoryDesktop_float 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* The scroll layer (FeaturedStoryDesktop drives its transform), between
+   the floating outer box and the papad's fixed Figma rotation. */
+.featuredStoryDesktop_papadScroll {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
 }
 
 .featuredStoryDesktop_papadTopRotate {
@@ -52,18 +64,38 @@
    text overlap .featuredStoryDesktop_papadTop already has. */
 .featuredStoryDesktop_papadBottom {
   position: absolute;
-  top: 468px;
+  top: 550px;
   left: calc(50% - var(--frame-width) / 2 + 30.43px);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 618.136px;
   height: 767.945px;
+  /* Same drift as the top papad, run backwards, slower and mid-cycle, so
+     the two never move in step. */
+  animation: featuredStoryDesktop_float 11s ease-in-out -4s infinite reverse;
+  will-change: transform;
 }
 
 .featuredStoryDesktop_papadBottomRotate {
   flex: none;
   transform: rotate(15.33deg);
+}
+
+/* A slow float: a lazy loop up, across and back with a slight tilt. It
+   moves the outer boxes, so the papads' own Figma rotation on the inner
+   wrappers stays as drawn. The global reduced-motion reset stills it. */
+@keyframes featuredStoryDesktop_float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(6px, -16px, 0) rotate(1.5deg);
+  }
+  66% {
+    transform: translate3d(-6px, 10px, 0) rotate(-1deg);
+  }
 }
 
 .featuredStoryDesktop_papadFrame {

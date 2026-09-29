@@ -1,64 +1,122 @@
-import divider from '@/assets/mobile/divider.svg'
-import portrait from '@/assets/images/testimonial-portrait.jpg'
+import { useId, useRef } from 'react'
+import { Link } from 'react-router-dom'
+
+import ArrowCircle from '@/components/ui/ArrowCircle/ArrowCircle.jsx'
+import { useAutoRotate } from '@/hooks/useAutoRotate'
+import { cn } from '@/lib/cn'
+
+import TestimonialProgress from './TestimonialProgress.jsx'
+import { TESTIMONIALS } from './testimonials'
 
 import './TestimonialsMobile.css'
 
-const QUOTE =
-  '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ...'
+/** How far a swipe has to travel before it changes client, in px. */
+const SWIPE_DISTANCE = 40
 
 /**
- * Figma 2715:11049 "6".
+ * Figma 2715:11049 "6", reworked into the same rotator as desktop: one
+ * client-coloured card at a time, portrait above the quote, with the
+ * segmented progress bar under it. Swiping the card steps it too.
  *
- * Portrait sits above the quote here rather than beside it, the quote is
- * truncated in the frame, and there is no "View More" button — desktop
- * has one (2714:8872).
+ * The quote is clamped to a few lines, as the frame truncates it; there
+ * is still no "View More" button here — desktop has one (2714:8872).
  */
-const TESTIMONIALS = [
-  { title: '15 AD', name: 'Mr. XYZ', role: 'Founder, 15 AD' },
-  { title: 'Nature’s Miracle', name: 'Mr. XYZ', role: 'Co-Founder, NM' },
-]
-
-function Testimonial({ title, name, role }) {
-  return (
-    <div className="testimonialsMobile_card">
-      <div className="testimonialsMobile_portrait">
-        <div className="testimonialsMobile_portraitInner">
-          <img alt="" className="testimonialsMobile_portraitImage" src={portrait} />
-        </div>
-      </div>
-      <div className="testimonialsMobile_comment">
-        <div className="testimonialsMobile_commentText">
-          <p className="testimonialsMobile_commentTitle">{title}</p>
-          <p className="testimonialsMobile_quote">{QUOTE}</p>
-        </div>
-        <div className="testimonialsMobile_name">
-          <p>{name}</p>
-          <p>{role}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function TestimonialsMobile() {
+  const idPrefix = useId()
+  const { ref, active, select, next, prev, autoplay, paused, rootProps } =
+    useAutoRotate(TESTIMONIALS.length)
+  const touchStartX = useRef(null)
+
+  function handleTouchEnd(event) {
+    if (touchStartX.current === null) return
+    const dx = event.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+    if (dx <= -SWIPE_DISTANCE) next()
+    else if (dx >= SWIPE_DISTANCE) prev()
+  }
+
   return (
-    <section className="testimonialsMobile_section">
+    <section className="testimonialsMobile_section" ref={ref} {...rootProps}>
       <div className="testimonialsMobile_title">
         <p className="testimonialsMobile_eyebrow">We believe</p>
         <div className="testimonialsMobile_headingWrap">
-          <p className="testimonialsMobile_headingLine">{'Each one is a earned '}</p>
+          <p className="testimonialsMobile_headingLine">
+            {'Each one is a earned '}
+          </p>
           <p className="testimonialsMobile_headingLine">and treasured</p>
         </div>
       </div>
 
-      <div className="testimonialsMobile_list">
-        <Testimonial {...TESTIMONIALS[0]} />
-        <div className="testimonialsMobile_divider">
-          <div className="testimonialsMobile_dividerInner">
-            <img alt="" className="testimonialsMobile_dividerImage" src={divider} />
-          </div>
+      <div className="testimonialsMobile_rotator">
+        <div
+          className="testimonialsMobile_stage"
+          onTouchEnd={handleTouchEnd}
+          onTouchStart={(event) => {
+            touchStartX.current = event.touches[0].clientX
+          }}
+        >
+          {TESTIMONIALS.map((item, i) => {
+            const isActive = i === active
+            return (
+              <article
+                aria-labelledby={`${idPrefix}-tab-${i}`}
+                className={cn(
+                  'testimonialsMobile_card',
+                  isActive && 'testimonialsMobile_cardActive',
+                )}
+                id={`${idPrefix}-panel-${i}`}
+                inert={!isActive}
+                key={item.slug}
+                role="tabpanel"
+                style={{ backgroundColor: item.background }}
+              >
+                <div className="testimonialsMobile_portrait">
+                  <img
+                    alt=""
+                    className="testimonialsMobile_portraitImage"
+                    src={item.portrait}
+                  />
+                </div>
+
+                <div className="testimonialsMobile_words">
+                  <p className="testimonialsMobile_commentTitle">
+                    {item.title}
+                  </p>
+                  <blockquote className="testimonialsMobile_quote">
+                    {item.quote}
+                  </blockquote>
+                </div>
+
+                <div className="testimonialsMobile_footer">
+                  <div className="testimonialsMobile_name">
+                    <p className="testimonialsMobile_nameLine">{item.name}</p>
+                    <p>{item.role}</p>
+                  </div>
+                  {item.path ? (
+                    <Link
+                      aria-label={`View the ${item.title} project`}
+                      className="testimonialsMobile_project"
+                      to={item.path}
+                    >
+                      <ArrowCircle size={32} />
+                    </Link>
+                  ) : null}
+                </div>
+              </article>
+            )
+          })}
         </div>
-        <Testimonial {...TESTIMONIALS[1]} />
+
+        <TestimonialProgress
+          active={active}
+          autoplay={autoplay}
+          idPrefix={idPrefix}
+          items={TESTIMONIALS}
+          onCycleEnd={next}
+          onSelect={select}
+          paused={paused}
+          size="mobile"
+        />
       </div>
     </section>
   )

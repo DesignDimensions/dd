@@ -125,8 +125,9 @@
    on each line individually. */
 .projectCard_title {
   position: relative;
+  min-width: 0;
   line-height: 0;
-  flex-shrink: 0;
+  flex-shrink: 1; /* may narrow on a small card rather than run under the arrow */
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 20px;
@@ -138,9 +139,12 @@
     'wdth' 100;
 }
 
+/* Figma's hard line breaks (and their spaces) are kept, but a line may
+   still wrap when the card is too narrow for it — a phone deck card, a
+   one-column grid — instead of running off under the arrow. */
 .projectCard_titleLine {
   line-height: 24px;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .projectCard_body {

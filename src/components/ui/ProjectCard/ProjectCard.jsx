@@ -18,7 +18,7 @@ import './ProjectCard.css'
  *
  * `fluid` fills the card's container instead of keeping Figma's fixed
  * 352px rail width — for a card sitting in a responsive grid
- * (WorkDiaryDesktop) rather than Carousel's fixed-width scroll rail.
+ * (WorkDiaryDesktop) rather than a carousel's fixed-width slide.
  *
  * `wide` is a fluid card spanning two grid columns, with Figma's 736x360
  * wide media frame in place of the square (Design dialogue page).

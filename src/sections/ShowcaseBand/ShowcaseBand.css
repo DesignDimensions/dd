@@ -45,3 +45,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* On mobile the boxes run edge to edge too (no --page-inset), so the
+   reason above for square corners falls away: the band takes the
+   boxes' radius, and every block on a phone is rounded as on Home. */
+@media (max-width: 1023.98px) {
+  .showcaseBand_section {
+    border-radius: var(--section-radius);
+    overflow: clip;
+  }
+}

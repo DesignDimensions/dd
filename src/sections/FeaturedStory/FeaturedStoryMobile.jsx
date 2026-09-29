@@ -1,4 +1,5 @@
 import papad from '@/assets/images/papad.png'
+import { PROJECTS } from '@/lib/projects'
 
 import './FeaturedStoryMobile.css'
 
@@ -7,14 +8,28 @@ import './FeaturedStoryMobile.css'
  *
  * Title is "Papadmalji" here and "PAPADMALJI" on desktop. Both papads
  * are rotated -15.21deg on mobile, where desktop mirrors the second one.
+ *
+ * Boxed like every other mobile section (reference: wepresent, where
+ * nothing sits loose on the page), in Papadmalji's own project colour —
+ * the one its Work diary card wears — with the papads cut off by the
+ * box's rounded edge.
  */
+const BACKGROUND = PROJECTS.find((p) => p.slug === 'papadmalji')?.background
+
 export default function FeaturedStoryMobile() {
   return (
-    <section className="featuredStoryMobile_section">
+    <section
+      className="featuredStoryMobile_section"
+      style={{ backgroundColor: BACKGROUND }}
+    >
       <div className="featuredStoryMobile_papadTop">
         <div className="featuredStoryMobile_papadRotate">
           <div className="featuredStoryMobile_papadTopFrame">
-            <img alt="" className="featuredStoryMobile_papadImage" src={papad} />
+            <img
+              alt=""
+              className="featuredStoryMobile_papadImage"
+              src={papad}
+            />
           </div>
         </div>
       </div>
@@ -22,7 +37,11 @@ export default function FeaturedStoryMobile() {
       <div className="featuredStoryMobile_papadBottom">
         <div className="featuredStoryMobile_papadRotate">
           <div className="featuredStoryMobile_papadBottomFrame">
-            <img alt="" className="featuredStoryMobile_papadImage" src={papad} />
+            <img
+              alt=""
+              className="featuredStoryMobile_papadImage"
+              src={papad}
+            />
           </div>
         </div>
       </div>

@@ -53,3 +53,12 @@
   max-width: 1120px;
   color: var(--quote-color);
 }
+
+/* On mobile the band is as wide as the boxes around it, so it takes
+   their radius — every block on a phone is rounded, as on Home. */
+@media (max-width: 1023.98px) {
+  .quoteBig_band {
+    border-radius: var(--section-radius);
+    overflow: clip;
+  }
+}

@@ -1,43 +1,35 @@
-/* Figma 2714:8859 */
+/* Figma 2714:8859 — a white box like every other section on the page
+   (it was #fafafa), so the client's frame colour carries the contrast. */
 .testimonialsDesktop_section {
+  --testimonial-interval: 3s;
+
   display: flex;
   flex-direction: column;
   gap: 64px;
   align-items: center;
   width: 100%;
   padding: 120px var(--page-gutter);
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
   filter: var(--elevation-section);
 }
 
-.testimonialsDesktop_headStack {
+/* --- head: text left, controls right, as Design Dialogue's head --- */
+.testimonialsDesktop_head {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
   width: 100%;
-  overflow: clip;
-  flex-shrink: 0;
 }
 
-.testimonialsDesktop_stack24 {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.testimonialsDesktop_stack16 {
+.testimonialsDesktop_headText {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: center;
-  width: 100%;
-  flex-shrink: 0;
+  align-items: flex-start;
 }
 
 .testimonialsDesktop_eyebrow {
@@ -47,66 +39,132 @@
   line-height: 20px;
   letter-spacing: -0.168px;
   color: #252525;
-  text-align: center;
-  white-space: nowrap;
-  word-break: break-word;
   font-variation-settings:
     'CTGR' 0,
     'wdth' 100;
 }
 
-.testimonialsDesktop_headHeadingRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-shrink: 0;
-}
-
 .testimonialsDesktop_heading {
-  position: relative;
-  flex: 1 0 0;
-  min-width: 1px;
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 48px;
   line-height: 40px;
   letter-spacing: -0.576px;
   color: #000000;
-  text-align: center;
-  word-break: break-word;
+  white-space: nowrap;
   font-variation-settings:
     'CTGR' 100,
     'wdth' 100;
 }
 
-/* Figma 2714:8861 / 2714:8867 */
-.testimonialsDesktop_testimonial {
+.testimonialsDesktop_controls {
   display: flex;
-  gap: 64px;
-  align-items: flex-start;
+  gap: 12px;
+  align-items: center;
   flex-shrink: 0;
+}
+
+.testimonialsDesktop_counter {
+  margin-right: 12px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #000000;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.testimonialsDesktop_counterTotal {
+  font-weight: 400;
+  color: rgb(0 0 0 / 45%);
+}
+
+/* Round arrow buttons, as the Work diary filter and card arrows */
+.testimonialsDesktop_control {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background-color: var(--icon-bg, transparent);
+  cursor: pointer;
+  transition: background-color 0.42s var(--ease-ref);
+}
+
+.testimonialsDesktop_control:hover {
+  --icon-bg: #000000;
+  --icon-ring: transparent;
+  --icon-glyph: #ffffff;
+}
+
+.testimonialsDesktop_flip {
+  display: grid;
+  place-items: center;
+  transform: rotate(180deg);
+}
+
+/* --- the card and its progress bar, kept close as one unit --- */
+.testimonialsDesktop_rotator {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* --- stage: every card in one cell, so it holds the tallest --- */
+.testimonialsDesktop_stage {
+  display: grid;
+  width: 100%;
+}
+
+/* The has-frame card recipe (ProjectCard), at feature size: the client's
+   colour is the frame, the portrait sits inset at the media radius.
+
+   Changing clients, the new card fades in on top while the old one stays
+   put underneath until it's covered, then drops out — so the change never
+   dips through to the white section between the two colours. */
+.testimonialsDesktop_card {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 56px;
+  padding: 20px;
+  border-radius: var(--card-radius);
+  filter: var(--elevation-rest);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0s linear 0.7s,
+    visibility 0s linear 0.7s,
+    filter 0.3s var(--ease-ref);
+}
+
+.testimonialsDesktop_cardActive {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.7s var(--ease-ref),
+    visibility 0s,
+    filter 0.3s var(--ease-ref);
+}
+
+.testimonialsDesktop_cardActive:hover {
+  filter: var(--elevation-hover);
 }
 
 .testimonialsDesktop_portrait {
   position: relative;
-  flex: 0 1 360px;
-  aspect-ratio: 1;
-  background-color: #ffffff;
-  border-radius: 32px;
-  overflow: clip;
-  flex-shrink: 0;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: var(--card-media-radius);
+  background-color: rgb(0 0 0 / 6%);
 }
 
-/* Figma places the portrait 11px above the frame top. */
-.testimonialsDesktop_portraitInner {
-  position: absolute;
-  top: -11px;
-  left: 0;
-  width: 360px;
-  height: 381.425px;
-}
-
+/* Settles in from a slight zoom as its card arrives; the cards' own
+   hover zoom takes over once it's there. */
 .testimonialsDesktop_portraitImage {
   position: absolute;
   inset: 0;
@@ -114,47 +172,48 @@
   height: 100%;
   max-width: none;
   object-fit: cover;
+  object-position: center 30%;
   pointer-events: none;
+  transform: scale(1.08);
+  transition: transform 0s linear 0.7s;
 }
 
-.testimonialsDesktop_quoteWrap {
+.testimonialsDesktop_cardActive .testimonialsDesktop_portraitImage {
+  transform: scale(1);
+  transition: transform 1.2s var(--ease-ref);
+}
+
+.testimonialsDesktop_cardActive:hover .testimonialsDesktop_portraitImage {
+  transform: scale(var(--card-zoom));
+  transition-duration: 0.5s;
+}
+
+.testimonialsDesktop_body {
   display: flex;
-  flex: 1 1 0;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: space-between;
   min-width: 0;
-  align-items: center;
+  padding: 20px 20px 10px 0;
 }
 
-.testimonialsDesktop_textStack {
+.testimonialsDesktop_words {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 690px;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0s linear 0.7s,
+    transform 0s linear 0.7s;
 }
 
-.testimonialsDesktop_stack12 {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.testimonialsDesktop_stack8 {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.testimonialsDesktop_headingRow {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  flex-shrink: 0;
+.testimonialsDesktop_cardActive .testimonialsDesktop_words {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s var(--ease-ref) 0.1s,
+    transform 0.8s var(--ease-ref) 0.1s;
 }
 
 .testimonialsDesktop_title {
@@ -164,64 +223,60 @@
   line-height: 40px;
   letter-spacing: -0.384px;
   color: #000000;
-  white-space: nowrap;
-  word-break: break-word;
   font-variation-settings:
     'CTGR' 100,
     'wdth' 100;
 }
 
+/* Snack Factory's serif display style, a step down for a longer read */
 .testimonialsDesktop_quote {
-  width: 100%;
-  font-family: var(--font-sans);
+  margin: 0;
+  font-family: var(--font-adamina);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
-  letter-spacing: -0.24px;
-  color: #252525;
-  word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.288px;
+  color: #000000;
 }
 
-/* Figma wraps the two attribution lines in a leading-0 box. */
+.testimonialsDesktop_footer {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
 .testimonialsDesktop_attribution {
-  position: relative;
-  line-height: 0;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.testimonialsDesktop_name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.192px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+.testimonialsDesktop_role {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 16px;
-  letter-spacing: -0.192px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
   color: #252525;
-  white-space: nowrap;
-  word-break: break-word;
   font-variation-settings:
     'CTGR' 0,
     'wdth' 100;
 }
 
-.testimonialsDesktop_attributionLine {
-  line-height: 20px;
-}
-
-/* Figma 2714:8866 — zero-height rule drawn as a vector */
-.testimonialsDesktop_divider {
-  position: relative;
-  width: 100%;
-  height: 0;
+.testimonialsDesktop_project {
+  display: flex;
   flex-shrink: 0;
-}
-
-.testimonialsDesktop_dividerInner {
-  position: absolute;
-  inset: -0.5px 0;
-}
-
-.testimonialsDesktop_dividerImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
 }

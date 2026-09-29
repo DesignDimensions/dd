@@ -6,7 +6,7 @@ import './SnackFactoryMobile.css'
  * Figma 2715:10544 "After".
  *
  * The tag reads "Packaging Design" here, where the desktop frame reads
- * "Paxkaging design" (2714:8755). Both are kept as their frame states them.
+ * "Packaging design" (2714:8755). Both are kept as their frame states them.
  */
 export default function SnackFactoryMobile() {
   return (

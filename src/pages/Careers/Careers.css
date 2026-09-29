@@ -1,5 +1,5 @@
-/* Figma 2719:21185 — root frame is white; the flat #f0f0f0 About uses is
-   the ground instead, as on Contact us. */
+/* Figma 2719:21185 — root frame is white; Home's gradient is the ground
+   instead, as on every non-project page, so the form reads as a box. */
 .careers_page {
   display: flex;
   flex-direction: column;
@@ -8,6 +8,8 @@
   width: 100%;
   padding: 0 var(--page-inset) var(--page-inset);
   background-color: #f0f0f0;
+  /* Home's gradient ground, as every non-project page wears it. */
+  background-image: var(--ground-gradient);
 }
 
 /* Figma 2719:21232 — the link fields, then "Add More +" right-aligned

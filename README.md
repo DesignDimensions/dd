@@ -292,7 +292,7 @@ reconciled:
 | Work diary cards        | 6, in three layouts             | 4, stacked                 |
 | Design Dialogue eyebrow | `We dig deep`                   | `We have more for you`     |
 | Design Dialogue cards   | 3 in a row                      | 4 on a horizontal slider   |
-| Snack Factory tag       | `Paxkaging design`              | `Packaging Design`         |
+| Snack Factory tag       | `Packaging design`              | `Packaging Design`         |
 | Featured story title    | `PAPADMALJI`                    | `Papadmalji`               |
 | Exploration CTA         | `Search Now`                    | `Search now`               |
 | Exploration tags        | 8                               | 7 (no `Corporate gifting`) |
@@ -324,7 +324,7 @@ reconciled:
     that Figma fixes at 352/736px became proportional flex, so the row still
     measures exactly 352/736 at 1440 and narrows cleanly below it.
     Hand over a tablet frame and this middle range can be made literal.
-- **Copy is verbatim**, including `Paxkaging design` (2714:8755) and
+- **Copy is verbatim**, including `Packaging design` (2714:8755) and
   "Each one is a earned and treasured" (2714:8860). Fix them in Figma and
   they will be picked up on the next pass, rather than being silently
   corrected here.

@@ -5,7 +5,7 @@ import './SnackFactoryDesktop.css'
 /**
  * Figma 2714:8744
  *
- * Note: the tag reads "Paxkaging design" in the frame. Kept verbatim —
+ * Note: the tag reads "Packaging design" in the frame. Kept verbatim —
  * flag it with the designer if it is a typo rather than intentional.
  */
 export default function SnackFactoryDesktop() {
@@ -32,7 +32,7 @@ export default function SnackFactoryDesktop() {
         </div>
         <div className="snackFactoryDesktop_metaWrap">
           <div className="snackFactoryDesktop_metaRow">
-            <MergeButton label="Paxkaging design" />
+            <MergeButton label="Packaging design" />
           </div>
         </div>
       </div>

@@ -15,3 +15,29 @@ body {
   /* Figma: Noto Sans is used at width axis 100 throughout. */
   font-variation-settings: 'wdth' 100;
 }
+
+/* ---------------------------------------------------------------
+   Every page opens the way Home does: the first box after a page's
+   hero image rides up over the image's bottom edge on desktop, so it
+   reads as laid on top of the picture rather than stacked under it.
+   It cancels the page's --section-gap, pulls up by --hero-overlap, and
+   sits above the (positioned) hero.
+
+   One rule for every hero rather than one per page, so the overlap
+   can't drift between them. Keep this 1024px in step with
+   DESKTOP_MIN_WIDTH in src/lib/breakpoints.js.
+   --------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  :is(
+      .heroDesktop_hero,
+      .aboutHero_hero,
+      .formHero_hero,
+      .articleBanner_hero,
+      .projectBanner_hero
+    )
+    + * {
+    position: relative;
+    z-index: 1;
+    margin-top: calc(-1 * (var(--section-gap) + var(--hero-overlap)));
+  }
+}

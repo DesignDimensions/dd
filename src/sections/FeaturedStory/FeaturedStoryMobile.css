@@ -1,19 +1,18 @@
-/* Figma 2715:10751 */
+/* Figma 2715:10751 — boxed: the section radius and elevation every
+   other mobile section has, clipping the papads at its rounded edge. The
+   frame colour is set inline (FeaturedStoryMobile). */
 .featuredStoryMobile_section {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  padding: 73px 60px;
+  width: 100%;
+  padding: 73px var(--m-page-gutter);
+  border-radius: var(--section-radius);
   overflow: clip;
   flex-shrink: 0;
-  /* No background of its own: this section's colour in the frame is a
-     stop on the page gradient, so it runs full width and lets the page
-     show through. Nothing to round, nothing to misalign. */
-  background-color: transparent;
-  width: calc(100% + var(--page-inset) * 2);
-  margin-inline: calc(-1 * var(--page-inset));
+  filter: var(--elevation-section);
 }
 
 /* Figma 2715:10756 / 2715:10757 — anchored to the centred 360 frame so
@@ -96,8 +95,7 @@
 }
 
 .featuredStoryMobile_title {
-  width: 123px;
-  height: 34px;
+  white-space: nowrap; /* Figma's fixed 123px box wrapped the last letter */
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 24px;
@@ -121,16 +119,6 @@
   color: #252525;
   text-align: center;
   font-style: normal;
-  mix-blend-mode: color-burn;
   word-break: break-word;
   flex-shrink: 0;
-}
-
-/* Boxy sections — reference: wepresent. Radius matches the frame's own
-   40px desktop / 24px mobile language rather than introducing a new one. */
-
-@media (min-width: 1024px) {
-  .featuredStoryMobile_section {
-    border-radius: var(--section-radius);
-  }
 }

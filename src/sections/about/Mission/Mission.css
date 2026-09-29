@@ -1,87 +1,62 @@
-/* Figma 7962:21244 */
+/* Figma 7962:21244 — Home's Featured Story band: no box of its own on
+   desktop, the page gradient shows through. */
 .mission_section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  padding: 240px var(--page-gutter);
-  background-color: #282828;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
-}
-
-.mission_content {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: flex-start;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.mission_textStack {
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: center;
   width: 100%;
-  overflow: clip;
+  padding: 160px var(--page-gutter);
   flex-shrink: 0;
-}
-
-.mission_headingRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-shrink: 0;
+  text-align: center;
 }
 
 .mission_heading {
-  flex: 1 0 0;
-  min-width: 1px;
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 48px;
-  line-height: 40px;
+  line-height: 62px;
   letter-spacing: -0.576px;
-  color: #ffffff;
-  text-align: center;
-  word-break: break-word;
+  color: #000000;
   font-variation-settings:
     'CTGR' 100,
     'wdth' 100;
 }
 
+/* Featured Story's quote: Adamina 40/60, colour-burnt into the gradient */
 .mission_body {
-  width: 100%;
-  font-family: var(--font-serif);
+  max-width: 1000px;
+  font-family: var(--font-adamina);
   font-weight: 400;
-  font-size: 48px;
-  line-height: normal;
-  letter-spacing: -0.576px;
-  color: #f7f7f7;
-  text-align: center;
-  font-style: normal;
-  word-break: break-word;
-  flex-shrink: 0;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: -0.672px;
+  color: #252525;
+  mix-blend-mode: color-burn;
 }
 
+/* Mobile boxes everything, as Home's mobile Featured Story: a rounded
+   box in the gradient's yellow stop, with plain (unblended) text. */
 @media (max-width: 1023.98px) {
   .mission_section {
-    padding: 80px var(--m-page-gutter);
+    gap: 16px;
+    padding: 64px var(--m-page-gutter);
+    background-color: rgb(255, 234, 178);
+    border-radius: var(--section-radius);
+    overflow: clip;
+    filter: var(--elevation-section);
   }
 
   .mission_heading {
-    font-size: 28px;
+    font-size: 24px;
     line-height: 32px;
-    letter-spacing: -0.336px;
+    letter-spacing: -0.288px;
   }
 
   .mission_body {
-    font-size: 24px;
-    letter-spacing: -0.288px;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.216px;
+    mix-blend-mode: normal;
   }
 }

@@ -91,22 +91,7 @@
     'wdth' 100;
 }
 
-/* Figma 2715:11897 — scrolls horizontally and bleeds past the section
-   padding on the right, as the frame does. */
-.designDialogueMobile_slider {
-  display: flex;
-  gap: 25px;
-  align-items: flex-start;
-  width: calc(100% + var(--m-page-gutter));
-  padding-right: 25px;
-  overflow-x: auto;
-  overflow-y: clip;
-  flex-shrink: 0;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Figma "Mobile Card" 2715:11898 — fixed 260 so the slider can scroll.
+/* Figma "Mobile Card" 2715:11898 — fixed 260, a slide in the deck.
    Reworked to match wepresent's .designDialogueMobile_card-wrapper "has-frame" recipe: the
    whole card is the coloured frame, with the image inset inside it
    rather than running edge to edge with only .designDialogueMobile_cardBody coloured. */
@@ -120,7 +105,6 @@
   border-radius: var(--card-radius);
   overflow: clip;
   flex-shrink: 0;
-  scroll-snap-align: start;
   filter: var(--elevation-rest);
   transition: filter 0.3s var(--ease-ref);
 }

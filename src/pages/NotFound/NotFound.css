@@ -1,28 +1,91 @@
-/* Placeholder styling — not from Figma. See NotFound.jsx. */
+/* Not from Figma — Home's language; see NotFound.jsx. The page gradient
+   fills the viewport, with room at the top for the floating header. */
 .notFound_page {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  min-height: 60dvh;
-  padding: 24px;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 140px var(--page-inset) var(--page-inset);
+  background-color: #f0f0f0;
+  background-image: var(--ground-gradient);
+}
+
+/* A white section box, as every Home section */
+.notFound_box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  padding: 120px var(--page-gutter);
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  filter: var(--elevation-section);
+  text-align: center;
+}
+
+.notFound_eyebrow {
   font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.notFound_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}
+
+/* Snack Factory's serif statement, a step down */
+.notFound_message {
+  max-width: 560px;
+  margin-bottom: 16px;
+  font-family: var(--font-adamina);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.288px;
   color: #252525;
 }
 
-.notFound_code {
-  font-size: 48px;
-  line-height: 1;
-  color: #000000;
-}
+@media (max-width: 1023.98px) {
+  .notFound_page {
+    padding-top: 120px;
+  }
 
-.notFound_message {
-  font-size: 14px;
-}
+  .notFound_box {
+    gap: 16px;
+    padding: 64px var(--m-page-gutter);
+  }
 
-.notFound_link {
-  font-size: 14px;
-  color: #000000;
-  text-decoration: underline;
+  .notFound_eyebrow {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.192px;
+  }
+
+  .notFound_heading {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.336px;
+  }
+
+  .notFound_message {
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.192px;
+  }
 }

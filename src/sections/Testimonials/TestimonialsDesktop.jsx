@@ -1,75 +1,139 @@
-import divider from '@/assets/icons/divider.svg'
-import portrait from '@/assets/images/testimonial-portrait.jpg'
+import { useId } from 'react'
+import { Link } from 'react-router-dom'
+
+import ArrowCircle from '@/components/ui/ArrowCircle/ArrowCircle.jsx'
 import Cta from '@/components/ui/Cta/Cta.jsx'
+import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
+import { useAutoRotate } from '@/hooks/useAutoRotate'
+import { cn } from '@/lib/cn'
+
+import TestimonialProgress from './TestimonialProgress.jsx'
+import { TESTIMONIALS } from './testimonials'
 
 import './TestimonialsDesktop.css'
 
-const QUOTE =
-  '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum”'
-
-const TESTIMONIALS = [
-  { title: '15 AD', name: 'Mr. XYZ', role: 'Founder, 15 AD' },
-  {
-    title: 'Nature’s Miracle',
-    name: 'Mr. XYZ',
-    role: 'Co-Founder, Nature’s Miracle',
-  },
-]
-
-/** Figma 2714:8859 */
-function Testimonial({ title, name, role }) {
-  return (
-    <div className="testimonialsDesktop_testimonial">
-      <div className="testimonialsDesktop_portrait">
-        <div className="testimonialsDesktop_portraitInner">
-          <img alt="" className="testimonialsDesktop_portraitImage" src={portrait} />
-        </div>
-      </div>
-      <div className="testimonialsDesktop_quoteWrap">
-        <div className="testimonialsDesktop_textStack">
-          <div className="testimonialsDesktop_stack12">
-            <div className="testimonialsDesktop_stack8">
-              <div className="testimonialsDesktop_headingRow">
-                <p className="testimonialsDesktop_title">{title}</p>
-              </div>
-              <p className="testimonialsDesktop_quote">{QUOTE}</p>
-            </div>
-            <div className="testimonialsDesktop_attribution">
-              <p className="testimonialsDesktop_attributionLine">{name}</p>
-              <p className="testimonialsDesktop_attributionLine">{role}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
+/**
+ * Figma 2714:8859, reworked into a rotator.
+ *
+ * One testimonial at a time, in a card framed in that client's project
+ * colour — the has-frame recipe the Work diary and Design Dialogue cards
+ * use — with the quote in the serif display style Snack Factory opens
+ * the page with. The segmented bar underneath advances it on a timer (see
+ * useAutoRotate); the arrows in the head and the arrow keys step it by
+ * hand.
+ *
+ * Every card is rendered, stacked in one grid cell, and the active one
+ * fades up over the rest, so the section keeps the tallest card's height
+ * and nothing below it jumps as the quotes change.
+ */
 export default function TestimonialsDesktop() {
+  const idPrefix = useId()
+  const { ref, active, select, next, prev, autoplay, paused, rootProps } =
+    useAutoRotate(TESTIMONIALS.length)
+
   return (
-    <section className="testimonialsDesktop_section">
-      <div className="testimonialsDesktop_headStack">
-        <div className="testimonialsDesktop_stack24">
-          <div className="testimonialsDesktop_stack16">
-            <p className="testimonialsDesktop_eyebrow">We believe</p>
-            <div className="testimonialsDesktop_headHeadingRow">
-              <p className="testimonialsDesktop_heading">
-                Each one is a earned and treasured
-              </p>
-            </div>
-          </div>
+    <section className="testimonialsDesktop_section" ref={ref} {...rootProps}>
+      <div className="testimonialsDesktop_head">
+        <div className="testimonialsDesktop_headText">
+          <p className="testimonialsDesktop_eyebrow">We believe</p>
+          <p className="testimonialsDesktop_heading">
+            Each one is a earned and treasured
+          </p>
+        </div>
+
+        <div className="testimonialsDesktop_controls">
+          <p className="testimonialsDesktop_counter" aria-hidden="true">
+            {String(active + 1).padStart(2, '0')}
+            <span className="testimonialsDesktop_counterTotal">
+              {' / '}
+              {String(TESTIMONIALS.length).padStart(2, '0')}
+            </span>
+          </p>
+          <button
+            aria-label="Previous testimonial"
+            className="testimonialsDesktop_control"
+            onClick={prev}
+            type="button"
+          >
+            <span className="testimonialsDesktop_flip">
+              <ArrowCircle size={40} />
+            </span>
+          </button>
+          <button
+            aria-label="Next testimonial"
+            className="testimonialsDesktop_control"
+            onClick={next}
+            type="button"
+          >
+            <ArrowCircle size={40} />
+          </button>
         </div>
       </div>
 
-      <Testimonial {...TESTIMONIALS[0]} />
+      <div className="testimonialsDesktop_rotator">
+        <div className="testimonialsDesktop_stage">
+          {TESTIMONIALS.map((item, i) => {
+            const isActive = i === active
+            return (
+              <article
+                aria-labelledby={`${idPrefix}-tab-${i}`}
+                className={cn(
+                  'testimonialsDesktop_card',
+                  isActive && 'testimonialsDesktop_cardActive',
+                )}
+                id={`${idPrefix}-panel-${i}`}
+                inert={!isActive}
+                key={item.slug}
+                role="tabpanel"
+                style={{ backgroundColor: item.background }}
+              >
+                <div className="testimonialsDesktop_portrait">
+                  <img
+                    alt=""
+                    className="testimonialsDesktop_portraitImage"
+                    src={item.portrait}
+                  />
+                </div>
 
-      <div className="testimonialsDesktop_divider">
-        <div className="testimonialsDesktop_dividerInner">
-          <img alt="" className="testimonialsDesktop_dividerImage" src={divider} />
+                <div className="testimonialsDesktop_body">
+                  <div className="testimonialsDesktop_words">
+                    <p className="testimonialsDesktop_title">{item.title}</p>
+                    <blockquote className="testimonialsDesktop_quote">
+                      {item.quote}
+                    </blockquote>
+                  </div>
+
+                  <div className="testimonialsDesktop_footer">
+                    <div className="testimonialsDesktop_attribution">
+                      <p className="testimonialsDesktop_name">{item.name}</p>
+                      <p className="testimonialsDesktop_role">{item.role}</p>
+                    </div>
+                    {item.path ? (
+                      <Link
+                        aria-label={`View the ${item.title} project`}
+                        className="testimonialsDesktop_project"
+                        to={item.path}
+                      >
+                        <MergeButton label={item.category ?? 'View project'} />
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+              </article>
+            )
+          })}
         </div>
-      </div>
 
-      <Testimonial {...TESTIMONIALS[1]} />
+        <TestimonialProgress
+          active={active}
+          autoplay={autoplay}
+          idPrefix={idPrefix}
+          items={TESTIMONIALS}
+          onCycleEnd={next}
+          onSelect={select}
+          paused={paused}
+        />
+      </div>
 
       <Cta>View More</Cta>
     </section>

@@ -13,6 +13,7 @@
   overflow: clip;
   flex-shrink: 0;
   filter: var(--elevation-section);
+  /* Rides up over the hero's bottom edge — the shared rule in global.css. */
 }
 
 /* Figma 2714:8745 — measured 319x170 at x=160.

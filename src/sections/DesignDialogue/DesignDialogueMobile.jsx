@@ -2,6 +2,7 @@ import storyGradients from '@/assets/images/story-gradients.gif'
 import story1 from '@/assets/mobile/story-1.jpg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
+import ZoomCarousel from '@/components/ui/ZoomCarousel/ZoomCarousel.jsx'
 
 import './DesignDialogueMobile.css'
 
@@ -9,8 +10,8 @@ const CARD_COPY =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.'
 
 /**
- * Figma 2715:11897 "Cards Slider" — four cards on a horizontal scroller,
- * where desktop lays three out in a row.
+ * Figma 2715:11897 "Cards Slider" — four cards, stacked into a swipeable
+ * deck (wepresent's phone carousel), where desktop zooms through a row.
  *
  * All four repeat the same title in the frame; kept verbatim. The first
  * and third cards crop their image (h 141.49%, top -22.1%).
@@ -65,7 +66,7 @@ export default function DesignDialogueMobile() {
           </div>
         </div>
 
-        <div className="designDialogueMobile_slider">
+        <ZoomCarousel effect="cards" label="stories">
           {CARDS.map((card) => (
             <div
               className="designDialogueMobile_card"
@@ -97,7 +98,7 @@ export default function DesignDialogueMobile() {
               </div>
             </div>
           ))}
-        </div>
+        </ZoomCarousel>
       </div>
 
       <Cta size="mobile">View All Stories</Cta>

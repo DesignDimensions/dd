@@ -47,9 +47,11 @@
 
   /* Their --h-padding: the gutter that lets the page colour show down
      each side, so sections read as boxes rather than bands. */
-  /* Their --h-padding and --section-content-gap. One scale, applied at
-     both sizes — no value here was chosen by eye. */
-  --page-inset: 20px;
+  /* Their --h-padding and --section-content-gap. On mobile, like theirs,
+     there is no side padding: the boxed sections run edge to edge, still
+     rounded, and only the gap between them shows the page. `0px` rather
+     than `0` — it is used inside calc() sums, where a bare 0 is invalid. */
+  --page-inset: 0px;
   --section-gap: 20px;
 
   /* Their .section-wrapper.has-background uses --rounded-3, the same
@@ -83,6 +85,13 @@
      backdrop-filter off from the page behind so nothing gets blurred. */
   --shadow-rest: 0 10px 19px rgb(0 0 0 / 4%);
   --shadow-hover: 0 30px 30px rgb(0 0 0 / 15%);
+  /* How far --elevation-hover paints past a card's box (offset ± blur):
+     nothing above, 30px either side, 60px below — rounded up. Anything
+     that clips around a card (a scroll rail, an overflow:clip section)
+     needs at least this much room or the lifted shadow gets cut off. */
+  --elevation-room-top: 12px;
+  --elevation-room-inline: 32px;
+  --elevation-room-bottom: 64px;
 
   /* Their house curve, used on every transition */
   --ease-ref: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -92,6 +101,26 @@
 
   /* Their .card-wrapper hover */
   --card-zoom: 1.15;
+
+  /* How far the first box on a page rides up over its hero image, on
+     desktop — see the hero rule in global.css. */
+  --hero-overlap: 80px;
+
+  /* Home's page ground (mobile frame 2715:10365; desktop below), shared
+     by every page that doesn't wear a project's own colour. */
+  --ground-gradient: linear-gradient(
+    180deg,
+    rgb(240, 240, 240) 0%,
+    rgb(240, 240, 240) 14.976%,
+    rgb(255, 234, 178) 45.578%,
+    rgb(255, 234, 178) 48.59%,
+    rgb(255, 198, 201) 58.386%,
+    rgb(255, 198, 201) 63.692%,
+    rgb(255, 198, 201) 66.373%,
+    rgb(239, 221, 175) 87.763%,
+    rgb(239, 221, 175) 92.05%,
+    rgb(240, 240, 240) 100%
+  );
 
   /* Their --toolbar-close-width, -close-height and -offset — the floating
      nav pill both headers use, read straight off .toolbar-wrapper_wrapper
@@ -104,13 +133,35 @@
      this same value (not 100%) so its layout never depends on the
      pill's own animated width — see Header.module.css .menuInner. */
   --nav-pill-open-width: min(90vw, 1250px);
+  /* The pill opened for search — their --toolbar-open-width and
+     --toolbar-open-height: nearly the whole viewport, short of the
+     pill's offset all round (height capped at 740 on desktop, below). */
+  --search-open-width: calc(min(100vw, 1400px) - var(--nav-pill-offset) * 2);
+  --search-open-height: calc(100dvh - var(--nav-pill-offset) * 2);
 }
 
-/* Sections become inset boxes from the desktop breakpoint up. Mobile is
-   left flush so the 360 frame keeps its exact 304px column. */
+/* Sections become inset boxes from the desktop breakpoint up; mobile
+   runs them flush to the screen edges, as wepresent does. */
 @media (min-width: 1024px) {
   :root {
     --page-inset: 40px;
     --section-gap: 42px;
+
+    --search-open-height: calc(min(100dvh, 740px) - var(--nav-pill-offset) * 2);
+
+    /* Desktop frame 2714:8733 */
+    --ground-gradient: linear-gradient(
+      180deg,
+      rgb(240, 240, 240) 0%,
+      rgb(240, 240, 240) 18.419%,
+      rgb(255, 234, 178) 37.07%,
+      rgb(255, 234, 178) 42.28%,
+      rgb(255, 234, 178) 48.583%,
+      rgb(255, 234, 178) 52.298%,
+      rgb(255, 198, 201) 67.251%,
+      rgb(255, 198, 201) 78.328%,
+      rgb(239, 221, 175) 89.818%,
+      rgb(240, 240, 240) 100%
+    );
   }
 }

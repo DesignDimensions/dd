@@ -161,17 +161,38 @@
 }
 
 /* --- content, Figma 2714:8764 ---
-   A real grid: wepresent's own grid-item_md is just a column span inside a
-   grid like this one. The projects come from lib/projects.js, so their
-   count isn't fixed — the featured card takes the whole first row, as the
-   Work diary frame (2715:12234) lays it out, and the rest follow three to
-   a row, so no row is left with a gap in its middle. */
+   wepresent's "Latest stories" grid: three columns, each row one wide
+   (grid-item_md, two columns) and one narrow card, alternating sides —
+   see WorkDiaryDesktop.
+
+   Every card spans two grid rows — image, then text — and lays its own
+   media and footer onto them through subgrid. So the two cards in a row
+   share one image height and one text height: same overall height, the
+   images level, and the text starting on the same line. The row takes
+   the taller image (the wide card's 736:360); the narrow card's square
+   image stretches to match and crops, object-fit: cover. */
 .workDiaryDesktop_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 42px; /* wepresent's own --grid-gap at desktop */
   width: 100%;
   flex-shrink: 0;
+}
+
+.workDiaryDesktop_content > .projectCard_card {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 30px; /* the card's own gap, not the grid's */
+  align-items: stretch; /* fill both tracks — ProjectCard's own is flex-start */
+}
+
+/* Titles bottom-align in the shared text row, so they sit on one line
+   even when a card has no category above its title, or a longer one
+   that wraps. */
+.workDiaryDesktop_content .projectCard_textStack {
+  align-self: stretch;
+  justify-content: flex-end;
 }
 
 /* --- featured card, Figma 2714:8765 — restructured to the same stacked,
@@ -186,6 +207,7 @@
   gap: 30px;
   padding: 20px 20px 30px;
   grid-column: 1 / -1;
+  grid-row: span 2; /* a full row: both of the grid's image + text tracks */
   border-radius: var(--card-radius);
   overflow: clip;
   flex-shrink: 0;
