@@ -65,19 +65,11 @@
   transition: background-color 0.3s var(--ease-ref);
 }
 
-.headerMobile_iconButton:hover {
-  background-color: #000000;
-}
-
 .headerMobile_iconImage {
   display: block;
   width: 20px;
   height: 20px;
   transition: filter 0.3s var(--ease-ref);
-}
-
-.headerMobile_iconButton:hover .headerMobile_iconImage {
-  filter: invert(1);
 }
 
 /* Figma "Layer_1" 4840:9034 — 84 x 41 */
@@ -123,10 +115,6 @@
   transition:
     transform 0.3s var(--ease-ref),
     background-color 0.3s var(--ease-ref);
-}
-
-.headerMobile_iconButton:hover .headerMobile_menuBar {
-  background-color: #ffffff;
 }
 
 .headerMobile_menuIconOpen .headerMobile_menuBar:first-child {
@@ -255,4 +243,21 @@
 .headerMobile_navItem:hover .headerMobile_navArrow {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* The icon buttons' black hover, only where there's a real pointer. On a
+   phone a tap leaves :hover stuck on, so the button would stay a black
+   disc after being pressed. */
+@media (hover: hover) and (pointer: fine) {
+  .headerMobile_iconButton:hover {
+    background-color: #000000;
+  }
+
+  .headerMobile_iconButton:hover .headerMobile_iconImage {
+    filter: invert(1);
+  }
+
+  .headerMobile_iconButton:hover .headerMobile_menuBar {
+    background-color: #ffffff;
+  }
 }
