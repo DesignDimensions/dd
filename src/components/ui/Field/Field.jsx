@@ -37,7 +37,11 @@ export default function Field({
           {label}
         </label>
       ) : null}
-      {multiline ? <textarea {...control} /> : <input {...control} type={type} />}
+      {multiline ? (
+        <textarea {...control} />
+      ) : (
+        <input {...control} type={type} />
+      )}
     </div>
   )
 }
@@ -57,7 +61,9 @@ export function FileField({ label, name, placeholder = 'no file selected' }) {
       </span>
       <label className={cn('field_control', 'field_file')} htmlFor={id}>
         <img alt="" className="field_fileIcon" src={attachIcon} />
-        <span className={cn('field_fileName', !fileName && 'field_placeholder')}>
+        <span
+          className={cn('field_fileName', !fileName && 'field_placeholder')}
+        >
           {fileName || placeholder}
         </span>
         <input

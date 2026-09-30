@@ -1,0 +1,51 @@
+/* The studio's frames over the preview. */
+.studioOutline {
+  position: fixed;
+  z-index: 2147483000;
+  pointer-events: none;
+  border-radius: 16px;
+  transition:
+    top 0.14s ease-out,
+    left 0.14s ease-out,
+    width 0.14s ease-out,
+    height 0.14s ease-out;
+}
+
+.studioOutline_hover {
+  box-shadow: inset 0 0 0 var(--line) rgb(255 90 31 / 55%);
+}
+
+.studioOutline_selected {
+  box-shadow:
+    inset 0 0 0 var(--line) #ff5a1f,
+    inset 0 0 0 calc(var(--line) * 3) rgb(255 90 31 / 18%);
+}
+
+.studioOutline_chip {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 12px;
+  font-family: 'Geist', 'Noto Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #ffffff;
+  white-space: nowrap;
+  background: #ff5a1f;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -6px rgb(255 90 31 / 70%);
+  transform: scale(var(--chip-scale));
+  transform-origin: top left;
+}
+
+.studioOutline_hover .studioOutline_chip {
+  color: #111110;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgb(255 90 31 / 45%), 0 6px 16px -6px rgb(0 0 0 / 30%);
+}
+
+html.studio-editing,
+html.studio-editing * {
+  cursor: pointer !important;
+}

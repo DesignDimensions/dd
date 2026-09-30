@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import pinIcon from '@/assets/forms/map-pin.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
-import { STUDIO } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 
 import FormFields from './FormFields.jsx'
 
@@ -17,6 +17,7 @@ import './FormSection.css'
  * There is no endpoint to post to yet, so submitting stays on the page.
  */
 export default function FormSection({ after, fields, heading, intro, label }) {
+  const { settings } = useContent()
   return (
     <section className="section_box section_clip formSection_section">
       <div className="formSection_aside">
@@ -25,9 +26,12 @@ export default function FormSection({ after, fields, heading, intro, label }) {
 
         {/* Figma 2719:20415 */}
         <div className="formSection_reach">
-          <p className="formSection_reachTitle">{STUDIO.reach}</p>
-          <a className="formSection_email" href={`mailto:${STUDIO.email}`}>
-            {STUDIO.email}
+          <p className="formSection_reachTitle">{settings.studio.reach}</p>
+          <a
+            className="formSection_email"
+            href={`mailto:${settings.studio.email}`}
+          >
+            {settings.studio.email}
           </a>
         </div>
 
@@ -35,12 +39,12 @@ export default function FormSection({ after, fields, heading, intro, label }) {
         <div className="formSection_studio">
           <div className="formSection_studioName">
             <img alt="" className="formSection_pin" src={pinIcon} />
-            <p className="formSection_studioTitle">{STUDIO.name}</p>
+            <p className="formSection_studioTitle">{settings.studio.name}</p>
           </div>
           <address className="formSection_address">
-            {STUDIO.address}
+            {settings.studio.address}
             <br />
-            {STUDIO.phone}
+            {settings.studio.phone}
           </address>
         </div>
 

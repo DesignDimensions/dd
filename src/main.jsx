@@ -8,12 +8,20 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/sections.css'
 
 import App from './App.jsx'
+import { ContentProvider } from './content/ContentContext.jsx'
+import { loadContent } from './content/load'
 import './styles/global.css'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+// The content comes first — from the studio when one is set (VITE_CMS_URL),
+// otherwise what the site was built with — then the site renders it.
+loadContent().then((content) => {
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <ContentProvider document={content}>
+          <App />
+        </ContentProvider>
+      </BrowserRouter>
+    </StrictMode>,
+  )
+})

@@ -1,13 +1,12 @@
 import portrait from '@/assets/images/testimonial-portrait.jpg'
-import { PROJECTS } from '@/content/projects'
 
 const QUOTE =
   '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.”'
 
 /**
- * One entry per client, keyed to their project in content/projects.js so the
- * card takes that project's frame colour and links to its page — the same
- * colour its Work diary card wears.
+ * One entry per client, linked to their project (by slug) so the card
+ * takes that project's frame colour and links to its page — the same
+ * colour its Work diary card wears (see select.js).
  */
 const ENTRIES = [
   { slug: '15-ad', name: 'Mr. XYZ', role: 'Founder, 15 AD' },
@@ -28,15 +27,10 @@ const ENTRIES = [
   { slug: 'san-lorenzo', name: 'Mr. XYZ', role: 'Founder, San Lorenzo' },
 ]
 
-export const TESTIMONIALS = ENTRIES.map((entry) => {
-  const project = PROJECTS.find((p) => p.slug === entry.slug)
-  return {
-    ...entry,
-    title: project?.title ?? entry.slug,
-    category: project?.category,
-    background: project?.background ?? '#f0f0f0',
-    path: project?.path,
-    portrait,
-    quote: QUOTE,
-  }
-})
+export const TESTIMONIALS = ENTRIES.map(({ slug, name, role }) => ({
+  project: slug,
+  name,
+  role,
+  quote: QUOTE,
+  portrait,
+}))

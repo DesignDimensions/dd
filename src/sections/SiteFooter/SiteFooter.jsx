@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import divider from '@/assets/icons/divider.svg'
 import logoGroup1 from '@/assets/icons/logo-header-group-1.svg'
 import logoGroup2 from '@/assets/icons/logo-header-group-2.svg'
-import { FOOTER_LINKS, SOCIALS } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 import { FOOTER_GRID } from '@/lib/footerGrid'
 
 import './SiteFooter.css'
@@ -14,6 +14,7 @@ import './SiteFooter.css'
  * so they close on this rather than the Contact section.
  */
 export default function SiteFooter() {
+  const { settings } = useContent()
   return (
     <footer className="siteFooter_footer">
       <img alt="" className="siteFooter_divider" src={divider} />
@@ -29,7 +30,7 @@ export default function SiteFooter() {
         </div>
 
         <nav aria-label="Footer" className="siteFooter_links">
-          {FOOTER_LINKS.map(({ label, to }, index) =>
+          {settings.footerLinks.map(({ label, to }, index) =>
             to ? (
               <Link
                 className="siteFooter_link"
@@ -56,7 +57,7 @@ export default function SiteFooter() {
       <div className="siteFooter_connect">
         <p className="siteFooter_connectLabel">Connect with us:</p>
         <div className="siteFooter_socials">
-          {SOCIALS.map(({ href, icon, label }) =>
+          {settings.socials.map(({ href, icon, label }) =>
             href ? (
               <a
                 aria-label={label}

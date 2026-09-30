@@ -8,7 +8,7 @@ import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { cn } from '@/lib/cn'
 
 import TestimonialProgress from './TestimonialProgress.jsx'
-import { TESTIMONIALS } from '@/content/testimonials'
+import { useContent } from '@/content/useContent'
 
 import './TestimonialsDesktop.css'
 
@@ -27,9 +27,10 @@ import './TestimonialsDesktop.css'
  * and nothing below it jumps as the quotes change.
  */
 export default function TestimonialsDesktop({ cta, eyebrow, heading }) {
+  const { testimonials } = useContent()
   const idPrefix = useId()
   const { ref, active, select, next, prev, autoplay, paused, rootProps } =
-    useAutoRotate(TESTIMONIALS.length)
+    useAutoRotate(testimonials.length)
 
   return (
     <section
@@ -48,7 +49,7 @@ export default function TestimonialsDesktop({ cta, eyebrow, heading }) {
             {String(active + 1).padStart(2, '0')}
             <span className="testimonialsDesktop_counterTotal">
               {' / '}
-              {String(TESTIMONIALS.length).padStart(2, '0')}
+              {String(testimonials.length).padStart(2, '0')}
             </span>
           </p>
           <button
@@ -74,7 +75,7 @@ export default function TestimonialsDesktop({ cta, eyebrow, heading }) {
 
       <div className="testimonialsDesktop_rotator">
         <div className="testimonialsDesktop_stage">
-          {TESTIMONIALS.map((item, i) => {
+          {testimonials.map((item, i) => {
             const isActive = i === active
             return (
               <article
@@ -130,7 +131,7 @@ export default function TestimonialsDesktop({ cta, eyebrow, heading }) {
           active={active}
           autoplay={autoplay}
           idPrefix={idPrefix}
-          items={TESTIMONIALS}
+          items={testimonials}
           onCycleEnd={next}
           onSelect={select}
           paused={paused}

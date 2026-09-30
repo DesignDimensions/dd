@@ -6,7 +6,7 @@ import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { cn } from '@/lib/cn'
 
 import TestimonialProgress from './TestimonialProgress.jsx'
-import { TESTIMONIALS } from '@/content/testimonials'
+import { useContent } from '@/content/useContent'
 
 import './TestimonialsMobile.css'
 
@@ -22,9 +22,10 @@ const SWIPE_DISTANCE = 40
  * is still no "View More" button here — desktop has one (2714:8872).
  */
 export default function TestimonialsMobile({ eyebrow, headingLines }) {
+  const { testimonials } = useContent()
   const idPrefix = useId()
   const { ref, active, select, next, prev, autoplay, paused, rootProps } =
-    useAutoRotate(TESTIMONIALS.length)
+    useAutoRotate(testimonials.length)
   const touchStartX = useRef(null)
 
   function handleTouchEnd(event) {
@@ -60,7 +61,7 @@ export default function TestimonialsMobile({ eyebrow, headingLines }) {
             touchStartX.current = event.touches[0].clientX
           }}
         >
-          {TESTIMONIALS.map((item, i) => {
+          {testimonials.map((item, i) => {
             const isActive = i === active
             return (
               <article
@@ -116,7 +117,7 @@ export default function TestimonialsMobile({ eyebrow, headingLines }) {
           active={active}
           autoplay={autoplay}
           idPrefix={idPrefix}
-          items={TESTIMONIALS}
+          items={testimonials}
           onCycleEnd={next}
           onSelect={select}
           paused={paused}

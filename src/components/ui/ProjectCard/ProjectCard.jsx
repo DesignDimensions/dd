@@ -53,14 +53,20 @@ export default function ProjectCard({
       style={{ backgroundColor: background }}
       {...(to && { to })}
     >
-      <div className={cn('projectCard_media', !image && 'projectCard_mediaEmpty')}>
-        {image ? <img alt="" className="projectCard_image" src={image} /> : null}
+      <div
+        className={cn('projectCard_media', !image && 'projectCard_mediaEmpty')}
+      >
+        {image ? (
+          <img alt="" className="projectCard_image" src={image} />
+        ) : null}
       </div>
       <div className="projectCard_footer">
         <div className="projectCard_textStack">
           <div className="projectCard_stack12">
             <div className="projectCard_stack8">
-              {eyebrow ? <p className="projectCard_eyebrow">{eyebrow}</p> : null}
+              {eyebrow ? (
+                <p className="projectCard_eyebrow">{eyebrow}</p>
+              ) : null}
               <div className="projectCard_headingRow">
                 <div className="projectCard_title">
                   {title.map((line) => (

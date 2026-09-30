@@ -1,5 +1,3 @@
-import heroBanner from '@/assets/suryagarh/hero-banner.png'
-
 import './ProjectBanner.css'
 
 /**
@@ -24,7 +22,7 @@ import './ProjectBanner.css'
  * `src` swaps in another project's hero — every project frame renders its
  * hero section the same way, so they all come in as node renders too.
  */
-export default function ProjectBanner({ src = heroBanner }) {
+export default function ProjectBanner({ src }) {
   return (
     <section className="projectBanner_hero">
       <img alt="" className="projectBanner_image" src={src} />

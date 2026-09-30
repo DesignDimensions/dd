@@ -1,4 +1,4 @@
-import { CONTACT, EXPLORATION } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 import Contact from '@/sections/Contact/Contact.jsx'
 import Exploration from '@/sections/Exploration/Exploration.jsx'
 
@@ -10,10 +10,11 @@ import './FooterZone.css'
  * as one continuous band sitting on the page ground.
  */
 export default function FooterZone() {
+  const { settings } = useContent()
   return (
     <div className="footerZone_zone">
-      <Exploration {...EXPLORATION} />
-      <Contact {...CONTACT} />
+      <Exploration {...settings.exploration} />
+      <Contact {...settings.contact} />
     </div>
   )
 }

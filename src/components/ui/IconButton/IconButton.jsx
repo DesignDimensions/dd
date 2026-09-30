@@ -8,7 +8,10 @@ import './IconButton.css'
  */
 export default function IconButton({ size = 40, glyph = 'arrow' }) {
   return (
-    <div className="iconButton_iconButton" style={{ width: size, height: size }}>
+    <div
+      className="iconButton_iconButton"
+      style={{ width: size, height: size }}
+    >
       <ArrowCircle glyph={glyph} size={size} />
     </div>
   )

@@ -5,7 +5,7 @@ import Cta from '@/components/ui/Cta/Cta.jsx'
 import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import { cn } from '@/lib/cn'
-import { PROJECTS } from '@/content/projects'
+import { useContent } from '@/content/useContent'
 
 import './WorkDiaryDesktop.css'
 
@@ -35,7 +35,8 @@ export default function WorkDiaryDesktop({
   heading,
   limit,
 }) {
-  const shown = PROJECTS.slice(0, limit)
+  const { projects } = useContent()
+  const shown = projects.slice(0, limit)
   const featured = shown.length % 2 === 1 ? shown[0] : undefined
   const rest = featured ? shown.slice(1) : shown
   const FeaturedRoot = featured?.path ? Link : 'div'

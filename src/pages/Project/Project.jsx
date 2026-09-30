@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom'
 
 import StoryPage from '@/components/story/StoryPage.jsx'
-import { getProjectStory } from '@/content/stories'
+import { useContent } from '@/content/useContent'
 import NotFound from '@/pages/NotFound/NotFound.jsx'
 
 /**
  * /work/:slug — a project case study: Suryagarh, written out in full, or
  * any project built from the shared template. The page is its story
- * (src/content/stories), rendered by StoryPage on the project's colour.
+ * (the content's stories), rendered by StoryPage on the project's colour.
  */
 export default function Project() {
   const { slug } = useParams()
-  const story = getProjectStory(slug)
+  const { projectStory } = useContent()
+  const story = projectStory(slug)
 
   if (!story) return <NotFound />
 

@@ -64,7 +64,10 @@ function ZoomEffect({ swiper, on }) {
       const slide = swiper.slides[i]
       const { progress } = slide
       const offset =
-        progress + (swiper.params.centeredSlides ? 0 : (swiper.params.slidesPerView - 1) * 0.5)
+        progress +
+        (swiper.params.centeredSlides
+          ? 0
+          : (swiper.params.slidesPerView - 1) * 0.5)
       const scale = interpolate(Math.abs(offset), [0, 1], [1, SIDE_SCALE])
       const shrink = sizes[i] - sizes[i] * scale
       const x = interpolate(
@@ -79,7 +82,8 @@ function ZoomEffect({ swiper, on }) {
 
   on('setTransition', (instance, duration) => {
     if (instance.params.effect !== 'zoom') return
-    for (const slide of instance.slides) slide.style.transitionDuration = `${duration}ms`
+    for (const slide of instance.slides)
+      slide.style.transitionDuration = `${duration}ms`
   })
 }
 
@@ -104,7 +108,8 @@ export default function ZoomCarousel({
     <div aria-label={label} className="zoomCarousel_wrapper" role="region">
       <Swiper
         autoplay={
-          !locked && !reducedMotion && {
+          !locked &&
+          !reducedMotion && {
             delay: interval,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
@@ -112,8 +117,14 @@ export default function ZoomCarousel({
         }
         breakpoints={{ 1024: { spaceBetween: 42 } }}
         centeredSlides={!locked}
-        cardsEffect={{ perSlideRotate: 0, perSlideOffset: 10, slideShadows: false }}
-        className={locked ? 'zoomCarousel_slider swiper-locked' : 'zoomCarousel_slider'}
+        cardsEffect={{
+          perSlideRotate: 0,
+          perSlideOffset: 10,
+          slideShadows: false,
+        }}
+        className={
+          locked ? 'zoomCarousel_slider swiper-locked' : 'zoomCarousel_slider'
+        }
         effect={effect}
         key={`${effect}-${items.length}-${locked}`}
         loop={!locked}

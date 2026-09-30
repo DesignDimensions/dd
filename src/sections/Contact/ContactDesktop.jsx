@@ -3,7 +3,7 @@ import logoGroup1 from '@/assets/icons/logo-footer-group-1.svg'
 import logoGroup2 from '@/assets/icons/logo-footer-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
-import { FOOTER_LINKS } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 
 import { ENQUIRY_FIELDS, useEnquiryForm } from '@/hooks/useEnquiryForm'
 import { FOOTER_GRID } from '@/lib/footerGrid'
@@ -24,6 +24,7 @@ export default function ContactDesktop({
   interests: options,
   interestsLabel,
 }) {
+  const { settings } = useContent()
   const { handleSubmit, interests, submitLabel, toggleInterest } =
     useEnquiryForm()
 
@@ -117,7 +118,7 @@ export default function ContactDesktop({
         <div className="contactDesktop_spacer" />
 
         <div className="contactDesktop_footerLinks">
-          {FOOTER_LINKS.map((link, index) => (
+          {settings.footerLinks.map((link, index) => (
             <div
               className="contactDesktop_footerLink"
               key={link.label}

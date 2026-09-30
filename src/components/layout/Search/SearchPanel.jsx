@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
 import { cn } from '@/lib/cn'
-import { LATEST, normalize, search } from '@/lib/search'
+import { useContent } from '@/content/useContent'
+import { normalize } from '@/lib/search'
 
 import './SearchPanel.css'
 
@@ -46,6 +47,7 @@ const QUICK = [
  * empty with the field focused.
  */
 export default function SearchPanel({ onNavigate }) {
+  const { latest, search } = useContent()
   const [query, setQuery] = useState('')
   const [latestOpen, setLatestOpen] = useState(false)
   const inputRef = useRef(null)
@@ -54,7 +56,10 @@ export default function SearchPanel({ onNavigate }) {
   const lastRects = useRef(new Map())
   const navigate = useNavigate()
 
-  const results = useMemo(() => (query.trim() ? search(query) : null), [query])
+  const results = useMemo(
+    () => (query.trim() ? search(query) : null),
+    [query, search],
+  )
   const hasResults = results !== null && results.length > 0
   const noResults = results !== null && results.length === 0
   const centered = !hasResults && !latestOpen
@@ -192,7 +197,7 @@ export default function SearchPanel({ onNavigate }) {
             <span className="searchPanel_label">Explore the latest</span>
           )}
           <ul className="searchPanel_items" ref={itemsRef}>
-            {LATEST.map((result, i) => (
+            {latest.map((result, i) => (
               <li
                 className="searchPanel_item"
                 key={result.to}

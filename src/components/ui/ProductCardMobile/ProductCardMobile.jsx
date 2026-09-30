@@ -33,10 +33,15 @@ export default function ProductCardMobile({
       {...(to && { to })}
     >
       <div
-        className={cn('productCardMobile_media', !image && 'productCardMobile_mediaEmpty')}
+        className={cn(
+          'productCardMobile_media',
+          !image && 'productCardMobile_mediaEmpty',
+        )}
         style={{ backgroundColor: mediaBackground }}
       >
-        {image ? <img alt="" className="productCardMobile_image" src={image} /> : null}
+        {image ? (
+          <img alt="" className="productCardMobile_image" src={image} />
+        ) : null}
       </div>
       <div className="productCardMobile_body">
         <div className="productCardMobile_text">

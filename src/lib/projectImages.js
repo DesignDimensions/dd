@@ -4,7 +4,10 @@
  * position for everything else. Resolved by name so content/projectPages.js can
  * stay plain data.
  */
-const IMAGES = import.meta.glob('/src/assets/projects/*/*.webp', { eager: true, import: 'default' })
+const IMAGES = import.meta.glob('/src/assets/projects/*/*.webp', {
+  eager: true,
+  import: 'default',
+})
 
 export function projectImage(slug, name) {
   return IMAGES[`/src/assets/projects/${slug}/${name}.webp`]

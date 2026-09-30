@@ -12,7 +12,10 @@ export function useDismissableMenu() {
     if (!isOpen) return undefined
 
     function handlePointerDown(event) {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setIsOpen(false)
       }
     }

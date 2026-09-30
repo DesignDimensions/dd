@@ -1,6 +1,6 @@
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import CardRail from '@/sections/CardRail/CardRail.jsx'
-import { PROJECTS } from '@/content/projects'
+import { useContent } from '@/content/useContent'
 
 /**
  * Figma 2955:12765 — "You may also like to see": up to six projects from
@@ -9,10 +9,10 @@ import { PROJECTS } from '@/content/projects'
  * filled with placeholders.
  */
 export default function MoreProjects({ current }) {
-  const others = PROJECTS.filter((project) => project.slug !== current).slice(
-    0,
-    6,
-  )
+  const { projects } = useContent()
+  const others = projects
+    .filter((project) => project.slug !== current)
+    .slice(0, 6)
 
   if (others.length === 0) return null
 

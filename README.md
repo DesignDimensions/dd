@@ -20,6 +20,14 @@ npm run preview
 | `npm run lint`         | oxlint                                           |
 | `npm run format`       | Prettier over the repo                           |
 | `npm run section Hero` | Scaffold `src/sections/Hero/` from a Figma frame |
+| `npm run studio:build` | Build the Studio (the CMS) to `build/studio`     |
+
+## Content and the Studio
+
+Everything the site shows lives in `src/content`, as one document. The
+Studio — our own editor, running on cPanel with PHP — edits and publishes
+that document, and the site reads it at `VITE_CMS_URL`. Without it, the
+site shows the content it was built with. See [cms/README.md](cms/README.md).
 
 ## Structure
 

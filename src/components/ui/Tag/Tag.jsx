@@ -25,7 +25,12 @@ export default function Tag({
     return (
       <button
         aria-pressed={selected}
-        className={cn('tag_tag', 'tag_toggle', selected ? 'tag_filled' : 'tag_outline', `tag_${size}`)}
+        className={cn(
+          'tag_tag',
+          'tag_toggle',
+          selected ? 'tag_filled' : 'tag_outline',
+          `tag_${size}`,
+        )}
         onClick={onClick}
         type="button"
       >

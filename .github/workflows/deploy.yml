@@ -26,7 +26,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+      # The studio (CMS) the site reads its content from — set the
+      # VITE_CMS_URL repository variable, e.g. https://designdimensions.in/studio.
+      # Unset, the site shows the content it was built with.
       - run: npm run build
+        env:
+          VITE_CMS_URL: ${{ vars.VITE_CMS_URL }}
 
       # SPA fallback: deep links like /dd/about must serve the app shell.
       - run: cp dist/index.html dist/404.html

@@ -2,7 +2,7 @@ import logoGroup1 from '@/assets/mobile/logo-group-1.svg'
 import logoGroup2 from '@/assets/mobile/logo-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
-import { FOOTER_LINKS } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 
 import { ENQUIRY_FIELDS, useEnquiryForm } from '@/hooks/useEnquiryForm'
 import { FOOTER_GRID } from '@/lib/footerGrid'
@@ -26,6 +26,7 @@ export default function ContactMobile({
   interests: options,
   interestsLabel,
 }) {
+  const { settings } = useContent()
   const { handleSubmit, interests, submitLabel, toggleInterest } =
     useEnquiryForm()
 
@@ -96,7 +97,7 @@ export default function ContactMobile({
       <div className="contactMobile_divider" />
 
       <div className="contactMobile_links">
-        {FOOTER_LINKS.map((link, index) => (
+        {settings.footerLinks.map((link, index) => (
           <p
             className="contactMobile_link"
             key={link.label}

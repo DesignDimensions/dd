@@ -31,14 +31,20 @@ export function useAutoRotate(count) {
   useEffect(() => {
     const el = ref.current
     if (!el) return undefined
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
-      threshold: 0.35,
-    })
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      {
+        threshold: 0.35,
+      },
+    )
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
-  const step = useCallback((by) => setActive((i) => (i + by + count) % count), [count])
+  const step = useCallback(
+    (by) => setActive((i) => (i + by + count) % count),
+    [count],
+  )
 
   return {
     ref,
@@ -53,7 +59,8 @@ export function useAutoRotate(count) {
         if (event.target.matches(':focus-visible')) setFocused(true)
       },
       onBlur: (event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false)
+        if (!event.currentTarget.contains(event.relatedTarget))
+          setFocused(false)
       },
     },
   }

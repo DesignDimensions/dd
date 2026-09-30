@@ -21,7 +21,10 @@ const VIEWPORT_MARGIN = 0.08 // fraction of viewport kept clear on each side
 function fullscreenRect(naturalWidth, naturalHeight) {
   const maxWidth = window.innerWidth * (1 - VIEWPORT_MARGIN * 2)
   const maxHeight = window.innerHeight * (1 - VIEWPORT_MARGIN * 2)
-  const ratio = naturalWidth && naturalHeight ? naturalWidth / naturalHeight : maxWidth / maxHeight
+  const ratio =
+    naturalWidth && naturalHeight
+      ? naturalWidth / naturalHeight
+      : maxWidth / maxHeight
   let width = maxWidth
   let height = width / ratio
   if (height > maxHeight) {
@@ -133,10 +136,20 @@ export default function Lightbox() {
   }
 
   return createPortal(
-    <div className="lightbox_overlay" ref={overlayRef} style={{ display: entry ? 'block' : 'none' }}>
+    <div
+      className="lightbox_overlay"
+      ref={overlayRef}
+      style={{ display: entry ? 'block' : 'none' }}
+    >
       <div className="lightbox_backdrop" onClick={close} ref={backdropRef} />
       {entry ? (
-        <img alt="" className="lightbox_image" onClick={close} ref={imageRef} src={entry.src} />
+        <img
+          alt=""
+          className="lightbox_image"
+          onClick={close}
+          ref={imageRef}
+          src={entry.src}
+        />
       ) : null}
     </div>,
     document.body,

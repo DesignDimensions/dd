@@ -73,7 +73,10 @@ export default function GravityCursor() {
 
     const moveX = gsap.quickTo(tag, 'x', { duration: 0.55, ease: 'power3' })
     const moveY = gsap.quickTo(tag, 'y', { duration: 0.55, ease: 'power3' })
-    const setTilt = gsap.quickTo(flip, 'rotation', { duration: 0.3, ease: 'power2' })
+    const setTilt = gsap.quickTo(flip, 'rotation', {
+      duration: 0.3,
+      ease: 'power2',
+    })
 
     let isOpen = false
     let isFlipping = false
@@ -154,7 +157,8 @@ export default function GravityCursor() {
         if (zone !== current) {
           // Entering a different zone: place the tag before showing it,
           // or it would fly in from wherever it was last left.
-          if (!current) gsap.set(tag, { x: mouseX + CURSOR_OFFSET_X, y: mouseY })
+          if (!current)
+            gsap.set(tag, { x: mouseX + CURSOR_OFFSET_X, y: mouseY })
           current = zone
           prevX = mouseX
           prevY = mouseY

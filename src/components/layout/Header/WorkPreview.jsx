@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import ArrowCircle from '@/components/ui/ArrowCircle/ArrowCircle.jsx'
-import { PROJECTS } from '@/content/projects'
+import { useContent } from '@/content/useContent'
 
 import './WorkPreview.css'
 
@@ -15,30 +15,43 @@ import './WorkPreview.css'
  * `onNavigate` lets the menu close itself when the card is followed.
  */
 export default function WorkPreview({ onNavigate }) {
+  const { projects } = useContent()
   const [index, setIndex] = useState(0)
-  const item = PROJECTS[index]
+  const item = projects[index]
 
   if (!item) return null
 
   const Card = item.path ? Link : 'div'
 
   function step(direction) {
-    setIndex((current) => (current + direction + PROJECTS.length) % PROJECTS.length)
+    setIndex(
+      (current) => (current + direction + projects.length) % projects.length,
+    )
   }
 
   return (
     <div className="workPreview_preview">
-      <Card className="workPreview_card" {...(item.path && { onClick: onNavigate, to: item.path })}>
+      <Card
+        className="workPreview_card"
+        {...(item.path && { onClick: onNavigate, to: item.path })}
+      >
         {item.image ? (
-          <img alt="" className="workPreview_image" key={item.slug} src={item.image} />
+          <img
+            alt=""
+            className="workPreview_image"
+            key={item.slug}
+            src={item.image}
+          />
         ) : null}
         <div className="workPreview_caption">
-          {item.category ? <p className="workPreview_tag">{item.category}</p> : null}
+          {item.category ? (
+            <p className="workPreview_tag">{item.category}</p>
+          ) : null}
           <p className="workPreview_title">{item.title}</p>
         </div>
       </Card>
 
-      {PROJECTS.length > 1 ? (
+      {projects.length > 1 ? (
         <div className="workPreview_controls">
           <button
             aria-label="Previous project"

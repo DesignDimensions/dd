@@ -8,7 +8,7 @@ import SearchPanel from '@/components/layout/Search/SearchPanel.jsx'
 import { useDismissableMenu } from '@/hooks/useDismissableMenu'
 import { useSearchShortcut } from '@/hooks/useSearchShortcut'
 import { cn } from '@/lib/cn'
-import { NAV_ITEMS } from '@/content/settings'
+import { useContent } from '@/content/useContent'
 
 import './HeaderMobile.css'
 
@@ -24,6 +24,7 @@ import './HeaderMobile.css'
  * button switches a search over to the menu.
  */
 export default function HeaderMobile() {
+  const { settings } = useContent()
   const { containerRef, isOpen, setIsOpen } = useDismissableMenu()
   const menuInnerRef = useRef(null)
   const [menuHeight, setMenuHeight] = useState(0)
@@ -165,7 +166,7 @@ export default function HeaderMobile() {
                   <p className="headerMobile_menuEyebrow">Explore</p>
 
                   <div className="headerMobile_navList">
-                    {NAV_ITEMS.map((item) =>
+                    {settings.nav.map((item) =>
                       item.to ? (
                         <Link
                           className="headerMobile_navItem"

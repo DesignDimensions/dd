@@ -11,7 +11,12 @@ import './Cta.css'
  *
  * `to` renders it as a link to that route instead of a button.
  */
-export default function Cta({ children, size = 'desktop', to, type = 'button' }) {
+export default function Cta({
+  children,
+  size = 'desktop',
+  to,
+  type = 'button',
+}) {
   const className = cn('cta_cta', `cta_${size}`)
   const label = (
     <span className="cta_label">

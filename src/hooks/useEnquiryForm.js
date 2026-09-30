@@ -5,11 +5,21 @@ const ENDPOINT = import.meta.env.VITE_ENQUIRY_ENDPOINT
 /** Figma 2715:11785 / 11787 / 11789 — the same three fields on mobile */
 export const ENQUIRY_FIELDS = [
   { autoComplete: 'name', label: 'Your name', name: 'name', type: 'text' },
-  { autoComplete: 'email', label: 'Email address', name: 'email', type: 'email' },
+  {
+    autoComplete: 'email',
+    label: 'Email address',
+    name: 'email',
+    type: 'email',
+  },
   { autoComplete: 'tel', label: 'Phone number', name: 'phone', type: 'tel' },
 ]
 
-const SUBMIT_LABELS = { error: 'Try again', idle: 'Submit', sending: 'Sending…', sent: 'Sent' }
+const SUBMIT_LABELS = {
+  error: 'Try again',
+  idle: 'Submit',
+  sending: 'Sending…',
+  sent: 'Sent',
+}
 
 /**
  * The footer's enquiry form (ContactDesktop / ContactMobile).
@@ -26,7 +36,9 @@ export function useEnquiryForm() {
 
   function toggleInterest(label) {
     setInterests((current) =>
-      current.includes(label) ? current.filter((item) => item !== label) : [...current, label],
+      current.includes(label)
+        ? current.filter((item) => item !== label)
+        : [...current, label],
     )
   }
 
@@ -42,7 +54,11 @@ export function useEnquiryForm() {
     }
 
     if (!ENDPOINT) {
-      if (import.meta.env.DEV) console.info('Enquiry not sent — VITE_ENQUIRY_ENDPOINT is not set.', payload)
+      if (import.meta.env.DEV)
+        console.info(
+          'Enquiry not sent — VITE_ENQUIRY_ENDPOINT is not set.',
+          payload,
+        )
       return
     }
 
@@ -53,7 +69,8 @@ export function useEnquiryForm() {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
       })
-      if (!response.ok) throw new Error(`Enquiry failed with ${response.status}`)
+      if (!response.ok)
+        throw new Error(`Enquiry failed with ${response.status}`)
       form.reset()
       setInterests([])
       setStatus('sent')
@@ -62,5 +79,10 @@ export function useEnquiryForm() {
     }
   }
 
-  return { handleSubmit, interests, submitLabel: SUBMIT_LABELS[status], toggleInterest }
+  return {
+    handleSubmit,
+    interests,
+    submitLabel: SUBMIT_LABELS[status],
+    toggleInterest,
+  }
 }

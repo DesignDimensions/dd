@@ -62,7 +62,10 @@ export default function FigmaOverlay({ src, width }) {
     <img
       alt=""
       aria-hidden="true"
-      className={cn('figmaOverlay_overlay', difference && 'figmaOverlay_difference')}
+      className={cn(
+        'figmaOverlay_overlay',
+        difference && 'figmaOverlay_difference',
+      )}
       src={src}
       style={{ opacity, width }}
     />

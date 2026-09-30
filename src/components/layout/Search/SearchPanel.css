@@ -151,7 +151,8 @@
 
 /* Results rise in one after another rather than all at once */
 .searchPanel_result {
-  animation: searchPanel_rise 0.6s var(--ease-ref) calc(var(--i) * 45ms) backwards;
+  animation: searchPanel_rise 0.6s var(--ease-ref) calc(var(--i) * 45ms)
+    backwards;
 }
 
 /* Every result card the same height, whatever it says: the columns are
@@ -219,13 +220,15 @@
   width: 240px;
   transform-origin: center top;
   transition: all 0.5s var(--ease-ref);
-  animation: searchPanel_rise 0.7s var(--ease-ref) calc(var(--i) * 70ms + 150ms) backwards;
+  animation: searchPanel_rise 0.7s var(--ease-ref) calc(var(--i) * 70ms + 150ms)
+    backwards;
 }
 
 /* Beyond theirs: once spread, the card under the pointer straightens,
    lifts and comes to the front. */
 .searchPanel_panel:not(.searchPanel_collapsedLatest) .searchPanel_item:hover,
-.searchPanel_panel:not(.searchPanel_collapsedLatest) .searchPanel_item:focus-within {
+.searchPanel_panel:not(.searchPanel_collapsedLatest)
+  .searchPanel_item:focus-within {
   z-index: 3;
   rotate: 0deg;
   transform: translateY(-14px);

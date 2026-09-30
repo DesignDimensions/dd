@@ -36,7 +36,8 @@ export function useAudioPlayer(src) {
       setIsPlaying(false)
     } else {
       const playback = audio.play()
-      if (playback && typeof playback.catch === 'function') playback.catch(() => {})
+      if (playback && typeof playback.catch === 'function')
+        playback.catch(() => {})
       setIsPlaying(true)
     }
   }, [isPlaying, src])

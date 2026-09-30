@@ -20,6 +20,11 @@ export const NAV_ITEMS = [
   { label: 'About us', to: '/about' },
 ]
 
+/** The third column of the header menu — the studio's mission, as About
+    words it. */
+export const MENU_BLURB =
+  'At Design Dimensions, our mission is to provide meticulously tailored and conceptually fitting design solutions to our clients. We offer a comprehensive suite of services aimed at fortifying brands with clarity, elegance, and pride.'
+
 /** Figma 2719:20415 / 2719:20416 — "Kailash ll" verbatim. */
 export const STUDIO = {
   name: 'Design Dimensions',

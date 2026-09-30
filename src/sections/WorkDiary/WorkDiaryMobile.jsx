@@ -1,7 +1,7 @@
 import chevron from '@/assets/mobile/chevron.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProductCardMobile from '@/components/ui/ProductCardMobile/ProductCardMobile.jsx'
-import { PROJECTS } from '@/content/projects'
+import { useContent } from '@/content/useContent'
 
 import './WorkDiaryMobile.css'
 
@@ -20,6 +20,7 @@ export default function WorkDiaryMobile({
   heading,
   limit,
 }) {
+  const { projects } = useContent()
   return (
     <section className="section_box workDiaryMobile_section">
       <div className="workDiaryMobile_content">
@@ -48,7 +49,7 @@ export default function WorkDiaryMobile({
           </button>
         </div>
 
-        {PROJECTS.slice(0, limit).map((project) => (
+        {projects.slice(0, limit).map((project) => (
           <ProductCardMobile
             background={project.background}
             image={project.image}

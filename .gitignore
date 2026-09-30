@@ -26,3 +26,10 @@ dist-ssr
 # Figma reference exports (local pixel-checking only)
 public/figma/*
 !public/figma/.gitkeep
+
+# Studio builds and local studio data
+build/
+cms/storage/*
+!cms/storage/.htaccess
+cms/uploads/*
+!cms/uploads/.htaccess

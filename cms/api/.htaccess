@@ -1,0 +1,9 @@
+# Only index.php answers; the settings and helpers stay private.
+Options -Indexes
+<FilesMatch "^(config\.php|seed\.json)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^lib/ - [F,L]
+</IfModule>

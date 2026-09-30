@@ -1,0 +1,2 @@
+# Drafts, history and the password hash are never served to anyone.
+Require all denied
