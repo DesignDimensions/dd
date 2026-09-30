@@ -4,13 +4,7 @@
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  width: 100%;
   padding: 120px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Home's Design Dialogue head: heading left, lede right, bottoms level */
@@ -24,16 +18,7 @@
 
 .valueBlock_heading {
   flex-shrink: 0;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 40px;
-  letter-spacing: -0.576px;
-  color: #000000;
   white-space: nowrap;
-  font-variation-settings:
-    'CTGR' 100,
-    'wdth' 100;
 }
 
 .valueBlock_lede {

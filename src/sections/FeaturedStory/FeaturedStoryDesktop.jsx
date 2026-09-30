@@ -2,8 +2,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useEffect, useRef } from 'react'
 
-import papad from '@/assets/images/papad.png'
-
 import './FeaturedStoryDesktop.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -29,7 +27,12 @@ const PARALLAX = {
  * the scroll slightly rather than snapping to it. Reduced motion gets
  * neither.
  */
-export default function FeaturedStoryDesktop() {
+export default function FeaturedStoryDesktop({
+  eyebrow,
+  heading,
+  image,
+  quote,
+}) {
   const sectionRef = useRef(null)
   const topRef = useRef(null)
   const bottomRef = useRef(null)
@@ -77,7 +80,11 @@ export default function FeaturedStoryDesktop() {
         <div className="featuredStoryDesktop_papadScroll" ref={topRef}>
           <div className="featuredStoryDesktop_papadTopRotate">
             <div className="featuredStoryDesktop_papadFrame">
-              <img alt="" className="featuredStoryDesktop_papadImage" src={papad} />
+              <img
+                alt=""
+                className="featuredStoryDesktop_papadImage"
+                src={image}
+              />
             </div>
           </div>
         </div>
@@ -87,7 +94,11 @@ export default function FeaturedStoryDesktop() {
         <div className="featuredStoryDesktop_papadScroll" ref={bottomRef}>
           <div className="featuredStoryDesktop_papadBottomRotate">
             <div className="featuredStoryDesktop_papadFrame">
-              <img alt="" className="featuredStoryDesktop_papadImage" src={papad} />
+              <img
+                alt=""
+                className="featuredStoryDesktop_papadImage"
+                src={image}
+              />
             </div>
           </div>
         </div>
@@ -97,17 +108,16 @@ export default function FeaturedStoryDesktop() {
         <div className="featuredStoryDesktop_textStack">
           <div className="featuredStoryDesktop_stack24">
             <div className="featuredStoryDesktop_stack16">
-              <p className="featuredStoryDesktop_eyebrow">Featured Story</p>
+              <p className="text_eyebrow featuredStoryDesktop_eyebrow">
+                {eyebrow}
+              </p>
               <div className="featuredStoryDesktop_headingRow">
-                <p className="featuredStoryDesktop_heading">PAPADMALJI</p>
+                <p className="featuredStoryDesktop_heading">{heading}</p>
               </div>
             </div>
           </div>
         </div>
-        <p className="featuredStoryDesktop_quote">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p className="featuredStoryDesktop_quote">{quote}</p>
       </div>
     </section>
   )

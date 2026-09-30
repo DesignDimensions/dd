@@ -17,10 +17,10 @@ export default function CardRail({ children, eyebrow, heading, label }) {
   const isMobile = useIsMobile()
 
   return (
-    <section className="cardRail_section">
+    <section className="section_box section_clip cardRail_section">
       <div className="cardRail_textStack">
-        <p className="cardRail_eyebrow">{eyebrow}</p>
-        <p className="cardRail_heading">{heading}</p>
+        <p className="text_eyebrow cardRail_eyebrow">{eyebrow}</p>
+        <p className="text_heading cardRail_heading">{heading}</p>
       </div>
 
       <div className="cardRail_content">

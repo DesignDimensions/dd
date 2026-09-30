@@ -1,6 +1,3 @@
-import heroBg from '@/assets/images/hero-bg.jpg'
-import Header from '@/components/layout/Header/Header.jsx'
-
 import './HeroDesktop.css'
 
 /**
@@ -9,11 +6,10 @@ import './HeroDesktop.css'
  * The image is deliberately left still. A scaling background reads as a
  * stock slideshow, and the header's entrance already carries the section.
  */
-export default function HeroDesktop() {
+export default function HeroDesktop({ image }) {
   return (
     <section className="heroDesktop_hero">
-      <img alt="" className="heroDesktop_background" src={heroBg} />
-      <Header />
+      <img alt="" className="heroDesktop_background" src={image} />
     </section>
   )
 }

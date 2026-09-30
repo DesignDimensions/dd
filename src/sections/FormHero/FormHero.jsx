@@ -1,5 +1,4 @@
 import chevron from '@/assets/icons/chevron.svg'
-import Header from '@/components/layout/Header/Header.jsx'
 import { cn } from '@/lib/cn'
 
 import './FormHero.css'
@@ -31,14 +30,22 @@ export default function FormHero({ backdrop, eyebrow, image, lines }) {
         </h1>
       </div>
 
-      <button aria-label="Previous slide" className={cn('formHero_arrow', 'formHero_prev')} disabled type="button">
+      <button
+        aria-label="Previous slide"
+        className={cn('formHero_arrow', 'formHero_prev')}
+        disabled
+        type="button"
+      >
         <img alt="" className="formHero_arrowIcon" src={chevron} />
       </button>
-      <button aria-label="Next slide" className={cn('formHero_arrow', 'formHero_next')} disabled type="button">
+      <button
+        aria-label="Next slide"
+        className={cn('formHero_arrow', 'formHero_next')}
+        disabled
+        type="button"
+      >
         <img alt="" className="formHero_arrowIcon" src={chevron} />
       </button>
-
-      <Header />
     </section>
   )
 }

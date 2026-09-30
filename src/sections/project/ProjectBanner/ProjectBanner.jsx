@@ -1,5 +1,4 @@
 import heroBanner from '@/assets/suryagarh/hero-banner.png'
-import Header from '@/components/layout/Header/Header.jsx'
 
 import './ProjectBanner.css'
 
@@ -29,7 +28,6 @@ export default function ProjectBanner({ src = heroBanner }) {
   return (
     <section className="projectBanner_hero">
       <img alt="" className="projectBanner_image" src={src} />
-      <Header />
     </section>
   )
 }

@@ -1,29 +1,32 @@
 import chevron from '@/assets/mobile/chevron.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import ProductCardMobile from '@/components/ui/ProductCardMobile/ProductCardMobile.jsx'
-import { PROJECTS } from '@/lib/projects'
+import { PROJECTS } from '@/content/projects'
 
 import './WorkDiaryMobile.css'
 
 /**
- * Figma 2715:10684 "2" — one stacked card per project in lib/projects.js,
+ * Figma 2715:10684 "2" — one stacked card per project in content/projects.js,
  * linking to each project that has a page. The filter chip reads "Newest" rather than
  * desktop's "Genre", as the frame states.
  *
  * Same props as WorkDiaryDesktop; `cta={null}` drops the button.
  */
 export default function WorkDiaryMobile({
-  cta = 'View More Projects',
-  filterLabel = 'Newest',
+  cta,
+  ctaTo,
+  eyebrow,
+  filterLabel,
+  heading,
   limit,
 }) {
   return (
-    <section className="workDiaryMobile_section">
+    <section className="section_box workDiaryMobile_section">
       <div className="workDiaryMobile_content">
         <div className="workDiaryMobile_head">
           <div className="workDiaryMobile_headText">
-            <p className="workDiaryMobile_eyebrow">Our pride</p>
-            <p className="workDiaryMobile_heading">Work diary</p>
+            <p className="text_eyebrow workDiaryMobile_eyebrow">{eyebrow}</p>
+            <p className="workDiaryMobile_heading">{heading}</p>
           </div>
           <button className="workDiaryMobile_filter" type="button">
             <div className="workDiaryMobile_filterLabel">
@@ -58,7 +61,7 @@ export default function WorkDiaryMobile({
       </div>
 
       {cta ? (
-        <Cta size="mobile" to="/work">
+        <Cta size="mobile" to={ctaTo}>
           {cta}
         </Cta>
       ) : null}

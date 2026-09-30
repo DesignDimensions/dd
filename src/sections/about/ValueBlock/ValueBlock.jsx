@@ -20,9 +20,9 @@ const FRAMES = [
  */
 export default function ValueBlock({ heading, lede, columns }) {
   return (
-    <section className="valueBlock_section">
+    <section className="section_box section_clip valueBlock_section">
       <div className="valueBlock_head">
-        <p className="valueBlock_heading">{heading}</p>
+        <p className="text_heading valueBlock_heading">{heading}</p>
         <p className="valueBlock_lede">{lede}</p>
       </div>
 

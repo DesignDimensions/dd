@@ -4,13 +4,7 @@
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  width: 100%;
   padding: 160px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* --- head row, Figma 2714:8759 --- */
@@ -58,16 +52,7 @@
 
 .workDiaryDesktop_eyebrow {
   width: 100%;
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .workDiaryDesktop_headingRow {
@@ -165,26 +150,15 @@
    (grid-item_md, two columns) and one narrow card, alternating sides —
    see WorkDiaryDesktop.
 
-   Every card spans two grid rows — image, then text — and lays its own
-   media and footer onto them through subgrid. So the two cards in a row
-   share one image height and one text height: same overall height, the
-   images level, and the text starting on the same line. The row takes
-   the taller image (the wide card's 736:360); the narrow card's square
-   image stretches to match and crops, object-fit: cover. */
+   The two cards in a row share one image height and one text height
+   (projectCard_rows, ProjectCard.css): the row takes the taller image —
+   the wide card's 736:360 — and the square one stretches and crops. */
 .workDiaryDesktop_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 42px; /* wepresent's own --grid-gap at desktop */
   width: 100%;
   flex-shrink: 0;
-}
-
-.workDiaryDesktop_content > .projectCard_card {
-  display: grid;
-  grid-row: span 2;
-  grid-template-rows: subgrid;
-  row-gap: 30px; /* the card's own gap, not the grid's */
-  align-items: stretch; /* fill both tracks — ProjectCard's own is flex-start */
 }
 
 /* Titles bottom-align in the shared text row, so they sit on one line

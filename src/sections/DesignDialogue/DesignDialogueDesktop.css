@@ -4,13 +4,7 @@
   flex-direction: column;
   gap: 80px;
   align-items: center;
-  width: 100%;
   padding: 120px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Figma 2714:8807 */
@@ -47,16 +41,7 @@
 
 .designDialogueDesktop_eyebrow {
   width: 100%;
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .designDialogueDesktop_headingRow {

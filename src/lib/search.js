@@ -1,11 +1,7 @@
-import aboutHero from '@/assets/about/hero-bg.png'
-import safetyPins from '@/assets/dialogue/safety-pins-photo.jpg'
-import building from '@/assets/forms/building.jpg'
-import ocean from '@/assets/forms/ocean.jpg'
-import storyAi from '@/assets/images/story-ai-designer.jpg'
-import { NAV_ITEMS } from '@/lib/navigation'
-import { PROJECT_PAGES } from '@/lib/projectPages'
-import { PROJECTS } from '@/lib/projects'
+import { PAGES } from '@/content/pages'
+import { PROJECT_PAGES } from '@/content/projectPages'
+import { PROJECTS } from '@/content/projects'
+import { ARTICLES } from '@/content/stories'
 
 /**
  * The site search: one flat index of everything that has a page —
@@ -13,8 +9,10 @@ import { PROJECTS } from '@/lib/projects'
  * it. Everything is known at build time, so it runs entirely in the
  * browser with no service behind it.
  *
- * Every entry carries an image and a frame colour, since results show as
- * cards (as wepresent's do): a project its own, a page its hero's.
+ * Built from the content itself: every project, every article and every
+ * page with `search` details (src/content), so a new entry is searchable
+ * as soon as it exists. Each carries an image and a frame colour, since
+ * results show as cards (as wepresent's do).
  */
 
 /** Lower-case, with accents and apostrophes dropped, so "natures" and
@@ -43,85 +41,15 @@ const PROJECT_ENTRIES = PROJECTS.map((project) => ({
   ),
 }))
 
-/** Only articles with a page of their own; the Design Dialogue cards
-    without one aren't somewhere a result could take you. */
-const ARTICLE_ENTRIES = [
-  {
-    type: 'Article',
-    title: 'The humble safety pin',
-    subtitle: 'Design Dialogue · Aparna Kakrania',
-    to: '/design-dialogue/safety-pin',
-    image: safetyPins,
-    background: '#f3e9dc',
-    keywords: [
-      'safety pin',
-      'Walter Hunt',
-      'fibula',
-      'Roman togas',
-      'punk',
-      'design dialogue',
-      'article',
-    ],
-  },
-]
+const ARTICLE_ENTRIES = Object.entries(ARTICLES).map(([slug, story]) => ({
+  type: 'Article',
+  to: `/design-dialogue/${slug}`,
+  ...story.search,
+}))
 
-/** A picture and a frame colour per page — the page's own hero image
-    where it has one, and a colour from the page gradient. */
-const PAGE_LOOK = {
-  '/work': { image: PROJECTS[0]?.image, background: '#b0c3b4' },
-  '/design-dialogue': { image: storyAi, background: '#dcf6f8' },
-  '/about': { image: aboutHero, background: 'rgb(239, 221, 175)' },
-}
-
-const PAGE_KEYWORDS = {
-  '/work': ['projects', 'portfolio', 'case studies', 'our pride'],
-  '/design-dialogue': ['articles', 'stories', 'blog', 'journal'],
-  '/about': [
-    'founder',
-    'Aparna Kakrania',
-    'mission',
-    'values',
-    'philosophy',
-    'brands',
-    'studio',
-  ],
-}
-
-const PAGE_ENTRIES = [
-  ...NAV_ITEMS.filter((item) => item.to).map((item) => ({
-    type: 'Page',
-    title: item.label,
-    subtitle: 'Page',
-    to: item.to,
-    ...PAGE_LOOK[item.to],
-    keywords: PAGE_KEYWORDS[item.to] ?? [],
-  })),
-  {
-    type: 'Page',
-    title: 'Careers',
-    subtitle: 'Page · Join our team',
-    to: '/careers',
-    image: building,
-    background: 'rgb(255, 234, 178)',
-    keywords: ['jobs', 'hiring', 'join', 'resume', 'work with us'],
-  },
-  {
-    type: 'Page',
-    title: 'Contact us',
-    subtitle: 'Page · Get in touch',
-    to: '/contact',
-    image: ocean,
-    background: 'rgb(255, 198, 201)',
-    keywords: [
-      'contact',
-      'email',
-      'phone',
-      'address',
-      'enquiry',
-      'get in touch',
-    ],
-  },
-]
+const PAGE_ENTRIES = Object.entries(PAGES)
+  .filter(([, page]) => page.search)
+  .map(([path, page]) => ({ type: 'Page', to: path, ...page.search }))
 
 const INDEX = [...PROJECT_ENTRIES, ...ARTICLE_ENTRIES, ...PAGE_ENTRIES].map(
   (entry) => ({

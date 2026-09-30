@@ -1,0 +1,106 @@
+/* One wrapper for every page (the Figma root frames). Backgrounds run the
+   full viewport width; contents stay on the frame's centred column. */
+.page_page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--page-inset) var(--page-inset);
+}
+
+/* Home's gradient (tokens.css) — Home, About, Careers, Contact — with
+   #f0f0f0, its end colour, underneath as the fallback. */
+.page_gradient {
+  background-color: #f0f0f0;
+  background-image: var(--ground-gradient);
+}
+
+/* The listing and article pages end on bands painted in the gradient's
+   own stop colours, so their gradients are anchored in px from the
+   page's bottom edge (where those bands sit at a fixed height) rather
+   than in %, which the variable-height content above would drag off
+   them. Figma 2715:12183 (Work), 2719:24276 (Design Dialogue),
+   2719:16435 (article). */
+.page_work,
+.page_dialogue,
+.page_article {
+  background-color: rgb(240, 240, 240);
+}
+
+.page_work {
+  background-image: linear-gradient(
+    0deg,
+    rgb(240, 240, 240) 0,
+    rgb(239, 221, 175) 420px,
+    rgb(255, 198, 201) 950px,
+    rgb(255, 198, 201) 1150px,
+    rgb(255, 234, 178) 1420px,
+    rgb(255, 234, 178) 1560px,
+    rgb(240, 240, 240) 1900px
+  );
+}
+
+.page_dialogue {
+  background-image: linear-gradient(
+    0deg,
+    rgb(240, 240, 240) 0,
+    rgb(239, 221, 175) 420px,
+    rgb(255, 198, 201) 950px,
+    rgb(255, 198, 201) 1150px,
+    rgb(240, 240, 240) 1500px,
+    rgb(240, 240, 240) 1800px,
+    rgb(255, 234, 178) 2230px,
+    rgb(255, 234, 178) 2430px,
+    rgb(240, 240, 240) 2800px
+  );
+}
+
+.page_article {
+  background-image: linear-gradient(
+    0deg,
+    rgb(240, 240, 240) 0,
+    rgb(239, 221, 175) 440px,
+    rgb(240, 240, 240) 1100px
+  );
+}
+
+/* Keep this 1024px in step with DESKTOP_MIN_WIDTH in src/lib/breakpoints.js */
+@media (min-width: 1024px) {
+  .page_work {
+    background-image: linear-gradient(
+      0deg,
+      rgb(240, 240, 240) 0,
+      rgb(239, 221, 175) 440px,
+      rgb(255, 198, 201) 1000px,
+      rgb(255, 198, 201) 1300px,
+      rgb(255, 234, 178) 1600px,
+      rgb(255, 234, 178) 2000px,
+      rgb(240, 240, 240) 2600px
+    );
+  }
+
+  .page_dialogue {
+    background-image: linear-gradient(
+      0deg,
+      rgb(240, 240, 240) 0,
+      rgb(239, 221, 175) 440px,
+      rgb(255, 198, 201) 1000px,
+      rgb(255, 198, 201) 1300px,
+      rgb(240, 240, 240) 1800px,
+      rgb(240, 240, 240) 2100px,
+      rgb(255, 234, 178) 2650px,
+      rgb(255, 234, 178) 3050px,
+      rgb(240, 240, 240) 3600px
+    );
+  }
+
+  .page_article {
+    background-image: linear-gradient(
+      0deg,
+      rgb(240, 240, 240) 0,
+      rgb(239, 221, 175) 500px,
+      rgb(240, 240, 240) 1250px
+    );
+  }
+}

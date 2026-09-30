@@ -1,14 +1,9 @@
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { responsive } from '@/components/page/responsive.jsx'
 
 import SnackFactoryDesktop from './SnackFactoryDesktop.jsx'
 import SnackFactoryMobile from './SnackFactoryMobile.jsx'
 
-/**
- * Picks the frame to render.
- *
- * Figma 2714:8733 (desktop, 1440) and 2715:10365 (mobile, 360) differ in
- * content, not only in size, so this is a branch rather than a media query.
- */
-export default function SnackFactory() {
-  return useIsMobile() ? <SnackFactoryMobile /> : <SnackFactoryDesktop />
-}
+/** Figma 2714:8744 (desktop) / 2715:10544 (mobile) — see responsive(). */
+const SnackFactory = responsive(SnackFactoryDesktop, SnackFactoryMobile)
+
+export default SnackFactory

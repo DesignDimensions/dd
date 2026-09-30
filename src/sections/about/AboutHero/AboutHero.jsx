@@ -1,6 +1,3 @@
-import heroBg from '@/assets/about/hero-bg.png'
-import Header from '@/components/layout/Header/Header.jsx'
-
 import './AboutHero.css'
 
 /**
@@ -10,13 +7,12 @@ import './AboutHero.css'
  * all (the node returned only its text child), so the photograph here is
  * the original source recovered via download_assets.
  */
-export default function AboutHero() {
+export default function AboutHero({ image, label }) {
   return (
     <section className="aboutHero_hero">
-      <Header />
-      <img alt="" className="aboutHero_background" src={heroBg} />
+      <img alt="" className="aboutHero_background" src={image} />
       <div className="aboutHero_labelRow">
-        <p className="aboutHero_label">Creating Design, weaving craft</p>
+        <p className="aboutHero_label">{label}</p>
       </div>
     </section>
   )

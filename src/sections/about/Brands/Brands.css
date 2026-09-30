@@ -4,14 +4,8 @@
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  width: 100%;
   padding: 120px var(--page-gutter);
   /* White like every other box (it was #fafafa) */
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 .brands_textStack {
@@ -42,17 +36,8 @@
 }
 
 .brands_eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   white-space: nowrap;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .brands_headingRow {

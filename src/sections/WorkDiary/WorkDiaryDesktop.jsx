@@ -5,14 +5,14 @@ import Cta from '@/components/ui/Cta/Cta.jsx'
 import MergeButton from '@/components/ui/MergeButton/MergeButton.jsx'
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard.jsx'
 import { cn } from '@/lib/cn'
-import { PROJECTS } from '@/lib/projects'
+import { PROJECTS } from '@/content/projects'
 
 import './WorkDiaryDesktop.css'
 
 /**
  * Figma 2714:8758 (Home) / 2715:12228 (Work diary page).
  *
- * Lists lib/projects.js, a card linking to each project that has a page.
+ * Lists content/projects.js, a card linking to each project that has a page.
  * `limit` caps how many are shown (Home shows the first few; /work shows
  * them all).
  *
@@ -28,8 +28,11 @@ import './WorkDiaryDesktop.css'
  * drops the button.
  */
 export default function WorkDiaryDesktop({
-  cta = 'View All Projects',
-  filterLabel = 'Genre',
+  cta,
+  ctaTo,
+  eyebrow,
+  filterLabel,
+  heading,
   limit,
 }) {
   const shown = PROJECTS.slice(0, limit)
@@ -38,15 +41,17 @@ export default function WorkDiaryDesktop({
   const FeaturedRoot = featured?.path ? Link : 'div'
 
   return (
-    <section className="workDiaryDesktop_section">
+    <section className="section_box section_clip workDiaryDesktop_section">
       <div className="workDiaryDesktop_head">
         <div className="workDiaryDesktop_headLeft">
           <div className="workDiaryDesktop_textStack">
             <div className="workDiaryDesktop_stack24">
               <div className="workDiaryDesktop_stack16">
-                <p className="workDiaryDesktop_eyebrow">Our pride</p>
+                <p className="text_eyebrow workDiaryDesktop_eyebrow">
+                  {eyebrow}
+                </p>
                 <div className="workDiaryDesktop_headingRow">
-                  <p className="workDiaryDesktop_heading">Work diary</p>
+                  <p className="workDiaryDesktop_heading">{heading}</p>
                 </div>
               </div>
             </div>
@@ -61,14 +66,18 @@ export default function WorkDiaryDesktop({
           <div className="workDiaryDesktop_genreIconWrap">
             <div className="workDiaryDesktop_genreIconRotate">
               <div className="workDiaryDesktop_genreIcon">
-                <img alt="" className="workDiaryDesktop_genreIconImage" src={chevron} />
+                <img
+                  alt=""
+                  className="workDiaryDesktop_genreIconImage"
+                  src={chevron}
+                />
               </div>
             </div>
           </div>
         </button>
       </div>
 
-      <div className="workDiaryDesktop_content">
+      <div className="projectCard_rows workDiaryDesktop_content">
         {/* Featured card — Figma 2714:8765 */}
         {featured ? (
           <FeaturedRoot
@@ -83,7 +92,11 @@ export default function WorkDiaryDesktop({
               )}
             >
               {featured.image ? (
-                <img alt="" className="workDiaryDesktop_featuredImage" src={featured.image} />
+                <img
+                  alt=""
+                  className="workDiaryDesktop_featuredImage"
+                  src={featured.image}
+                />
               ) : null}
             </div>
             <div className="workDiaryDesktop_featuredBody">
@@ -91,7 +104,9 @@ export default function WorkDiaryDesktop({
                 <div className="workDiaryDesktop_stack12">
                   <div className="workDiaryDesktop_stack8">
                     <div className="workDiaryDesktop_headingRow">
-                      <p className="workDiaryDesktop_featuredTitle">{featured.title}</p>
+                      <p className="workDiaryDesktop_featuredTitle">
+                        {featured.title}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -120,7 +135,7 @@ export default function WorkDiaryDesktop({
         ))}
       </div>
 
-      {cta ? <Cta to="/work">{cta}</Cta> : null}
+      {cta ? <Cta to={ctaTo}>{cta}</Cta> : null}
     </section>
   )
 }

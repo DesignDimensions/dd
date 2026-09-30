@@ -8,13 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
   padding: 64px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Figma 2955:12738 uses 120px top/bottom instead of 64px. */
@@ -167,7 +161,6 @@
 }
 
 @media (max-width: 1023.98px) {
-
   .projectTextBlock_section,
   .projectTextBlock_spacious {
     padding: 40px var(--m-page-gutter);

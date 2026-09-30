@@ -13,7 +13,11 @@ export default function QuoteBig({ background, children, color }) {
   return (
     <section
       className={cn('quoteBig_section', background && 'quoteBig_band')}
-      style={background ? { '--quote-bg': background, '--quote-color': color } : undefined}
+      style={
+        background
+          ? { '--quote-bg': background, '--quote-color': color }
+          : undefined
+      }
     >
       <p className="quoteBig_quote">{children}</p>
     </section>

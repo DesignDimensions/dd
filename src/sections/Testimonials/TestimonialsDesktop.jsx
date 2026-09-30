@@ -8,7 +8,7 @@ import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { cn } from '@/lib/cn'
 
 import TestimonialProgress from './TestimonialProgress.jsx'
-import { TESTIMONIALS } from './testimonials'
+import { TESTIMONIALS } from '@/content/testimonials'
 
 import './TestimonialsDesktop.css'
 
@@ -26,19 +26,21 @@ import './TestimonialsDesktop.css'
  * fades up over the rest, so the section keeps the tallest card's height
  * and nothing below it jumps as the quotes change.
  */
-export default function TestimonialsDesktop() {
+export default function TestimonialsDesktop({ cta, eyebrow, heading }) {
   const idPrefix = useId()
   const { ref, active, select, next, prev, autoplay, paused, rootProps } =
     useAutoRotate(TESTIMONIALS.length)
 
   return (
-    <section className="testimonialsDesktop_section" ref={ref} {...rootProps}>
+    <section
+      className="section_box section_clip testimonialsDesktop_section"
+      ref={ref}
+      {...rootProps}
+    >
       <div className="testimonialsDesktop_head">
         <div className="testimonialsDesktop_headText">
-          <p className="testimonialsDesktop_eyebrow">We believe</p>
-          <p className="testimonialsDesktop_heading">
-            Each one is a earned and treasured
-          </p>
+          <p className="text_eyebrow testimonialsDesktop_eyebrow">{eyebrow}</p>
+          <p className="text_heading testimonialsDesktop_heading">{heading}</p>
         </div>
 
         <div className="testimonialsDesktop_controls">
@@ -135,7 +137,7 @@ export default function TestimonialsDesktop() {
         />
       </div>
 
-      <Cta>View More</Cta>
+      <Cta>{cta}</Cta>
     </section>
   )
 }

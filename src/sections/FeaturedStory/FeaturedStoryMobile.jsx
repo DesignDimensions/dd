@@ -1,6 +1,3 @@
-import papad from '@/assets/images/papad.png'
-import { PROJECTS } from '@/lib/projects'
-
 import './FeaturedStoryMobile.css'
 
 /**
@@ -10,17 +7,22 @@ import './FeaturedStoryMobile.css'
  * are rotated -15.21deg on mobile, where desktop mirrors the second one.
  *
  * Boxed like every other mobile section (reference: wepresent, where
- * nothing sits loose on the page), in Papadmalji's own project colour —
- * the one its Work diary card wears — with the papads cut off by the
- * box's rounded edge.
+ * nothing sits loose on the page), in the featured project's own colour
+ * (`background` — the one its Work diary card wears), with the papads
+ * cut off by the box's rounded edge.
  */
-const BACKGROUND = PROJECTS.find((p) => p.slug === 'papadmalji')?.background
 
-export default function FeaturedStoryMobile() {
+export default function FeaturedStoryMobile({
+  background,
+  eyebrow,
+  heading,
+  image,
+  quote,
+}) {
   return (
     <section
       className="featuredStoryMobile_section"
-      style={{ backgroundColor: BACKGROUND }}
+      style={{ backgroundColor: background }}
     >
       <div className="featuredStoryMobile_papadTop">
         <div className="featuredStoryMobile_papadRotate">
@@ -28,7 +30,7 @@ export default function FeaturedStoryMobile() {
             <img
               alt=""
               className="featuredStoryMobile_papadImage"
-              src={papad}
+              src={image}
             />
           </div>
         </div>
@@ -40,20 +42,17 @@ export default function FeaturedStoryMobile() {
             <img
               alt=""
               className="featuredStoryMobile_papadImage"
-              src={papad}
+              src={image}
             />
           </div>
         </div>
       </div>
 
       <div className="featuredStoryMobile_heading">
-        <p className="featuredStoryMobile_eyebrow">Featured Story</p>
-        <p className="featuredStoryMobile_title">Papadmalji</p>
+        <p className="featuredStoryMobile_eyebrow">{eyebrow}</p>
+        <p className="featuredStoryMobile_title">{heading}</p>
       </div>
-      <p className="featuredStoryMobile_quote">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <p className="featuredStoryMobile_quote">{quote}</p>
     </section>
   )
 }

@@ -153,18 +153,9 @@
 }
 
 .featuredStoryDesktop_eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   text-align: center;
   white-space: nowrap;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .featuredStoryDesktop_headingRow {

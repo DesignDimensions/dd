@@ -7,23 +7,11 @@
   padding: 120px var(--bleed-gutter);
   overflow: clip;
   flex-shrink: 0;
-}
-
-/* On the home frame this section's fill is a stop on the page gradient,
-   so it runs full width and lets the page show through. */
-.contactDesktop_transparent {
+  /* No box of its own: this section's fill is a stop on the page
+     gradient, so it runs full width and lets the page show through. */
   background-color: transparent;
   width: calc(100% + var(--page-inset) * 2);
   margin-inline: calc(-1 * var(--page-inset));
-}
-
-/* On a solid page it is a box like any other section. */
-.contactDesktop_boxed {
-  width: 100%;
-  background-color: #efddaf;
-  border-radius: var(--section-radius);
-  filter: var(--elevation-section);
-  padding-inline: var(--page-gutter);
 }
 
 /* Figma 2715:11779 */
@@ -64,17 +52,8 @@
 }
 
 .contactDesktop_eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   white-space: nowrap;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .contactDesktop_headingRow {

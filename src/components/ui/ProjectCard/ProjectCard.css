@@ -188,3 +188,21 @@
 .projectCard_mediaEmpty {
   background-color: rgb(0 0 0 / 6%);
 }
+
+/* A card grid whose rows come in pairs of tracks — image, then text —
+   (`projectCard_rows` on the grid: Work diary, the Design Dialogue
+   articles). Each card spans both tracks of its row and lays its media
+   and footer onto them through subgrid, so the cards in a row share one
+   image height and one text height: same overall height, images level,
+   text starting on one line. The row takes its tallest image; the others
+   stretch and crop (object-fit: cover). Desktop only. Keep this 1024px in
+   step with DESKTOP_MIN_WIDTH in src/lib/breakpoints.js. */
+@media (min-width: 1024px) {
+  .projectCard_rows > .projectCard_card {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 30px; /* the card's own gap, not the grid's */
+    align-items: stretch; /* fill both tracks, not the card's flex-start */
+  }
+}

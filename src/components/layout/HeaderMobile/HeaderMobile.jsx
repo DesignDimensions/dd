@@ -8,7 +8,7 @@ import SearchPanel from '@/components/layout/Search/SearchPanel.jsx'
 import { useDismissableMenu } from '@/hooks/useDismissableMenu'
 import { useSearchShortcut } from '@/hooks/useSearchShortcut'
 import { cn } from '@/lib/cn'
-import { NAV_ITEMS } from '@/lib/navigation'
+import { NAV_ITEMS } from '@/content/settings'
 
 import './HeaderMobile.css'
 

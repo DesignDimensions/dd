@@ -14,9 +14,22 @@ import './ProjectTextBlock.css'
  * inside the same white card — the first Suryagarh instance absorbs what
  * used to be GalleryTrio's top two rows this way (see Suryagarh.jsx).
  */
-export default function ProjectTextBlock({ children, lede, media, spacious = false, title }) {
+export default function ProjectTextBlock({
+  children,
+  lede,
+  media,
+  spacious = false,
+  title,
+}) {
   return (
-    <section className={cn('projectTextBlock_section', spacious && 'projectTextBlock_spacious')}>
+    <section
+      className={cn(
+        'section_box',
+        'section_clip',
+        'projectTextBlock_section',
+        spacious && 'projectTextBlock_spacious',
+      )}
+    >
       <div className="projectTextBlock_row">
         <div className="projectTextBlock_left">
           {title ? <p className="projectTextBlock_title">{title}</p> : null}

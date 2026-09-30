@@ -16,7 +16,9 @@ import './StoryOverview.css'
  */
 export default function StoryOverview({ audio, meta, tags, title }) {
   const player = useAudioPlayer(audio)
-  const zoneRef = useGravityZone(player.isPlaying ? 'Pause Audio' : 'Play Audio')
+  const zoneRef = useGravityZone(
+    player.isPlaying ? 'Pause Audio' : 'Play Audio',
+  )
 
   return (
     <div className="storyOverview_group" onClick={player.toggle} ref={zoneRef}>
@@ -27,7 +29,11 @@ export default function StoryOverview({ audio, meta, tags, title }) {
         tags={tags}
         title={title}
       />
-      <ProjectProgress audioRef={player.audioRef} isPlaying={player.isPlaying} src={audio} />
+      <ProjectProgress
+        audioRef={player.audioRef}
+        isPlaying={player.isPlaying}
+        src={audio}
+      />
     </div>
   )
 }

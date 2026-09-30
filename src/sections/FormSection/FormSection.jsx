@@ -1,5 +1,10 @@
+import { Link } from 'react-router-dom'
+
 import pinIcon from '@/assets/forms/map-pin.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
+import { STUDIO } from '@/content/settings'
+
+import FormFields from './FormFields.jsx'
 
 import './FormSection.css'
 
@@ -11,20 +16,18 @@ import './FormSection.css'
  *
  * There is no endpoint to post to yet, so submitting stays on the page.
  */
-export default function FormSection({ after, children, heading, intro, label }) {
+export default function FormSection({ after, fields, heading, intro, label }) {
   return (
-    <section className="formSection_section">
+    <section className="section_box section_clip formSection_section">
       <div className="formSection_aside">
-        <h2 className="formSection_heading">{heading}</h2>
+        <h2 className="text_heading formSection_heading">{heading}</h2>
         {intro ? <p className="formSection_intro">{intro}</p> : null}
 
         {/* Figma 2719:20415 */}
         <div className="formSection_reach">
-          <p className="formSection_reachTitle">
-            Let’s chat about your amazing ideas and projects directly, reach out to us
-          </p>
-          <a className="formSection_email" href="mailto:info@designdimensions.in">
-            info@designdimensions.in
+          <p className="formSection_reachTitle">{STUDIO.reach}</p>
+          <a className="formSection_email" href={`mailto:${STUDIO.email}`}>
+            {STUDIO.email}
           </a>
         </div>
 
@@ -32,20 +35,28 @@ export default function FormSection({ after, children, heading, intro, label }) 
         <div className="formSection_studio">
           <div className="formSection_studioName">
             <img alt="" className="formSection_pin" src={pinIcon} />
-            <p className="formSection_studioTitle">Design Dimensions</p>
+            <p className="formSection_studioTitle">{STUDIO.name}</p>
           </div>
           <address className="formSection_address">
-            M-283, Ground Floor, Block M, Greater Kailash ll, Greater Kailash, New Delhi-110048
+            {STUDIO.address}
             <br />
-            Ph: +91 96250 12486
+            {STUDIO.phone}
           </address>
         </div>
 
-        {after}
+        {after ? (
+          <Link className="formSection_link" to={after.to}>
+            {after.label}
+          </Link>
+        ) : null}
       </div>
 
-      <form aria-label={label} className="formSection_form" onSubmit={(event) => event.preventDefault()}>
-        {children}
+      <form
+        aria-label={label}
+        className="formSection_form"
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <FormFields fields={fields} />
         <Cta type="submit">Submit</Cta>
       </form>
     </section>

@@ -4,13 +4,7 @@
   flex-direction: column;
   gap: 40px;
   align-items: center;
-  width: 100%;
   padding: 40px var(--m-page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Figma 2715:11890 */

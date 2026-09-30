@@ -4,12 +4,7 @@
   flex-direction: column;
   gap: 40px;
   align-items: center;
-  width: 100%;
   padding: 40px var(--m-page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Figma 2715:10685 */
@@ -41,15 +36,6 @@
 }
 
 .workDiaryMobile_eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .workDiaryMobile_heading {

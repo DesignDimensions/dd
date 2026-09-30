@@ -1,14 +1,13 @@
 import pinShadowFar from '@/assets/dialogue/safety-pin-shadow-1.png'
 import pinShadowNear from '@/assets/dialogue/safety-pin-shadow-2.png'
 import pin from '@/assets/dialogue/safety-pin.png'
-import Header from '@/components/layout/Header/Header.jsx'
 
 import './ArticleBanner.css'
 
 /**
  * Figma 2719:16436 — 819px band, a safety pin laid on a warm paper ground,
  * header pinned to top (same as ProjectBanner; the frame's own header bar
- * is dropped in favour of <Header/>).
+ * is dropped in favour of the site header, SiteHeader).
  *
  * The pin is Figma's own three-layer build (2719:16438): two blurred
  * copies offset to the right as a soft shadow, the sharp pin on top, each
@@ -34,7 +33,6 @@ export default function ArticleBanner() {
           </div>
         </div>
       </div>
-      <Header />
     </section>
   )
 }

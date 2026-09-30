@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------------
+   The white box most sections are drawn as: full column width, white,
+   the shared --section-radius corners and the section elevation.
+   `section_clip` also clips the content to the rounded corners — left
+   off only by the mobile sections whose card shadows must spill out.
+
+   Loaded before every component stylesheet (main.jsx), so a section's
+   own rules still override any of these.
+   --------------------------------------------------------------- */
+.section_box {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: var(--section-radius);
+  flex-shrink: 0;
+  filter: var(--elevation-section);
+}
+
+.section_clip {
+  overflow: clip;
+}
+
+/* ---------------------------------------------------------------
+   The section head's type, as Home sets it on desktop: the small
+   eyebrow over the 48px heading. A section's own rules add layout
+   (alignment, wrapping) and any mobile size on top.
+   --------------------------------------------------------------- */
+.text_eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.168px;
+  color: #252525;
+  font-variation-settings:
+    'CTGR' 0,
+    'wdth' 100;
+}
+
+.text_heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 40px;
+  letter-spacing: -0.576px;
+  color: #000000;
+  font-variation-settings:
+    'CTGR' 100,
+    'wdth' 100;
+}

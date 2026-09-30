@@ -7,13 +7,7 @@
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  width: 100%;
   padding: 160px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 .cardRail_textStack {
@@ -26,29 +20,11 @@
 }
 
 .cardRail_eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.168px;
-  color: #252525;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 0,
-    'wdth' 100;
 }
 
 .cardRail_heading {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 40px;
-  letter-spacing: -0.576px;
-  color: #000000;
   word-break: break-word;
-  font-variation-settings:
-    'CTGR' 100,
-    'wdth' 100;
 }
 
 .cardRail_content {

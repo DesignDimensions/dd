@@ -1,3 +1,4 @@
+import { useHideHeader } from '@/components/layout/SiteHeader/headerVisibility'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -7,10 +8,11 @@ import './NotFound.css'
  * Figma has no 404 frame yet, so this is set in Home's language rather
  * than taken from a design: one white box on the page gradient, Home's
  * section head, and its black CTA back to the start. Replace it once a
- * 404 frame is handed over.
+ * 404 frame is handed over. It has no site header.
  */
 export default function NotFound() {
   const isMobile = useIsMobile()
+  useHideHeader()
 
   return (
     <div className="notFound_page">

@@ -3,52 +3,43 @@ import logoGroup1 from '@/assets/icons/logo-footer-group-1.svg'
 import logoGroup2 from '@/assets/icons/logo-footer-group-2.svg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import Tag from '@/components/ui/Tag/Tag.jsx'
+import { FOOTER_LINKS } from '@/content/settings'
 
 import { ENQUIRY_FIELDS, useEnquiryForm } from '@/hooks/useEnquiryForm'
-import { cn } from '@/lib/cn'
+import { FOOTER_GRID } from '@/lib/footerGrid'
 
 import './ContactDesktop.css'
 
 /**
- * Figma 2715:11794 – 11801. The frame draws the first two filled to show
- * the selected state; here they are toggles and none start selected.
+ * Figma 2715:11778. Words from CONTACT (content/settings.js). The frame
+ * draws the first two interests filled to show the selected state
+ * (2715:11794 – 11801); here they are toggles and none start selected.
+ * The footer links (2715:11808 – 11813) sit on a 281x64 grid by
+ * absolute offset (lib/footerGrid.js).
  */
-const INTERESTS = [
-  'Identity design',
-  'Packaging design',
-  'Web design',
-  'Communication design',
-  'Social media',
-  'Brand film',
-  'Corporate gifting',
-  'Wedding cards',
-]
-
-/** Figma 2715:11808 – 11813, placed on a 281x64 grid by absolute offset */
-const FOOTER_LINKS = [
-  { label: 'About us', left: 0, top: 0 },
-  { label: 'Work diary', left: 82, top: 0 },
-  { label: 'Design dialogue', left: 176, top: 0 },
-  { label: 'Careers', left: 0, top: 44 },
-  { label: 'Contact us', left: 82, top: 44 },
-  { label: 'Privacy policy', left: 176, top: 44 },
-]
-
-/** Figma 2715:11778 */
-export default function ContactDesktop({ variant = 'transparent' }) {
-  const { handleSubmit, interests, submitLabel, toggleInterest } = useEnquiryForm()
+export default function ContactDesktop({
+  eyebrow,
+  fieldsLabel,
+  heading,
+  interests: options,
+  interestsLabel,
+}) {
+  const { handleSubmit, interests, submitLabel, toggleInterest } =
+    useEnquiryForm()
 
   return (
-    <section className={cn('contactDesktop_section', `contactDesktop_${variant}`)}>
-      <form aria-label="Enquiry" className="contactDesktop_body" onSubmit={handleSubmit}>
+    <section className="contactDesktop_section">
+      <form
+        aria-label="Enquiry"
+        className="contactDesktop_body"
+        onSubmit={handleSubmit}
+      >
         <div className="contactDesktop_textStack">
           <div className="contactDesktop_stack12">
             <div className="contactDesktop_stack8">
-              <p className="contactDesktop_eyebrow">Feel free to connect!</p>
+              <p className="text_eyebrow contactDesktop_eyebrow">{eyebrow}</p>
               <div className="contactDesktop_headingRow">
-                <p className="contactDesktop_heading">
-                  This could be a start of a new relation
-                </p>
+                <p className="contactDesktop_heading">{heading}</p>
               </div>
             </div>
           </div>
@@ -57,7 +48,7 @@ export default function ContactDesktop({ variant = 'transparent' }) {
         <div className="contactDesktop_columns">
           <div className="contactDesktop_column">
             <div className="contactDesktop_columnHeadingRow">
-              <p className="contactDesktop_columnHeading">Your Information</p>
+              <p className="contactDesktop_columnHeading">{fieldsLabel}</p>
             </div>
             <div className="contactDesktop_fields">
               {ENQUIRY_FIELDS.map((field) => (
@@ -76,10 +67,14 @@ export default function ContactDesktop({ variant = 'transparent' }) {
 
           <div className="contactDesktop_column">
             <div className="contactDesktop_columnHeadingRow">
-              <p className="contactDesktop_columnHeading">Pick your interest</p>
+              <p className="contactDesktop_columnHeading">{interestsLabel}</p>
             </div>
-            <div aria-label="Pick your interest" className="contactDesktop_interests" role="group">
-              {INTERESTS.map((interest) => (
+            <div
+              aria-label="Pick your interest"
+              className="contactDesktop_interests"
+              role="group"
+            >
+              {options.map((interest) => (
                 <Tag
                   key={interest}
                   onClick={() => toggleInterest(interest)}
@@ -89,7 +84,12 @@ export default function ContactDesktop({ variant = 'transparent' }) {
                 </Tag>
               ))}
               {interests.map((interest) => (
-                <input key={interest} name="interests" type="hidden" value={interest} />
+                <input
+                  key={interest}
+                  name="interests"
+                  type="hidden"
+                  value={interest}
+                />
               ))}
             </div>
           </div>
@@ -117,11 +117,11 @@ export default function ContactDesktop({ variant = 'transparent' }) {
         <div className="contactDesktop_spacer" />
 
         <div className="contactDesktop_footerLinks">
-          {FOOTER_LINKS.map((link) => (
+          {FOOTER_LINKS.map((link, index) => (
             <div
               className="contactDesktop_footerLink"
               key={link.label}
-              style={{ left: `${link.left}px`, top: `${link.top}px` }}
+              style={FOOTER_GRID[index]}
             >
               <p className="contactDesktop_footerLinkText">{link.label}</p>
             </div>

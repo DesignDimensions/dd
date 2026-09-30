@@ -6,7 +6,7 @@ import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { cn } from '@/lib/cn'
 
 import TestimonialProgress from './TestimonialProgress.jsx'
-import { TESTIMONIALS } from './testimonials'
+import { TESTIMONIALS } from '@/content/testimonials'
 
 import './TestimonialsMobile.css'
 
@@ -21,7 +21,7 @@ const SWIPE_DISTANCE = 40
  * The quote is clamped to a few lines, as the frame truncates it; there
  * is still no "View More" button here — desktop has one (2714:8872).
  */
-export default function TestimonialsMobile() {
+export default function TestimonialsMobile({ eyebrow, headingLines }) {
   const idPrefix = useId()
   const { ref, active, select, next, prev, autoplay, paused, rootProps } =
     useAutoRotate(TESTIMONIALS.length)
@@ -36,14 +36,19 @@ export default function TestimonialsMobile() {
   }
 
   return (
-    <section className="testimonialsMobile_section" ref={ref} {...rootProps}>
+    <section
+      className="section_box testimonialsMobile_section"
+      ref={ref}
+      {...rootProps}
+    >
       <div className="testimonialsMobile_title">
-        <p className="testimonialsMobile_eyebrow">We believe</p>
+        <p className="testimonialsMobile_eyebrow">{eyebrow}</p>
         <div className="testimonialsMobile_headingWrap">
-          <p className="testimonialsMobile_headingLine">
-            {'Each one is a earned '}
-          </p>
-          <p className="testimonialsMobile_headingLine">and treasured</p>
+          {headingLines.map((line) => (
+            <p className="testimonialsMobile_headingLine" key={line}>
+              {line}
+            </p>
+          ))}
         </div>
       </div>
 

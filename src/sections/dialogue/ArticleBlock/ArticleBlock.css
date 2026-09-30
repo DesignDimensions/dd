@@ -10,13 +10,7 @@
   flex-direction: column;
   gap: 80px;
   align-items: flex-start;
-  width: 100%;
   padding: 120px var(--page-gutter);
-  background-color: #ffffff;
-  border-radius: var(--section-radius);
-  overflow: clip;
-  flex-shrink: 0;
-  filter: var(--elevation-section);
 }
 
 /* Figma 2719:16468 — 200 + 880 across the 1120 column */

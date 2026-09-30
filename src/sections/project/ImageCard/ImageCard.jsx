@@ -14,8 +14,15 @@ export default function ImageCard({ height, src, width }) {
   const zoomRef = useZoomable(src)
 
   return (
-    <section className="imageCard_section">
-      <img alt="" className="imageCard_image" height={height} ref={zoomRef} src={src} width={width} />
+    <section className="section_box section_clip imageCard_section">
+      <img
+        alt=""
+        className="imageCard_image"
+        height={height}
+        ref={zoomRef}
+        src={src}
+        width={width}
+      />
     </section>
   )
 }

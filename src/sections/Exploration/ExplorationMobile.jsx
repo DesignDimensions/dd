@@ -6,32 +6,21 @@ import './ExplorationMobile.css'
 /**
  * Figma 2715:10895 "5".
  *
- * Seven tags here against desktop's eight — mobile drops "Corporate
- * gifting" — and several differ in capitalisation. Kept as the frame
- * states them, and the CTA reads "Search now" rather than "Search Now".
+ * Content from EXPLORATION (content/settings.js), whose `mobile` holds
+ * the frame's own tags and CTA wording.
  */
-const TAGS = [
-  { label: 'Packaging design', variant: 'filled' },
-  { label: 'Identity design', variant: 'outline' },
-  { label: 'Web design', variant: 'filled' },
-  { label: 'Installation design', variant: 'outline' },
-  { label: 'Communication design', variant: 'outline' },
-  { label: 'Social Media', variant: 'outline' },
-  { label: 'Brand Films', variant: 'outline' },
-]
-
-export default function ExplorationMobile() {
+export default function ExplorationMobile({ cta, heading, tags }) {
   return (
     <section className="explorationMobile_section">
-      <p className="explorationMobile_heading">Let’s do a quick exploration!</p>
+      <p className="explorationMobile_heading">{heading}</p>
       <div className="explorationMobile_tags">
-        {TAGS.map((tag) => (
+        {tags.map((tag) => (
           <Tag key={tag.label} size="mobile" variant={tag.variant}>
             {tag.label}
           </Tag>
         ))}
       </div>
-      <Cta size="mobile">Search now</Cta>
+      <Cta size="mobile">{cta}</Cta>
     </section>
   )
 }

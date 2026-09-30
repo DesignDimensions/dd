@@ -1,14 +1,9 @@
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { responsive } from '@/components/page/responsive.jsx'
 
 import TestimonialsDesktop from './TestimonialsDesktop.jsx'
 import TestimonialsMobile from './TestimonialsMobile.jsx'
 
-/**
- * Picks the frame to render.
- *
- * Figma 2714:8733 (desktop, 1440) and 2715:10365 (mobile, 360) differ in
- * content, not only in size, so this is a branch rather than a media query.
- */
-export default function Testimonials() {
-  return useIsMobile() ? <TestimonialsMobile /> : <TestimonialsDesktop />
-}
+/** Figma 2714:8859 (desktop) / 2715:11049 (mobile) — see responsive(). */
+const Testimonials = responsive(TestimonialsDesktop, TestimonialsMobile)
+
+export default Testimonials

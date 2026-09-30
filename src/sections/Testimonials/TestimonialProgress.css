@@ -51,7 +51,8 @@
 }
 
 .testimonialProgress_running {
-  animation: testimonialProgress_grow var(--testimonial-interval, 3s) linear forwards;
+  animation: testimonialProgress_grow var(--testimonial-interval, 3s) linear
+    forwards;
 }
 
 @keyframes testimonialProgress_grow {

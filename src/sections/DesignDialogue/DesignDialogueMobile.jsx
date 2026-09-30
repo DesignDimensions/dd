@@ -1,76 +1,44 @@
-import storyGradients from '@/assets/images/story-gradients.gif'
-import story1 from '@/assets/mobile/story-1.jpg'
 import Cta from '@/components/ui/Cta/Cta.jsx'
 import IconButton from '@/components/ui/IconButton/IconButton.jsx'
 import ZoomCarousel from '@/components/ui/ZoomCarousel/ZoomCarousel.jsx'
 
 import './DesignDialogueMobile.css'
 
-const CARD_COPY =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.'
-
 /**
- * Figma 2715:11897 "Cards Slider" — four cards, stacked into a swipeable
- * deck (wepresent's phone carousel), where desktop zooms through a row.
+ * Figma 2715:11889 "7". Its 2715:11897 "Cards Slider" is stacked into a
+ * swipeable deck (wepresent's phone carousel), where desktop zooms
+ * through a row.
  *
- * All four repeat the same title in the frame; kept verbatim. The first
- * and third cards crop their image (h 141.49%, top -22.1%).
+ * `cards` come from content: { image, background, glyph, cropped, title
+ * (lines), body }. A `cropped` card scales and offsets its image as the
+ * frame does (h 141.49%, top -22.1%).
  */
-const CARDS = [
-  {
-    id: 1,
-    image: story1,
-    background: '#d5dab5',
-    glyph: 'arrow',
-    cropped: true,
-  },
-  {
-    id: 2,
-    image: storyGradients,
-    background: '#ff694f',
-    glyph: 'bookmark',
-    cropped: false,
-  },
-  {
-    id: 3,
-    image: story1,
-    background: '#d5dab5',
-    glyph: 'arrow',
-    cropped: true,
-  },
-  {
-    id: 4,
-    image: storyGradients,
-    background: '#ff694f',
-    glyph: 'bookmark',
-    cropped: false,
-  },
-]
-
-/** Figma 2715:11889 "7" */
-export default function DesignDialogueMobile() {
+export default function DesignDialogueMobile({
+  cards,
+  cta,
+  eyebrow,
+  heading,
+  intro,
+}) {
   return (
-    <section className="designDialogueMobile_section">
+    <section className="section_box section_clip designDialogueMobile_section">
       <div className="designDialogueMobile_content">
         <div className="designDialogueMobile_head">
-          <p className="designDialogueMobile_eyebrow">We have more for you</p>
-          <p className="designDialogueMobile_heading">Design Dialogue</p>
+          <p className="designDialogueMobile_eyebrow">{eyebrow}</p>
+          <p className="designDialogueMobile_heading">{heading}</p>
         </div>
 
         <div className="designDialogueMobile_introWrap">
           <div className="designDialogueMobile_introRow">
-            <p className="designDialogueMobile_intro">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
-            </p>
+            <p className="designDialogueMobile_intro">{intro}</p>
           </div>
         </div>
 
         <ZoomCarousel effect="cards" label="stories">
-          {CARDS.map((card) => (
+          {cards.map((card, index) => (
             <div
               className="designDialogueMobile_card"
-              key={card.id}
+              key={index}
               style={{ backgroundColor: card.background }}
             >
               <div className="designDialogueMobile_media">
@@ -78,7 +46,9 @@ export default function DesignDialogueMobile() {
                   <img
                     alt=""
                     className={
-                      card.cropped ? 'designDialogueMobile_imageCropped' : 'designDialogueMobile_image'
+                      card.cropped
+                        ? 'designDialogueMobile_imageCropped'
+                        : 'designDialogueMobile_image'
                     }
                     src={card.image}
                   />
@@ -87,12 +57,16 @@ export default function DesignDialogueMobile() {
               <div className="designDialogueMobile_cardBody">
                 <div className="designDialogueMobile_cardText">
                   <div className="designDialogueMobile_cardTitle">
-                    <p className="designDialogueMobile_cardTitleLine">
-                      3D slaying the design
-                    </p>
-                    <p className="designDialogueMobile_cardTitleLine">industry!</p>
+                    {card.title.map((line) => (
+                      <p
+                        className="designDialogueMobile_cardTitleLine"
+                        key={line}
+                      >
+                        {line}
+                      </p>
+                    ))}
                   </div>
-                  <p className="designDialogueMobile_cardCopy">{CARD_COPY}</p>
+                  <p className="designDialogueMobile_cardCopy">{card.body}</p>
                 </div>
                 <IconButton glyph={card.glyph} size={32} />
               </div>
@@ -101,7 +75,7 @@ export default function DesignDialogueMobile() {
         </ZoomCarousel>
       </div>
 
-      <Cta size="mobile">View All Stories</Cta>
+      <Cta size="mobile">{cta}</Cta>
     </section>
   )
 }

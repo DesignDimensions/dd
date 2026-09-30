@@ -1,5 +1,3 @@
-import founder from '@/assets/about/founder.jpg'
-
 import './Founder.css'
 
 /**
@@ -14,32 +12,25 @@ import './Founder.css'
  * back empty. Figma renders it desaturated, so the greyscale is applied
  * here rather than baked into the asset.
  */
-export default function Founder() {
+export default function Founder({ bio, eyebrow, heading, image, name, role }) {
   return (
-    <section className="founder_section">
+    <section className="section_box section_clip founder_section">
       <div className="founder_head">
-        <p className="founder_eyebrow">Lorem Ipsum</p>
-        <p className="founder_heading">Meet the founder</p>
+        <p className="text_eyebrow founder_eyebrow">{eyebrow}</p>
+        <p className="text_heading founder_heading">{heading}</p>
       </div>
 
       <article className="founder_card">
         <div className="founder_media">
-          <img alt="Aparna Kakrania" className="founder_image" src={founder} />
+          <img alt={name} className="founder_image" src={image} />
         </div>
 
         <div className="founder_body">
           <div className="founder_nameStack">
-            <p className="founder_role">Founder</p>
-            <p className="founder_name">Aparna Kakrania</p>
+            <p className="founder_role">{role}</p>
+            <p className="founder_name">{name}</p>
           </div>
-          <p className="founder_bio">
-            Growing up in eastern India and studying in the west, I developed a
-            deep appreciation for our diverse cultures and crafts. At Maharani
-            Gayatri Devi Girls School in Jaipur, my passion for vernacular
-            design ignited. After earning a Bachelor&rsquo;s in English
-            Literature from Delhi University and studying graphic design at
-            South Delhi Polytechnic, I launched Design Dimensions in 1997.
-          </p>
+          <p className="founder_bio">{bio}</p>
         </div>
       </article>
     </section>

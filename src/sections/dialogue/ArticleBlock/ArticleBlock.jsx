@@ -6,7 +6,11 @@ import './ArticleBlock.css'
  * in as <ArticleRow>s, with the text classes below on their children.
  */
 export default function ArticleBlock({ children }) {
-  return <section className="articleBlock_section">{children}</section>
+  return (
+    <section className="section_box section_clip articleBlock_section">
+      {children}
+    </section>
+  )
 }
 
 /** Figma 2719:16468 — the 200px side label, then the content column. */
